@@ -122,7 +122,7 @@ Estimated at 280 nm using the Edelhoch method:
 
 ---
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 ### Principles of Peptide Mass Calculation
 
@@ -161,7 +161,7 @@ Monoisotopic mass is the default for most peptide mass spectrometry applications
 
 ## Core Formula
 
-<div class="formula-box">
+<div class="formula-box" markdown="1">
 
 **Complete Molecular Weight Formula:**
 

@@ -89,7 +89,7 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   </div>
 </div>
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
   <h3>How Molarity Calculations Work</h3>
   <p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
   <p>The fundamental relationship is:</p>
@@ -105,7 +105,7 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   </ul>
 </div>
 
-<div class="formula-box">
+<div class="formula-box" markdown="1">
   <h3>Core Formulas</h3>
   <div class="formula-block">
     <p class="formula-title">Molarity from mass and volume:</p>

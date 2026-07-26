@@ -1,0 +1,1585 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/molecular-weight-calculator/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Peptide Molecular Weight Calculator - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Molecular Weight Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/molecular-weight-calculator/",
+    "description": "Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Molecular Weight Calculator", "item": "https://tool.rplpeptides.com/molecular-weight-calculator/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/molecular-weight-calculator/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Molecular Weight Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/molecular-weight-calculator/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Molecular Weight Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peptide-molecular-weight-calculator-most-popular" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peptide Molecular Weight Calculator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Molecular Weight Calculator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Molecular Weight Calculator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-calculation-works" class="md-nav__link">
+    How the Calculation Works
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Calculation Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amino-acid-monoisotopic-masses" class="md-nav__link">
+    Amino Acid Monoisotopic Masses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifications" class="md-nav__link">
+    Modifications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-charge-calculation" class="md-nav__link">
+    Net Charge Calculation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extinction-coefficient" class="md-nav__link">
+    Extinction Coefficient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles-of-peptide-mass-calculation" class="md-nav__link">
+    Principles of Peptide Mass Calculation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-calculations" class="md-nav__link">
+    Example Calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example-ghk-gly-his-lys" class="md-nav__link">
+    Worked Example: GHK (Gly-His-Lys)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-this-tool" class="md-nav__link">
+    When to Use This Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dilution-calculator/" class="md-nav__link">
+        Dilution Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purity-calculator/" class="md-nav__link">
+        Purity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-comparison/" class="md-nav__link">
+        Peptide Comparison Tool
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-calculation-works" class="md-nav__link">
+    How the Calculation Works
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Calculation Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amino-acid-monoisotopic-masses" class="md-nav__link">
+    Amino Acid Monoisotopic Masses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifications" class="md-nav__link">
+    Modifications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-charge-calculation" class="md-nav__link">
+    Net Charge Calculation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extinction-coefficient" class="md-nav__link">
+    Extinction Coefficient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles-of-peptide-mass-calculation" class="md-nav__link">
+    Principles of Peptide Mass Calculation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-calculations" class="md-nav__link">
+    Example Calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example-ghk-gly-his-lys" class="md-nav__link">
+    Worked Example: GHK (Gly-His-Lys)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-this-tool" class="md-nav__link">
+    When to Use This Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="peptide-molecular-weight-calculator-most-popular">Peptide Molecular Weight Calculator <span class="tag-popular">MOST POPULAR</span><a class="headerlink" href="#peptide-molecular-weight-calculator-most-popular" title="Permanent link">&para;</a></h1>
+<p>Calculate the molecular weight, molecular formula, net charge, and extinction coefficient of a peptide from its amino acid sequence. Supports N-terminal acetylation, C-terminal amidation, and disulfide bridges.</p>
+<p><strong>Keywords:</strong> peptide molecular weight calculator, peptide mass calculator, amino acid sequence calculator, monoisotopic mass, average mass peptide</p>
+<hr />
+<h2 id="calculator">Calculator<a class="headerlink" href="#calculator" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <label for="sequence">Amino Acid Sequence (one-letter code)</label>
+  <textarea id="sequence" placeholder="e.g., YQVAD or GLP-1(7-37)...">YQVAD</textarea>
+  <div class="calc-hint">Enter one-letter amino acid codes. Supports standard 20 amino acids (ACDEFGHIKLMNPQRSTVWY).</div>
+
+  <label for="mod-nterm">N-Terminal Modification</label>
+  <select id="mod-nterm">
+    <option value="none">None (Free N-terminus)</option>
+    <option value="acetyl">Acetylation (+42.01 Da)</option>
+    <option value="pyroglu">Pyroglutamic Acid (-17.03 Da)</option>
+    <option value="formyl">Formylation (+28.01 Da)</option>
+  </select>
+
+  <label for="mod-cterm">C-Terminal Modification</label>
+  <select id="mod-cterm">
+    <option value="none">None (Free C-terminus)</option>
+    <option value="amide">Amidation (-0.98 Da)</option>
+  </select>
+
+  <label for="disulfide">Disulfide Bridges</label>
+  <select id="disulfide">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <div class="calc-hint">Each disulfide bridge reduces mass by 2.02 Da (loss of 2 H atoms).</div>
+
+  <label for="mass-type">Mass Type</label>
+  <select id="mass-type">
+    <option value="monoisotopic">Monoisotopic Mass</option>
+    <option value="average">Average Mass</option>
+  </select>
+
+  <button class="calc-btn" onclick="calcMW()">Calculate Molecular Weight</button>
+  <button class="calc-btn secondary" onclick="clearMW()" style="margin-left:0.5rem;">Clear</button>
+
+  <div id="mw-result" class="calc-result">
+    <h3>Results</h3>
+    <table>
+      <tr><td>Molecular Weight</td><td id="res-mw">—</td></tr>
+      <tr><td>Molecular Formula</td><td id="res-formula">—</td></tr>
+      <tr><td>Net Charge (pH 7)</td><td id="res-charge">—</td></tr>
+      <tr><td>Extinction Coefficient (280nm)</td><td id="res-extinction">—</td></tr>
+      <tr><td>Sequence Length</td><td id="res-length">—</td></tr>
+      <tr><td>Molar Absorptivity</td><td id="res-molar">—</td></tr>
+      <tr><td>A260/A280 Ratio</td><td id="res-a260">—</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr />
+<h2 id="how-the-calculation-works">How the Calculation Works<a class="headerlink" href="#how-the-calculation-works" title="Permanent link">&para;</a></h2>
+<h3 id="amino-acid-monoisotopic-masses">Amino Acid Monoisotopic Masses<a class="headerlink" href="#amino-acid-monoisotopic-masses" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Amino Acid</th>
+<th>Code</th>
+<th>Monoisotopic Mass (Da)</th>
+<th>Average Mass (Da)</th>
+<th>Formula Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alanine</td>
+<td>A</td>
+<td>71.03711</td>
+<td>71.0788</td>
+<td>C₃H₅NO</td>
+</tr>
+<tr>
+<td>Arginine</td>
+<td>R</td>
+<td>156.10111</td>
+<td>156.1876</td>
+<td>C₆H₁₂N₄O</td>
+</tr>
+<tr>
+<td>Asparagine</td>
+<td>N</td>
+<td>114.04293</td>
+<td>114.1039</td>
+<td>C₄H₆N₂O₂</td>
+</tr>
+<tr>
+<td>Aspartic Acid</td>
+<td>D</td>
+<td>115.02694</td>
+<td>115.0886</td>
+<td>C₄H₅NO₃</td>
+</tr>
+<tr>
+<td>Cysteine</td>
+<td>C</td>
+<td>103.00919</td>
+<td>103.1430</td>
+<td>C₃H₅NOS</td>
+</tr>
+<tr>
+<td>Glutamic Acid</td>
+<td>E</td>
+<td>129.04259</td>
+<td>129.1155</td>
+<td>C₅H₇NO₃</td>
+</tr>
+<tr>
+<td>Glutamine</td>
+<td>Q</td>
+<td>128.05858</td>
+<td>128.1307</td>
+<td>C₅H₈N₂O₂</td>
+</tr>
+<tr>
+<td>Glycine</td>
+<td>G</td>
+<td>57.02146</td>
+<td>57.0519</td>
+<td>C₂H₃NO</td>
+</tr>
+<tr>
+<td>Histidine</td>
+<td>H</td>
+<td>137.05891</td>
+<td>137.1412</td>
+<td>C₆H₇N₃O</td>
+</tr>
+<tr>
+<td>Isoleucine</td>
+<td>I</td>
+<td>113.08406</td>
+<td>113.1594</td>
+<td>C₆H₁₁NO</td>
+</tr>
+<tr>
+<td>Leucine</td>
+<td>L</td>
+<td>113.08406</td>
+<td>113.1594</td>
+<td>C₆H₁₁NO</td>
+</tr>
+<tr>
+<td>Lysine</td>
+<td>K</td>
+<td>128.09496</td>
+<td>128.1742</td>
+<td>C₆H₁₂N₂O</td>
+</tr>
+<tr>
+<td>Methionine</td>
+<td>M</td>
+<td>131.04049</td>
+<td>131.1926</td>
+<td>C₅H₉NOS</td>
+</tr>
+<tr>
+<td>Phenylalanine</td>
+<td>F</td>
+<td>147.06841</td>
+<td>147.1766</td>
+<td>C₉H₉NO</td>
+</tr>
+<tr>
+<td>Proline</td>
+<td>P</td>
+<td>97.05276</td>
+<td>97.1167</td>
+<td>C₅H₇NO</td>
+</tr>
+<tr>
+<td>Serine</td>
+<td>S</td>
+<td>87.03203</td>
+<td>87.0782</td>
+<td>C₃H₅NO₂</td>
+</tr>
+<tr>
+<td>Threonine</td>
+<td>T</td>
+<td>101.04768</td>
+<td>101.1039</td>
+<td>C₄H₇NO₂</td>
+</tr>
+<tr>
+<td>Tryptophan</td>
+<td>W</td>
+<td>186.07931</td>
+<td>186.2133</td>
+<td>C₁₁H₁₀N₂O</td>
+</tr>
+<tr>
+<td>Tyrosine</td>
+<td>Y</td>
+<td>163.06333</td>
+<td>163.1760</td>
+<td>C₉H₉NO₂</td>
+</tr>
+<tr>
+<td>Valine</td>
+<td>V</td>
+<td>99.06841</td>
+<td>99.1326</td>
+<td>C₅H₉NO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modifications">Modifications<a class="headerlink" href="#modifications" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Modification</th>
+<th>Mass Change (Da)</th>
+<th>Formula Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acetylation (N-term)</td>
+<td>+42.01056</td>
+<td>+C₂H₂O</td>
+</tr>
+<tr>
+<td>Amidation (C-term)</td>
+<td>-0.98474</td>
+<td>-OH + NH₂</td>
+</tr>
+<tr>
+<td>Pyroglutamic Acid (N-term)</td>
+<td>-17.02655</td>
+<td>-H₂O</td>
+</tr>
+<tr>
+<td>Formylation (N-term)</td>
+<td>+28.01007</td>
+<td>+CO</td>
+</tr>
+<tr>
+<td>Disulfide Bridge</td>
+<td>-2.01565 per bridge</td>
+<td>-2H</td>
+</tr>
+</tbody>
+</table>
+<h3 id="net-charge-calculation">Net Charge Calculation<a class="headerlink" href="#net-charge-calculation" title="Permanent link">&para;</a></h3>
+<p>At pH 7.0, net charge is estimated from ionizable side chains:</p>
+<ul>
+<li><strong>Positive charges:</strong> Arg (+1), Lys (+1), His (+0.1 at pH 7)</li>
+<li><strong>Negative charges:</strong> Asp (-1), Glu (-1)</li>
+<li><strong>N-terminus:</strong> +1 (if unmodified)</li>
+<li><strong>C-terminus:</strong> -1 (if unmodified; 0 if amidated)</li>
+</ul>
+<h3 id="extinction-coefficient">Extinction Coefficient<a class="headerlink" href="#extinction-coefficient" title="Permanent link">&para;</a></h3>
+<p>Estimated at 280 nm using the Edelhoch method:</p>
+<ul>
+<li><strong>Trp (W):</strong> 5,500 M⁻¹cm⁻¹</li>
+<li><strong>Tyr (Y):</strong> 1,490 M⁻¹cm⁻¹</li>
+<li><strong>Cys (C, disulfide):</strong> 125 M⁻¹cm⁻¹ per bond</li>
+</ul>
+<hr />
+<div class="principle-box">
+<h3 id="principles-of-peptide-mass-calculation">Principles of Peptide Mass Calculation<a class="headerlink" href="#principles-of-peptide-mass-calculation" title="Permanent link">&para;</a></h3>
+<p><strong>Peptide Bond Formation:</strong> Peptides are linear chains of amino acids linked by peptide bonds (amide bonds). Each peptide bond forms through a condensation reaction between the carboxyl group (—COOH) of one amino acid and the amino group (—NH₂) of the next, releasing a water molecule (H₂O).</p>
+<p><strong>Water Loss During Synthesis:</strong> For a peptide containing <span class="arithmatex">\(n\)</span> amino acid residues, exactly <span class="arithmatex">\(n-1\)</span> water molecules are lost during peptide bond formation. Each water molecule has a mass of <strong>18.01056 Da</strong> (monoisotopic) or <strong>18.0153 Da</strong> (average). This water loss is the single most important correction applied in peptide mass calculation.</p>
+<p><strong>General Relationship:</strong></p>
+<div class="arithmatex">\[
+\text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times \text{H}_2\text{O mass} + \sum \text{modifications}
+\]</div>
+<p><strong>Monoisotopic vs. Average Mass:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Monoisotopic Mass</th>
+<th>Average Mass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>Exact mass of the most abundant isotope of each element (e.g., ¹²C, ¹H, ¹⁴N, ¹⁶O, ³²S)</td>
+<td>Weighted average of all naturally occurring isotopes for each element</td>
+</tr>
+<tr>
+<td>Typical Use</td>
+<td>High-resolution mass spectrometry (FT-ICR, Orbitrap, Q-TOF)</td>
+<td>Lower-resolution instruments, preparative work, gravimetric calculations</td>
+</tr>
+<tr>
+<td>Difference Scale</td>
+<td>~0.1–0.5 Da for peptides under 1,500 Da</td>
+<td>Larger differences for larger peptides</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>More precise for individual molecular species</td>
+<td>Represents bulk isotopic distribution</td>
+</tr>
+</tbody>
+</table>
+<p>Monoisotopic mass is the default for most peptide mass spectrometry applications, while average mass is more commonly used for determining reconstitution volumes and molar concentrations.</p>
+</div>
+<h2 id="example-calculations">Example Calculations<a class="headerlink" href="#example-calculations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sequence</th>
+<th>Modifications</th>
+<th>MW (Monoisotopic)</th>
+<th>MW (Average)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YQVAD</td>
+<td>None</td>
+<td>581.27 Da</td>
+<td>581.62 Da</td>
+</tr>
+<tr>
+<td>GLP-1(7-37)</td>
+<td>None</td>
+<td>3,297.62 Da</td>
+<td>3,299.62 Da</td>
+</tr>
+<tr>
+<td>GHK</td>
+<td>Amidated C-term</td>
+<td>402.20 Da</td>
+<td>402.46 Da</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
+<div class="formula-box">
+<p><strong>Complete Molecular Weight Formula:</strong></p>
+<div class="arithmatex">\[
+\text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056 + \sum \text{modifications} - 2.01565 \times \text{disulfide\_count}
+\]</div>
+<p><strong>Where:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\sum_{i=1}^{n} \text{AA}_i\)</span></td>
+<td>Sum of monoisotopic (or average) masses of all <span class="arithmatex">\(n\)</span> amino acid residues in the sequence</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\)</span></td>
+<td>Total number of amino acids in the peptide</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(18.01056\)</span></td>
+<td>Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((n-1) \times 18.01056\)</span></td>
+<td>Total water loss from all peptide bond condensation reactions</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum \text{modifications}\)</span></td>
+<td>Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(2.01565\)</span></td>
+<td>Mass of two hydrogen atoms lost per disulfide bridge</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{disulfide\_count}\)</span></td>
+<td>Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simplified for unmodified linear peptides:</strong></p>
+<div class="arithmatex">\[
+\text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056
+\]</div>
+</div>
+<h2 id="worked-example-ghk-gly-his-lys">Worked Example: GHK (Gly-His-Lys)<a class="headerlink" href="#worked-example-ghk-gly-his-lys" title="Permanent link">&para;</a></h2>
+<p>Let's calculate the molecular weight of the tripeptide <strong>GHK</strong> (Glycine-Histidine-Lysine), a copper-binding peptide found in human plasma.</p>
+<p><strong>Step 1: Sum the amino acid monoisotopic masses</strong></p>
+<table>
+<thead>
+<tr>
+<th>Amino Acid</th>
+<th align="center">One-Letter Code</th>
+<th align="center">Monoisotopic Mass (Da)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glycine</td>
+<td align="center">G</td>
+<td align="center">57.02</td>
+</tr>
+<tr>
+<td>Histidine</td>
+<td align="center">H</td>
+<td align="center">137.06</td>
+</tr>
+<tr>
+<td>Lysine</td>
+<td align="center">K</td>
+<td align="center">128.09</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td align="center"></td>
+<td align="center"><strong>322.17 Da</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2: Account for water loss from peptide bonds</strong></p>
+<p>GHK has 3 amino acids, therefore <span class="arithmatex">\(n-1 = 2\)</span> peptide bonds. Each bond formation releases one H₂O.</p>
+<div class="arithmatex">\[
+\text{Water loss} = 2 \times 18.01056 = 36.02 \text{ Da}
+\]</div>
+<p><strong>Step 3: Calculate unmodified molecular weight</strong></p>
+<div class="arithmatex">\[
+\text{MW} = 322.17 - 36.02 = 286.15 \text{ Da}
+\]</div>
+<p><strong>Step 4: Apply modifications (optional)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Modification</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None (free N- and C-termini)</td>
+<td>286.15</td>
+<td><strong>286.15 Da</strong></td>
+</tr>
+<tr>
+<td>C-terminal amidation (−0.98 Da)</td>
+<td>286.15 − 0.98</td>
+<td><strong>285.17 Da</strong></td>
+</tr>
+<tr>
+<td>N-terminal acetylation (+42.01 Da)</td>
+<td>286.15 + 42.01</td>
+<td><strong>328.16 Da</strong></td>
+</tr>
+<tr>
+<td>Acetylation + Amidation</td>
+<td>286.15 + 42.01 − 0.98</td>
+<td><strong>327.18 Da</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verification:</strong> A mass spectrometer analyzing synthetic GHK (amidated) should show a monoisotopic peak at approximately <strong>285.17 m/z</strong> ([M+H]⁺ at 286.17).</p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<div class="faq-q">
+
+**What is the difference between monoisotopic and average mass?**
+
+</div>
+
+<p><strong>Monoisotopic mass</strong> refers to the exact mass of a molecule calculated using the most abundant isotope of each element. For example, carbon is taken as ¹²C (exactly 12.00000 Da), hydrogen as ¹H (1.00783 Da), nitrogen as ¹⁴N (14.00307 Da), and oxygen as ¹⁶O (15.99491 Da). This represents the mass of a single, specific isotopic variant and is what you see in high-resolution mass spectra as the lowest-mass peak of the isotopic envelope.</p>
+<p><strong>Average mass</strong> uses the weighted average of all naturally occurring isotopes for each element. For carbon, this includes ¹²C (98.9%) and ¹³C (1.1%), giving an average atomic mass of 12.0107 Da. The average mass represents the center of the isotopic distribution and is typically 0.1–0.6 Da higher than the monoisotopic mass for most peptides.</p>
+<p><strong>When to use which:</strong> Monoisotopic mass is standard for mass spectrometry and precise analytical work. Average mass is used for calculating molar concentrations, reconstitution volumes, and other bench-scale quantities.</p>
+<div class="faq-q">
+
+**How does acetylation affect molecular weight?**
+
+</div>
+
+<p>Acetylation adds an acetyl group (CH₃CO−) to the N-terminus of the peptide, replacing the terminal hydrogen atom. The net mass change is <strong>+42.01 Da</strong> (monoisotopic) or <strong>+42.04 Da</strong> (average). This modification also neutralizes the positive charge of the free N-terminus, which can affect the peptide's overall net charge and isoelectric point. Acetylation is commonly used to improve peptide stability by protecting the N-terminus from enzymatic degradation by aminopeptidases.</p>
+<div class="faq-q">
+
+**Why does my peptide's MW differ from the calculated value?**
+
+</div>
+
+<p>Several factors can cause discrepancies between calculated and experimentally observed molecular weights:</p>
+<ul>
+<li><strong>Isotopic distribution:</strong> Mass spectrometry shows a distribution of isotopic peaks, not a single value. The monoisotopic peak (lowest mass) should match the calculated monoisotopic mass.</li>
+<li><strong>Salt adducts:</strong> Sodium (Na⁺, +22.99 Da), potassium (K⁺, +38.10 Da), or other counterions from buffers can form adducts.</li>
+<li><strong>Post-translational modifications:</strong> Phosphorylation (+79.97 Da), glycosylation, oxidation of methionine (+15.99 Da), or other in-vivo modifications may be present.</li>
+<li><strong>Sequence errors:</strong> A single amino acid substitution or deletion changes the mass significantly.</li>
+<li><strong>Truncation products:</strong> Incomplete synthesis can produce shorter peptide fragments.</li>
+<li><strong>Counterions:</strong> Peptides purified as TFA salts or acetate salts carry additional mass from the counterion.</li>
+</ul>
+<p>Always confirm your sequence and consider the purification method when interpreting mass spectrometry data.</p>
+<div class="faq-q">
+
+**What is the extinction coefficient and why does it matter?**
+
+</div>
+
+<p>The extinction coefficient (ε) is a measure of how strongly a peptide absorbs light at a particular wavelength, typically 280 nm for aromatic amino acids. It is calculated using the <strong>Edelhoch method</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Amino Acid</th>
+<th align="center">ε₂₈₀ (M⁻¹cm⁻¹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tryptophan (W)</td>
+<td align="center">5,500</td>
+</tr>
+<tr>
+<td>Tyrosine (Y)</td>
+<td align="center">1,490</td>
+</tr>
+<tr>
+<td>Cystine (C–C, disulfide)</td>
+<td align="center">125 per bond</td>
+</tr>
+</tbody>
+</table>
+<p>The extinction coefficient is essential for:
+- <strong>Quantifying peptide concentration</strong> using UV spectrophotometry (A = ε × c × l)
+- <strong>Determining yield</strong> after synthesis and purification
+- <strong>Normalizing samples</strong> for biochemical assays
+- <strong>Quality control</strong> in peptide manufacturing</p>
+<p>Peptides lacking Trp, Tyr, and disulfide bonds have negligible absorbance at 280 nm and require alternative quantification methods (e.g., BCA assay, tryptophan fluorescence at 295 nm).</p>
+<div class="faq-q">
+
+**How do disulfide bridges affect mass calculation?**
+
+</div>
+
+<p>A disulfide bridge (cystine bond) forms between the thiol groups (—SH) of two cysteine residues. During formation, each cysteine loses one hydrogen atom, and the two hydrogens combine and are released. This means each disulfide bridge reduces the molecular weight by <strong>2.01565 Da</strong> (the mass of two hydrogen atoms).</p>
+<p>The formula impact is straightforward:</p>
+<div class="arithmatex">\[
+\text{MW}_{\text{with disulfide}} = \text{MW}_{\text{linear}} - (2.01565 \times \text{disulfide\_count})
+\]</div>
+<p>Disulfide bridges also:
+- Introduce structural constraints that affect peptide folding and bioactivity
+- Contribute to UV absorbance at 280 nm (125 M⁻¹cm⁻¹ per bond)
+- Protect peptides from proteolytic degradation
+- Are critical for the stability of many therapeutic peptides (e.g., insulin, oxytocin)</p>
+<h2 id="when-to-use-this-tool">When to Use This Tool<a class="headerlink" href="#when-to-use-this-tool" title="Permanent link">&para;</a></h2>
+<p>The Peptide Molecular Weight Calculator is essential for a wide range of research and development applications:</p>
+<ul>
+<li><strong>Peptide Synthesis:</strong> Verify the mass of synthesized peptides before and after purification. Calculate expected [M+H]⁺ peaks for HPLC-MS and LC-MS quality control.</li>
+<li><strong>Mass Spectrometry:</strong> Predict monoisotopic and average masses for database searching, spectral interpretation, and fragment ion analysis in proteomics workflows.</li>
+<li><strong>Drug Discovery:</strong> Design therapeutic peptides with precise molecular weights. Calculate masses for modified peptides including acetylated, amidated, and cyclized variants.</li>
+<li><strong>Biopharmaceutical Development:</strong> Determine molar extinction coefficients for accurate quantification of peptide-based drug substances and drug products.</li>
+<li><strong>Reconstitution and Dosing:</strong> Use calculated molecular weights alongside the <a href="dilution-calculator/">Dilution Calculator</a> and <a href="molarity-calculator/">Molarity Calculator</a> to prepare precise stock solutions and dosing formulations.</li>
+<li><strong>Characterization of Natural Peptides:</strong> Analyze bioactive peptides from venoms, hormones, growth factors, and antimicrobial peptides by comparing calculated masses against observed MS data.</li>
+<li><strong>Education and Training:</strong> Teach students the fundamental principles of peptide chemistry, including condensation reactions, water loss, and the impact of post-translational modifications on mass.</li>
+</ul>
+<p>For comprehensive physicochemical characterization including isoelectric point, hydrophobicity, and instability index, visit the <a href="peptide-property-calculator/">Peptide Properties Calculator</a>.</p>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="peptide-property-calculator/">Peptide Properties Calculator</a> — Full physicochemical characterization</li>
+<li><a href="dilution-calculator/">Dilution Calculator</a> — Calculate reconstitution volumes</li>
+<li><a href="molarity-calculator/">Molarity Calculator</a> — Convert between concentration units</li>
+<li><a href="peptide-comparison/">Peptide Comparison Tool</a> — Compare multiple peptides side-by-side</li>
+</ul>
+<hr />
+<p><em>Data source: IUPAC-IUBMB biochemical nomenclature. Calculations follow ExPASy ProtParam methodology.</em></p>
+<script>
+const AA_DATA = {
+  'A': { mono: 71.03711, avg: 71.0788,  formula: {C:3, H:5, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'R': { mono: 156.10111, avg: 156.1876, formula: {C:6, H:12, N:4, O:1, S:0}, charge: 1, e280: 0 },
+  'N': { mono: 114.04293, avg: 114.1039, formula: {C:4, H:6, N:2, O:2, S:0}, charge: 0, e280: 0 },
+  'D': { mono: 115.02694, avg: 115.0886, formula: {C:4, H:5, N:1, O:3, S:0}, charge: -1, e280: 0 },
+  'C': { mono: 103.00919, avg: 103.1430, formula: {C:3, H:5, N:1, O:1, S:1}, charge: 0, e280: 125 },
+  'E': { mono: 129.04259, avg: 129.1155, formula: {C:5, H:7, N:1, O:3, S:0}, charge: -1, e280: 0 },
+  'Q': { mono: 128.05858, avg: 128.1307, formula: {C:5, H:8, N:2, O:2, S:0}, charge: 0, e280: 0 },
+  'G': { mono: 57.02146, avg: 57.0519,  formula: {C:2, H:3, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'H': { mono: 137.05891, avg: 137.1412, formula: {C:6, H:7, N:3, O:1, S:0}, charge: 0.1, e280: 0 },
+  'I': { mono: 113.08406, avg: 113.1594, formula: {C:6, H:11, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'L': { mono: 113.08406, avg: 113.1594, formula: {C:6, H:11, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'K': { mono: 128.09496, avg: 128.1742, formula: {C:6, H:12, N:2, O:1, S:0}, charge: 1, e280: 0 },
+  'M': { mono: 131.04049, avg: 131.1926, formula: {C:5, H:9, N:1, O:1, S:1}, charge: 0, e280: 0 },
+  'F': { mono: 147.06841, avg: 147.1766, formula: {C:9, H:9, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'P': { mono: 97.05276, avg: 97.1167,  formula: {C:5, H:7, N:1, O:1, S:0}, charge: 0, e280: 0 },
+  'S': { mono: 87.03203, avg: 87.0782,  formula: {C:3, H:5, N:1, O:2, S:0}, charge: 0, e280: 0 },
+  'T': { mono: 101.04768, avg: 101.1039, formula: {C:4, H:7, N:1, O:2, S:0}, charge: 0, e280: 0 },
+  'W': { mono: 186.07931, avg: 186.2133, formula: {C:11, H:10, N:2, O:1, S:0}, charge: 0, e280: 5500 },
+  'Y': { mono: 163.06333, avg: 163.1760, formula: {C:9, H:9, N:1, O:2, S:0}, charge: 0, e280: 1490 },
+  'V': { mono: 99.06841, avg: 99.1326,  formula: {C:5, H:9, N:1, O:1, S:0}, charge: 0, e280: 0 }
+};
+
+// Water mass (H2O) = 18.01056 mono, 18.0153 avg
+const H2O_MONO = 18.01056;
+const H2O_AVG = 18.0153;
+
+function parseSequence(seq) {
+  seq = seq.toUpperCase().replace(/\s+/g, '').replace(/[^ACDEFGHIKLMNPQRSTVWY]/g, '');
+  return seq;
+}
+
+function getModData(mod, type) {
+  if (type === 'nterm') {
+    if (mod === 'acetyl') return { mono: 42.01056, avg: 42.0373, formula: {C:2, H:2, O:1, N:0, S:0}, charge: -1 };
+    if (mod === 'pyroglu') return { mono: -17.02655, avg: -17.0078, formula: {C:0, H:-2, O:-1, N:0, S:0}, charge: -1 };
+    if (mod === 'formyl') return { mono: 28.01007, avg: 28.0101, formula: {C:1, H:0, O:1, N:0, S:0}, charge: -1 };
+  }
+  if (type === 'cterm') {
+    if (mod === 'amide') return { mono: -0.98474, avg: -0.9847, formula: {C:0, H:-1, N:1, O:-1, S:0}, charge: 1 };
+  }
+  return { mono: 0, avg: 0, formula: {C:0, H:0, N:0, O:0, S:0}, charge: 0 };
+}
+
+function calcMW() {
+  const seqRaw = document.getElementById('sequence').value;
+  const seq = parseSequence(seqRaw);
+  if (!seq || seq.length === 0) {
+    document.getElementById('mw-result').style.display = 'block';
+    document.getElementById('res-mw').textContent = 'Please enter a valid sequence';
+    document.getElementById('res-formula').textContent = '—';
+    document.getElementById('res-charge').textContent = '—';
+    document.getElementById('res-extinction').textContent = '—';
+    document.getElementById('res-length').textContent = '—';
+    document.getElementById('res-molar').textContent = '—';
+    document.getElementById('res-a260').textContent = '—';
+    return;
+  }
+
+  const massType = document.getElementById('mass-type').value;
+  const nMod = document.getElementById('mod-nterm').value;
+  const cMod = document.getElementById('mod-cterm').value;
+  const disulfide = parseInt(document.getElementById('disulfide').value) || 0;
+  const isMono = massType === 'monoisotopic';
+
+  let totalMass = 0;
+  let totalFormula = {C:0, H:0, N:0, O:0, S:0};
+  let totalCharge = 0;
+  let e280 = 0;
+  let wCount = 0, yCount = 0;
+
+  for (let aa of seq) {
+    const d = AA_DATA[aa];
+    if (!d) continue;
+    totalMass += isMono ? d.mono : d.avg;
+    for (let k in d.formula) totalFormula[k] += d.formula[k];
+    totalCharge += d.charge;
+    e280 += d.e280;
+    if (aa === 'W') wCount++;
+    if (aa === 'Y') yCount++;
+  }
+
+  // Subtract water per peptide bond
+  const h2oMass = isMono ? H2O_MONO : H2O_AVG;
+  totalMass -= (seq.length - 1) * h2oMass;
+  totalFormula.H -= (seq.length - 1) * 2;
+  totalFormula.O -= (seq.length - 1);
+  if (seq.length > 0) { totalFormula.H -= 2; totalFormula.O -= 1; } // N-term H, C-term OH
+
+  // N-terminal modification
+  if (nMod !== 'none') {
+    const mod = getModData(nMod, 'nterm');
+    totalMass += isMono ? mod.mono : mod.avg;
+    for (let k in mod.formula) totalFormula[k] += mod.formula[k];
+    totalCharge += mod.charge;
+  } else {
+    totalCharge += 1; // free N-term adds +1
+  }
+
+  // C-terminal modification
+  if (cMod !== 'none') {
+    const mod = getModData(cMod, 'cterm');
+    totalMass += isMono ? mod.mono : mod.avg;
+    for (let k in mod.formula) totalFormula[k] += mod.formula[k];
+    totalCharge += mod.charge;
+  } else {
+    totalCharge -= 1; // free C-term adds -1
+  }
+
+  // Disulfide bridges
+  if (disulfide > 0) {
+    totalMass -= disulfide * 2.01565;
+    totalFormula.H -= disulfide * 2;
+  }
+
+  // Build formula string
+  const formulaStr = `C${totalFormula.C}H${totalFormula.H}N${totalFormula.N}O${totalFormula.O}` + 
+    (totalFormula.S > 0 ? `S${totalFormula.S}` : '');
+
+  // Charge string
+  let chargeStr = '';
+  if (totalCharge > 0) chargeStr = '+' + Math.round(totalCharge * 10) / 10;
+  else if (totalCharge < 0) chargeStr = '' + Math.round(totalCharge * 10) / 10;
+  else chargeStr = '0';
+
+  // Extinction coefficient with disulfide correction
+  let e280_corrected = e280 + (disulfide * 125);
+
+  // Absorbance ratio estimate
+  let a260_280 = (wCount * 5.6 + yCount * 1.0) / (wCount * 5.5 + yCount * 1.49) || '—';
+  if (a260_280 !== '—') a260_280 = a260_280.toFixed(2);
+
+  // Display
+  document.getElementById('mw-result').style.display = 'block';
+  document.getElementById('res-mw').textContent = totalMass.toFixed(2) + ' Da' + (isMono ? ' (monoisotopic)' : ' (average)');
+  document.getElementById('res-formula').textContent = formulaStr;
+  document.getElementById('res-charge').textContent = chargeStr;
+  document.getElementById('res-extinction').textContent = e280_corrected > 0 ? e280_corrected + ' M⁻¹cm⁻¹' : '0 (no Trp/Tyr/Cys-C)';
+  document.getElementById('res-length').textContent = seq.length + ' amino acids';
+  document.getElementById('res-molar').textContent = e280_corrected > 0 ? (e280_corrected / totalMass * 10).toFixed(1) + ' L·g⁻¹·cm⁻¹' : '—';
+  document.getElementById('res-a260').textContent = a260_280;
+
+  // Scroll to results
+  document.getElementById('mw-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearMW() {
+  document.getElementById('sequence').value = '';
+  document.getElementById('mod-nterm').value = 'none';
+  document.getElementById('mod-cterm').value = 'none';
+  document.getElementById('disulfide').value = '0';
+  document.getElementById('mass-type').value = 'monoisotopic';
+  document.getElementById('mw-result').style.display = 'none';
+}
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

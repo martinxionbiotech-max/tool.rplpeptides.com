@@ -1,0 +1,1092 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/dilution-calculator/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Peptide Dilution Calculator - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dilution Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/dilution-calculator/",
+    "description": "Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Dilution Calculator", "item": "https://tool.rplpeptides.com/dilution-calculator/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/dilution-calculator/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dilution Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/dilution-calculator/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dilution Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peptide-dilution-calculator-popular" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peptide Dilution Calculator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molecular-weight-calculator/" class="md-nav__link">
+        Molecular Weight Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dilution Calculator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dilution Calculator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-calculation-works" class="md-nav__link">
+    How the Calculation Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-concentration-mgml" class="md-nav__link">
+    Mass Concentration (mg/mL)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molar-concentration-mm" class="md-nav__link">
+    Molar Concentration (mM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    Worked Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    Common Mistakes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-reconstitution-volumes" class="md-nav__link">
+    Common Reconstitution Volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purity-calculator/" class="md-nav__link">
+        Purity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-comparison/" class="md-nav__link">
+        Peptide Comparison Tool
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-calculation-works" class="md-nav__link">
+    How the Calculation Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-concentration-mgml" class="md-nav__link">
+    Mass Concentration (mg/mL)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molar-concentration-mm" class="md-nav__link">
+    Molar Concentration (mM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    Worked Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    Common Mistakes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-reconstitution-volumes" class="md-nav__link">
+    Common Reconstitution Volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="peptide-dilution-calculator-popular">Peptide Dilution Calculator <span class="tag-popular">POPULAR</span><a class="headerlink" href="#peptide-dilution-calculator-popular" title="Permanent link">&para;</a></h1>
+<p>Calculate the solvent volume required to reconstitute a peptide to a target concentration. Essential for preparing research solutions from lyophilized peptide.</p>
+<p><strong>Keywords:</strong> peptide dilution calculator, peptide reconstitution calculator, peptide solvent calculator, reconstitution volume</p>
+<hr />
+<h2 id="calculator">Calculator<a class="headerlink" href="#calculator" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <label for="dil-mass">Peptide Amount</label>
+  <div style="display:flex; gap:0.5rem;">
+    <input type="number" id="dil-mass" value="5" step="0.1" min="0" style="flex:2;">
+    <select id="dil-mass-unit" style="flex:1;">
+      <option value="mg">mg</option>
+      <option value="ug">µg</option>
+      <option value="g">g</option>
+    </select>
+  </div>
+
+  <label for="dil-conc">Desired Concentration</label>
+  <div style="display:flex; gap:0.5rem;">
+    <input type="number" id="dil-conc" value="2" step="0.1" min="0" style="flex:2;">
+    <select id="dil-conc-unit" style="flex:1;">
+      <option value="mgml">mg/mL</option>
+      <option value="ugml">µg/mL</option>
+      <option value="mm">mM</option>
+      <option value="um">µM</option>
+    </select>
+  </div>
+
+  <div id="dil-mw-field" style="display:none;">
+    <label for="dil-mw">Molecular Weight (Da) — required for mM/µM</label>
+    <input type="number" id="dil-mw" value="1000" step="0.1" min="0">
+  </div>
+
+  <button class="calc-btn" onclick="calcDilution()">Calculate Solvent Volume</button>
+  <button class="calc-btn secondary" onclick="clearDil()" style="margin-left:0.5rem;">Clear</button>
+
+  <div id="dil-result" class="calc-result">
+    <h3>Reconstitution Instructions</h3>
+    <table>
+      <tr><td>Solvent Volume Required</td><td id="dil-vol">—</td></tr>
+      <tr><td>Final Concentration</td><td id="dil-final">—</td></tr>
+      <tr><td>Peptide Amount</td><td id="dil-mass-result">—</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2 id="how-the-calculation-works">How the Calculation Works<a class="headerlink" href="#how-the-calculation-works" title="Permanent link">&para;</a></h2>
+<div class="principle-box">
+<p>Peptide reconstitution calculations are based on the fundamental relationship between <strong>concentration (C)</strong>, <strong>mass (m)</strong>, and <strong>volume (V)</strong>:</p>
+<div class="arithmatex">\[ C = \frac{m}{V} \]</div>
+<ul>
+<li><strong>For mg/mL (mass concentration):</strong> This is the simplest case. If you have 5 mg of peptide and want a 2 mg/mL solution, you need 2.5 mL of solvent. The calculation is a direct proportion — no molecular weight needed.</li>
+<li><strong>For mM/µM (molar concentration):</strong> To calculate molar concentration, you need the peptide's <strong>molecular weight (MW)</strong>. The formula becomes:
+  [ C_{\text{mM}} = \frac{m}{\text{MW} \times V} \times 1000 ]
+  where m is in mg, MW is in Da (g/mol), and V is in mL.</li>
+<li><strong>Why proper reconstitution matters:</strong> Accurate reconstitution is critical for experimental reproducibility. Errors in solvent volume directly change peptide concentration, leading to inconsistent dosing, failed binding assays, or misleading bioactivity results. Always use calibrated pipettes and account for peptide purity.</li>
+</ul>
+</div>
+<h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
+<div class="formula-box">
+<h4 id="mass-concentration-mgml">Mass Concentration (mg/mL)<a class="headerlink" href="#mass-concentration-mgml" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[ V(\text{mL}) = \frac{m(\text{mg})}{C(\text{mg/mL})} \]</div>
+<h4 id="molar-concentration-mm">Molar Concentration (mM)<a class="headerlink" href="#molar-concentration-mm" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[ V(\text{mL}) = \frac{m(\text{mg})}{\text{MW} \times C(\text{mM})} \times 1000 \]</div>
+<h4 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Typical Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V</td>
+<td>Volume of solvent needed</td>
+<td>mL</td>
+</tr>
+<tr>
+<td>m</td>
+<td>Mass of peptide</td>
+<td>mg</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Desired concentration</td>
+<td>mg/mL or mM</td>
+</tr>
+<tr>
+<td>MW</td>
+<td>Molecular weight of peptide</td>
+<td>Da (g/mol)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="worked-example">Worked Example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h2>
+<p><strong>Example 1: Mass concentration (mg/mL)</strong>
+You have 5 mg of lyophilized peptide and need a 2 mg/mL solution.</p>
+<div class="arithmatex">\[ V = \frac{5}{2} = 2.5 \text{ mL} \]</div>
+<p>Add <strong>2.5 mL</strong> of suitable solvent to your 5 mg peptide vial.</p>
+<p><strong>Example 2: Molar concentration (mM)</strong>
+You have 10 mg of a peptide with molecular weight 1000 Da and need a 5 mM solution.</p>
+<div class="arithmatex">\[ V = \left[\frac{10}{1000 \times 5}\right] \times 1000 = 2 \text{ mL} \]</div>
+<p>Add <strong>2 mL</strong> of suitable solvent to your 10 mg peptide vial.</p>
+<h2 id="common-mistakes">Common Mistakes<a class="headerlink" href="#common-mistakes" title="Permanent link">&para;</a></h2>
+<div class="mistake">
+
+- **Forgetting to account for peptide purity** — Peptide manufacturers quote a purity percentage (e.g., 95%). If you have 5 mg of 80% pure peptide, the effective peptide mass is only 4 mg. Always calculate using the **actual peptide content**: effective mass = total mass × (purity / 100).
+
+- **Using the wrong molecular weight** — Peptide molecular weight is typically given in Da (g/mol) by the manufacturer. Using an incorrect value (e.g., the salt form weight instead of the peptide-only weight) will give an erroneous molar concentration. Check your COA (Certificate of Analysis).
+
+- **Not aliquoting before freezing** — Repeated freeze-thaw cycles degrade peptides and introduce concentration errors. Always aliquot your stock solution into single-use portions before freezing at -20°C or -80°C.
+
+- **Confusing mg/mL with mM** — These are fundamentally different concentration units. 1 mg/mL of a peptide with MW 1000 Da equals 1 mM, but for a peptide with MW 500 Da, 1 mg/mL equals 2 mM. Always verify which unit your protocol requires.
+
+</div>
+
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<div class="faq-q">**Q: What solvent should I use for reconstitution?**</div>
+
+<p>A: The choice of solvent depends on your peptide's hydrophobicity and your downstream application. For hydrophilic peptides, sterile water, PBS, or 0.9% saline often works. For hydrophobic peptides, a small amount of DMSO or acetic acid may be needed. Always check the manufacturer's recommendations on the COA.</p>
+<div class="faq-q">**Q: Can I use this calculator for non-peptide compounds?**</div>
+
+<p>A: Yes — the underlying formulas (C = m/V for mass concentration, and the molarity formula for mM/µM) are universal. You can use this calculator for any soluble compound as long as you have its mass, desired concentration, and molecular weight (for molar units).</p>
+<div class="faq-q">**Q: How do I account for peptide purity in my dilution?**</div>
+
+<p>A: Divide your peptide mass by the purity fraction before calculating. For example, if you have 5 mg of 80% pure peptide, the effective mass is 5 × 0.80 = 4 mg. Use 4 mg in the calculator. Alternatively, use our <a href="purity-calculator/">Purity Calculator</a> to adjust your values.</p>
+<div class="faq-q">**Q: Why is my peptide not fully dissolving at the calculated volume?**</div>
+
+<p>A: Common reasons include: (1) the peptide is hydrophobic and needs a different solvent, (2) the calculated volume is too small for the peptide to dissolve in (solubility limit), or (3) the peptide has formed aggregates. Try sonicating briefly, warming gently, or adding a small amount of co-solvent.</p>
+<div class="faq-q">**Q: Is it better to prepare a stock solution at higher concentration and dilute?**</div>
+
+<p>A: Yes — preparing a concentrated stock (e.g., 10× the final working concentration) and then diluting it for experiments is best practice. This minimizes pipetting errors, reduces freeze-thaw cycles (if aliquoted), and gives you flexibility for different assay conditions.</p>
+<hr />
+<h2 id="common-reconstitution-volumes">Common Reconstitution Volumes<a class="headerlink" href="#common-reconstitution-volumes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Peptide Mass</th>
+<th>Target 1 mg/mL</th>
+<th>Target 2 mg/mL</th>
+<th>Target 5 mg/mL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 mg</td>
+<td>1.0 mL</td>
+<td>0.5 mL</td>
+<td>0.2 mL</td>
+</tr>
+<tr>
+<td>2 mg</td>
+<td>2.0 mL</td>
+<td>1.0 mL</td>
+<td>0.4 mL</td>
+</tr>
+<tr>
+<td>5 mg</td>
+<td>5.0 mL</td>
+<td>2.5 mL</td>
+<td>1.0 mL</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>10.0 mL</td>
+<td>5.0 mL</td>
+<td>2.0 mL</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="molarity-calculator/">Molarity Calculator</a> — Convert between concentration units</li>
+<li><a href="purity-calculator/">Purity Calculator</a> — Account for peptide purity in dosing</li>
+<li><a href="molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate peptide molecular weight from sequence</li>
+<li><a href="storage-calculator/">Storage Calculator</a> — Storage stability guidelines</li>
+</ul>
+<script>
+document.getElementById('dil-conc-unit').addEventListener('change', function() {
+  document.getElementById('dil-mw-field').style.display = 
+    (this.value === 'mm' || this.value === 'um') ? 'block' : 'none';
+});
+
+function calcDilution() {
+  const mass = parseFloat(document.getElementById('dil-mass').value);
+  const massUnit = document.getElementById('dil-mass-unit').value;
+  const conc = parseFloat(document.getElementById('dil-conc').value);
+  const concUnit = document.getElementById('dil-conc-unit').value;
+  const mw = parseFloat(document.getElementById('dil-mw').value);
+
+  if (!mass || !conc) {
+    document.getElementById('dil-result').style.display = 'block';
+    document.getElementById('dil-vol').textContent = 'Please enter values';
+    return;
+  }
+
+  // Convert mass to mg
+  let massMg = mass;
+  if (massUnit === 'ug') massMg = mass / 1000;
+  if (massUnit === 'g') massMg = mass * 1000;
+
+  let volML = 0;
+
+  if (concUnit === 'mgml') {
+    volML = massMg / conc;
+  } else if (concUnit === 'ugml') {
+    volML = (massMg * 1000) / conc;
+  } else if (concUnit === 'mm') {
+    if (!mw) { alert('Please enter molecular weight for molar concentration.'); return; }
+    // C (mM) = mass (mg) / (MW * V (L))
+    // V (mL) = mass (mg) / (MW * C (mM) / 1000) * 1000
+    // V = mass / (MW * C / 1000) * 1000 = mass * 1000 * 1000 / (MW * C) ... let me simplify
+    // C (mM) = mass (mg) / (MW (Da) * V (L))
+    // V (L) = mass (mg) / (MW * C (mM) / 1000) ... no
+    // Actually: V (L) = mass (g) / (MW (g/mol) * C (mol/L))
+    // mass (g) = massMg / 1000
+    // C (M) = conc / 1000 (mM to M)
+    // V (L) = (massMg/1000) / (mw * conc/1000) = massMg / (mw * conc)
+    // V (mL) = massMg / (mw * conc) * 1000
+    volML = (massMg / (mw * conc)) * 1000;
+  } else if (concUnit === 'um') {
+    if (!mw) { alert('Please enter molecular weight for molar concentration.'); return; }
+    volML = (massMg / (mw * conc / 1000)) * 1000;
+  }
+
+  // Format volume
+  let volStr = '';
+  if (volML >= 1000) {
+    volStr = (volML / 1000).toFixed(2) + ' L';
+  } else if (volML >= 1) {
+    volStr = volML.toFixed(2) + ' mL';
+  } else if (volML >= 0.001) {
+    volStr = (volML * 1000).toFixed(1) + ' µL';
+  } else {
+    volStr = volML.toFixed(4) + ' mL';
+  }
+
+  // Format concentration for display
+  let concDisplay = '';
+  if (concUnit === 'mgml') concDisplay = conc + ' mg/mL';
+  else if (concUnit === 'ugml') concDisplay = conc + ' µg/mL';
+  else if (concUnit === 'mm') concDisplay = conc + ' mM';
+  else concDisplay = conc + ' µM';
+
+  document.getElementById('dil-result').style.display = 'block';
+  document.getElementById('dil-vol').textContent = volStr;
+  document.getElementById('dil-final').textContent = concDisplay;
+  document.getElementById('dil-mass-result').textContent = massMg + ' mg';
+
+  document.getElementById('dil-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearDil() {
+  document.getElementById('dil-mass').value = '';
+  document.getElementById('dil-conc').value = '';
+  document.getElementById('dil-mw').value = '1000';
+  document.getElementById('dil-result').style.display = 'none';
+}
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

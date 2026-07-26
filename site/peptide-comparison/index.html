@@ -1,0 +1,1295 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/peptide-comparison/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Peptide Comparison Tool - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Peptide Comparison Tool — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/peptide-comparison/",
+    "description": "Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Peptide Comparison Tool", "item": "https://tool.rplpeptides.com/peptide-comparison/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/peptide-comparison/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Peptide Comparison Tool — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/peptide-comparison/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Peptide Comparison Tool — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peptide-comparison-tool" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peptide Comparison Tool
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molecular-weight-calculator/" class="md-nav__link">
+        Molecular Weight Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dilution-calculator/" class="md-nav__link">
+        Dilution Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purity-calculator/" class="md-nav__link">
+        Purity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Peptide Comparison Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Peptide Comparison Tool
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compare-peptides" class="md-nav__link">
+    Compare Peptides
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-comparison-for-research-decisions" class="md-nav__link">
+    How to Use This Comparison for Research Decisions
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Use This Comparison for Research Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-compare-by-core-parameters" class="md-nav__link">
+    1. Compare by Core Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-understand-key-category-differences" class="md-nav__link">
+    2. Understand Key Category Differences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-apply-comparisons-to-purchasing-decisions" class="md-nav__link">
+    3. Apply Comparisons to Purchasing Decisions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peptide-selection-guide" class="md-nav__link">
+    Peptide Selection Guide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-comparison-to-purchase" class="md-nav__link">
+    From Comparison to Purchase
+  </a>
+  
+    <nav class="md-nav" aria-label="From Comparison to Purchase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-take-the-next-steps" class="md-nav__link">
+    How to Take the Next Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    Why This Matters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peptide-reference-data" class="md-nav__link">
+    Peptide Reference Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-comparison-results" class="md-nav__link">
+    Using Comparison Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compare-peptides" class="md-nav__link">
+    Compare Peptides
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-comparison-for-research-decisions" class="md-nav__link">
+    How to Use This Comparison for Research Decisions
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Use This Comparison for Research Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-compare-by-core-parameters" class="md-nav__link">
+    1. Compare by Core Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-understand-key-category-differences" class="md-nav__link">
+    2. Understand Key Category Differences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-apply-comparisons-to-purchasing-decisions" class="md-nav__link">
+    3. Apply Comparisons to Purchasing Decisions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peptide-selection-guide" class="md-nav__link">
+    Peptide Selection Guide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-comparison-to-purchase" class="md-nav__link">
+    From Comparison to Purchase
+  </a>
+  
+    <nav class="md-nav" aria-label="From Comparison to Purchase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-take-the-next-steps" class="md-nav__link">
+    How to Take the Next Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    Why This Matters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peptide-reference-data" class="md-nav__link">
+    Peptide Reference Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-comparison-results" class="md-nav__link">
+    Using Comparison Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="peptide-comparison-tool">Peptide Comparison Tool<a class="headerlink" href="#peptide-comparison-tool" title="Permanent link">&para;</a></h1>
+<p>Compare multiple peptides side-by-side across key parameters — class, sequence length, molecular weight, mechanism, and research applications. Request COA and product specification sheets for compared peptides.</p>
+<hr />
+<h2 id="compare-peptides">Compare Peptides<a class="headerlink" href="#compare-peptides" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <label for="comp-select">Select Peptides to Compare (select 2–4)</label>
+  <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="tirzepatide" checked> Tirzepatide</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="semaglutide" checked> Semaglutide</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="retatrutide" checked> Retatrutide</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="ghk-cu"> GHK-Cu</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="bpc-157"> BPC-157</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="tb-500"> TB-500</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="semax"> Semax</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="epitalon"> Epitalon</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="mk-677"> MK-677 (Ibutamoren)</label>
+    <label style="display:flex; align-items:center; gap:0.3rem; width:48%;"><input type="checkbox" class="comp-cb" value="ipamorelin"> Ipamorelin</label>
+  </div>
+  <div class="calc-hint">Select 2–4 peptides to compare. Data is sourced from verified reference databases.</div>
+  <button class="calc-btn" onclick="comparePeptides()">Compare Selected Peptides</button>
+
+  <div id="comp-result" style="display:none; margin-top:1.5rem;">
+    <h3>Comparison Matrix</h3>
+    <table id="comp-table" class="calc-compare-table">
+    </table>
+
+    <div id="comp-cta" style="margin-top:1.5rem; padding:1.2rem; background:rgba(63,81,181,0.08); border-radius:8px; text-align:center;">
+      <p style="font-size:1.1rem; font-weight:600; margin-bottom:0.5rem;">Need detailed specifications?</p>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">Request Certificate of Analysis (COA) and product specifications for any of the compared peptides.</p>
+      <a id="comp-coa-link" href="https://rplpeptides.com/coa-request/" class="md-button md-button--primary" target="_blank">Request COA →</a>
+      <a id="comp-store-link" href="https://rplpeptides.com/product-list/" class="md-button" target="_blank" style="margin-left:0.5rem;">Browse Products →</a>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h2 id="how-to-use-this-comparison-for-research-decisions">How to Use This Comparison for Research Decisions<a class="headerlink" href="#how-to-use-this-comparison-for-research-decisions" title="Permanent link">&para;</a></h2>
+<p>When selecting a peptide for research, the comparison matrix above provides a structured way to evaluate candidates across multiple dimensions. Here's how to use it effectively:</p>
+<h3 id="1-compare-by-core-parameters">1. Compare by Core Parameters<a class="headerlink" href="#1-compare-by-core-parameters" title="Permanent link">&para;</a></h3>
+<p>Start by reviewing <strong>class, sequence length, molecular weight, and mechanism of action</strong> for each peptide. These parameters define the fundamental characteristics of each compound and determine its suitability for specific research applications.</p>
+<ul>
+<li><strong>Class</strong> tells you the peptide's functional category (e.g., GLP-1 agonist, tissue repair, neuropeptide) — peptides within the same class often share overlapping mechanisms</li>
+<li><strong>Length and MW</strong> affect stability, solubility, and administration considerations in research protocols</li>
+<li><strong>Mechanism of action</strong> is the most critical differentiator — two peptides targeting the same general area may work through entirely different pathways</li>
+</ul>
+<h3 id="2-understand-key-category-differences">2. Understand Key Category Differences<a class="headerlink" href="#2-understand-key-category-differences" title="Permanent link">&para;</a></h3>
+<p><strong>GLP-1 Agonists — Tirzepatide vs. Semaglutide vs. Retatrutide</strong></p>
+<p>These three metabolic peptides illustrate how subtle receptor-targeting differences can lead to distinct research applications:</p>
+<table>
+<thead>
+<tr>
+<th>Peptide</th>
+<th>Receptor Target</th>
+<th>Research Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tirzepatide</strong></td>
+<td>GIP + GLP-1 (dual agonist)</td>
+<td>Dual pathway metabolic research, comparative efficacy studies</td>
+</tr>
+<tr>
+<td><strong>Semaglutide</strong></td>
+<td>GLP-1 (selective agonist)</td>
+<td>Selective GLP-1 receptor studies, monotherapy models</td>
+</tr>
+<tr>
+<td><strong>Retatrutide</strong></td>
+<td>GIP + GLP-1 + Glucagon (triple agonist)</td>
+<td>Triple agonism research, multi-receptor crosstalk studies</td>
+</tr>
+</tbody>
+</table>
+<p>Tirzepatide's dual agonism activates both GIP and GLP-1 receptors, offering broader metabolic pathway research. Semaglutide's selective GLP-1 agonism provides a focused tool for studying GLP-1-specific effects. Retatrutide's triple agonism adds glucagon receptor activation, enabling research into combined energy expenditure and glycemic control pathways.</p>
+<p><strong>Tissue Repair — BPC-157 vs. TB-500</strong></p>
+<p>These two popular regenerative peptides work through fundamentally different mechanisms:</p>
+<ul>
+<li><strong>BPC-157</strong> promotes angiogenesis (formation of new blood vessels) and systemic tissue protection, supporting recovery through improved blood supply to damaged tissues</li>
+<li><strong>TB-500 (Thymosin β4 fragment)</strong> binds actin and promotes cell migration, supporting tissue regeneration through cytoskeletal remodeling and cell motility</li>
+</ul>
+<p>Using these peptides in combination for research can explore <strong>synergistic mechanisms</strong> — angiogenesis from BPC-157 paired with actin-binding cell migration from TB-500 addresses tissue repair through complementary pathways.</p>
+<h3 id="3-apply-comparisons-to-purchasing-decisions">3. Apply Comparisons to Purchasing Decisions<a class="headerlink" href="#3-apply-comparisons-to-purchasing-decisions" title="Permanent link">&para;</a></h3>
+<p>The comparison matrix directly links to product pages and COA requests. After evaluating peptides side-by-side:</p>
+<ul>
+<li>Use the <strong>product links</strong> in the comparison table to navigate directly to detailed specification sheets</li>
+<li>Click <strong>Request COA</strong> to obtain Certificate of Analysis documentation for the peptides you've compared</li>
+<li>Cross-reference molecular weight, sequence, and purity data against your research protocol requirements</li>
+</ul>
+<hr />
+<h2 id="peptide-selection-guide">Peptide Selection Guide<a class="headerlink" href="#peptide-selection-guide" title="Permanent link">&para;</a></h2>
+<p>Use this quick-reference table to identify the best peptide for your specific research objective:</p>
+<table>
+<thead>
+<tr>
+<th>Research Goal</th>
+<th>Recommended Peptide(s)</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metabolic / Weight Loss Research</td>
+<td>Tirzepatide or Semaglutide</td>
+<td>GLP-1 receptor agonism for metabolic pathway studies</td>
+</tr>
+<tr>
+<td>Triple Agonism Research</td>
+<td>Retatrutide</td>
+<td>GIP + GLP-1 + glucagon triple receptor activation</td>
+</tr>
+<tr>
+<td>Soft Tissue Recovery Research</td>
+<td>BPC-157 + TB-500</td>
+<td>Synergistic angiogenesis + actin-binding mechanisms</td>
+</tr>
+<tr>
+<td>Dermal / Anti-Aging Research</td>
+<td>GHK-Cu</td>
+<td>Copper-dependent collagen synthesis and matrikine signaling</td>
+</tr>
+<tr>
+<td>Cognitive Enhancement Research</td>
+<td>Semax</td>
+<td>BDNF and NGF modulation for neuroprotection studies</td>
+</tr>
+<tr>
+<td>Sleep / Pineal Function Research</td>
+<td>Epitalon</td>
+<td>Telomerase regulation and circadian rhythm modulation</td>
+</tr>
+<tr>
+<td>GH Secretagogue Research</td>
+<td>MK-677 or Ipamorelin</td>
+<td>GHS receptor agonism for growth hormone pathway studies</td>
+</tr>
+</tbody>
+</table>
+<p>This guide maps research goals to specific peptides, but always verify detailed specifications — including purity, sequence confirmation, and stability data — via the product pages and COA documentation.</p>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<div class="faq-q"><strong>How do I know which peptide is right for my research?</strong></div>
+
+<p>Start by identifying your research goal (e.g., metabolic studies, tissue repair, cognitive function). Use the <strong>Peptide Selection Guide</strong> above to match your goal to a recommended peptide. Then use the comparison tool to evaluate 2–4 candidates side-by-side by class, mechanism, molecular weight, and research applications. Finally, review the detailed technical profiles at <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> and request a Certificate of Analysis to verify purity and specifications.</p>
+
+<div class="faq-q"><strong>What's the difference between GLP-1 agonists?</strong></div>
+
+<p>GLP-1 agonists differ primarily in their <strong>receptor selectivity profile</strong>. Semaglutide is a selective GLP-1 receptor agonist, targeting only the GLP-1 pathway. Tirzepatide is a dual agonist (GIP + GLP-1), activating two receptor systems simultaneously. Retatrutide is a triple agonist (GIP + GLP-1 + glucagon), adding glucagon receptor activation for broader metabolic research. The choice depends on whether your research requires single-pathway selectivity, dual-pathway comparison, or multi-receptor crosstalk analysis.</p>
+
+<div class="faq-q"><strong>Can I compare peptides from different categories?</strong></div>
+
+<p>Yes — the comparison tool is designed to work across categories. You can select peptides from any combination of classes (e.g., a GLP-1 agonist alongside a tissue repair peptide). The matrix will display all key parameters side-by-side, allowing you to evaluate class, mechanism, and structural differences even across unrelated peptide families. This is useful for broad surveying or when designing multi-compound research protocols.</p>
+
+<div class="faq-q"><strong>How do I request a Certificate of Analysis?</strong></div>
+
+<p>After selecting the peptides you'd like to compare, click the <strong>"Request COA →"</strong> button displayed in the comparison results. This will take you to the COA request form at <a href="https://rplpeptides.com/coa-request/" target="_blank">rplpeptides.com/coa-request/</a> with the first compared peptide pre-selected. You can request COAs for any or all of the compared peptides from the form. Certificates include verified purity, sequence confirmation, and analytical data.</p>
+
+<div class="faq-q"><strong>Where can I find more detailed technical data?</strong></div>
+
+<p>Visit <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> for comprehensive technical profiles on each peptide, including detailed sequence information, structural data, stability studies, and research references. Product-specific specification sheets are also available from each product page at <a href="https://rplpeptides.com/product-list/" target="_blank">rplpeptides.com</a>.</p>
+
+<hr />
+<h2 id="from-comparison-to-purchase">From Comparison to Purchase<a class="headerlink" href="#from-comparison-to-purchase" title="Permanent link">&para;</a></h2>
+<p>The comparison matrix is more than a research tool — it's your bridge from product specifications to purchasing decisions.</p>
+<h3 id="how-to-take-the-next-steps">How to Take the Next Steps<a class="headerlink" href="#how-to-take-the-next-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Compare your candidates</strong> using the interactive tool above to evaluate class, mechanism, molecular weight, and applications side-by-side</li>
+<li><strong>Visit data.rplpeptides.com</strong> for full technical profiles — each peptide's detailed characterization including sequence confirmation, analytical data, and research references</li>
+<li><strong>Request a Certificate of Analysis</strong> from <a href="https://rplpeptides.com/coa-request/" target="_blank">rplpeptides.com/coa-request/</a> to verify purity and specifications before purchase</li>
+<li><strong>Browse and order</strong> from the complete product catalog — each product page links back to the corresponding comparison data</li>
+</ol>
+<h3 id="why-this-matters">Why This Matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h3>
+<p>The comparison tool links product specifications directly to research needs. Instead of jumping between datasheets, you can evaluate multiple candidates in a single view, match parameters to your protocol requirements, and proceed directly to documentation or purchase — all from one interface.</p>
+<p><a href="https://rplpeptides.com/product-list/" class="md-button md-button--primary" target="_blank" style="display:inline-block; margin-top:0.5rem;">Browse All Products at rplpeptides.com →</a></p>
+<hr />
+<h2 id="peptide-reference-data">Peptide Reference Data<a class="headerlink" href="#peptide-reference-data" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Peptide</th>
+<th>Class</th>
+<th>Length</th>
+<th>MW (Da)</th>
+<th>Sequence (1-letter)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tirzepatide</td>
+<td>GIP/GLP-1 Dual Agonist</td>
+<td>39</td>
+<td>4,813.5</td>
+<td>YXGEGTFTSDYSILDSKKQRAKQFVQWLLAGGPSSGAPPPS</td>
+</tr>
+<tr>
+<td>Semaglutide</td>
+<td>GLP-1 Agonist</td>
+<td>31</td>
+<td>4,113.6</td>
+<td>HGEGTFTSDVSSYLEEQAAKEFIAWLVKGRG</td>
+</tr>
+<tr>
+<td>Retatrutide</td>
+<td>Triple GIP/GLP-1/GCG</td>
+<td>39</td>
+<td>4,840.6</td>
+<td>YXGEGTFTSDYSILDSKKQRAKQFVQWLLAGGPSSGAPPPS</td>
+</tr>
+<tr>
+<td>BPC-157</td>
+<td>Tissue Repair</td>
+<td>15</td>
+<td>1,419.5</td>
+<td>GEPPPGKPADDAGLV</td>
+</tr>
+<tr>
+<td>TB-500</td>
+<td>Regenerative</td>
+<td>5</td>
+<td>500.5</td>
+<td>Ac-SDKP</td>
+</tr>
+<tr>
+<td>GHK-Cu</td>
+<td>Cosmetic</td>
+<td>3</td>
+<td>466.4 (complex)</td>
+<td>GHK</td>
+</tr>
+<tr>
+<td>Semax</td>
+<td>Neuropeptide</td>
+<td>7</td>
+<td>706.8</td>
+<td>MEHFPGP</td>
+</tr>
+<tr>
+<td>Epitalon</td>
+<td>Pineal Regulator</td>
+<td>4</td>
+<td>375.4</td>
+<td>AEDG</td>
+</tr>
+<tr>
+<td>MK-677</td>
+<td>GHS Agonist</td>
+<td>N/A (small mol.)</td>
+<td>528.7</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="using-comparison-results">Using Comparison Results<a class="headerlink" href="#using-comparison-results" title="Permanent link">&para;</a></h2>
+<p>The comparison tool helps you:</p>
+<ol>
+<li><strong>Evaluate alternatives</strong> — Compare structural and functional differences between peptide candidates</li>
+<li><strong>Inform purchasing decisions</strong> — Side-by-side parameter comparison for procurement</li>
+<li><strong>Cross-reference with data.rplpeptides.com</strong> — Detailed technical profiles for each compound</li>
+<li><strong>Request documentation</strong> — Direct CTA to COA requests and product specifications</li>
+</ol>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW of custom sequences</li>
+<li><a href="peptide-property-calculator/">Peptide Properties Calculator</a> — Detailed characterization</li>
+<li><a href="https://data.rplpeptides.com/">Visit data.rplpeptides.com</a> — Complete peptide database</li>
+</ul>
+<script>
+const PEPTIDE_DATA = {
+  tirzepatide: { 
+    name: 'Tirzepatide', 
+    class: 'GLP-1/GIP Dual Agonist', 
+    cat: 'GLP-1', 
+    length: '39 AA', 
+    mw: '4,813.5 Da',
+    mech: 'GIP + GLP-1 receptor agonist',
+    apps: 'Metabolic research, T2D, weight management',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/tirzepatide/'
+  },
+  semaglutide: {
+    name: 'Semaglutide',
+    class: 'GLP-1 Agonist',
+    cat: 'GLP-1',
+    length: '31 AA',
+    mw: '4,113.6 Da',
+    mech: 'Selective GLP-1 receptor agonist',
+    apps: 'Metabolic research, T2D, obesity',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/semaglutide/'
+  },
+  retatrutide: {
+    name: 'Retatrutide',
+    class: 'Triple GIP/GLP-1/GCG Agonist',
+    cat: 'GLP-1',
+    length: '39 AA',
+    mw: '4,840.6 Da',
+    mech: 'GIP + GLP-1 + glucagon receptor agonist',
+    apps: 'Metabolic research, triple agonism studies',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/retatrutide/'
+  },
+  'ghk-cu': {
+    name: 'GHK-Cu',
+    class: 'Copper Peptide',
+    cat: 'Cosmetic',
+    length: '3 AA',
+    mw: '466.4 Da (complex)',
+    mech: 'Copper delivery + matrikine signaling',
+    apps: 'Dermal research, wound healing, collagen studies',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/ghk-cu/'
+  },
+  'bpc-157': {
+    name: 'BPC-157',
+    class: 'Body Protection Compound',
+    cat: 'Tissue Repair',
+    length: '15 AA',
+    mw: '1,419.5 Da',
+    mech: 'Systemic tissue protection, angiogenesis',
+    apps: 'Soft tissue recovery, GI research',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/bpc-157/'
+  },
+  'tb-500': {
+    name: 'TB-500 (Thymosin β4)',
+    class: 'Actin-Binding Peptide',
+    cat: 'Tissue Repair',
+    length: '5 AA (fragment)',
+    mw: '500.5 Da',
+    mech: 'Actin polymerization, cell migration',
+    apps: 'Regenerative research, soft tissue',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/tb-500/'
+  },
+  semax: {
+    name: 'Semax',
+    class: 'ACTH(4-10) Analogue',
+    cat: 'Neuro',
+    length: '7 AA',
+    mw: '706.8 Da',
+    mech: 'BDNF/NGF modulation, neuroprotection',
+    apps: 'Cognitive research, neuroprotection',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/semax/'
+  },
+  epitalon: {
+    name: 'Epitalon',
+    class: 'Pineal Tetrapeptide',
+    cat: 'Sleep/Pineal',
+    length: '4 AA',
+    mw: '375.4 Da',
+    mech: 'Telomerase regulation, circadian modulation',
+    apps: 'Sleep research, pineal function, aging studies',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/epitalon/'
+  },
+  'mk-677': {
+    name: 'MK-677 (Ibutamoren)',
+    class: 'GHS Receptor Agonist',
+    cat: 'Growth Factors',
+    length: 'N/A (small mol.)',
+    mw: '528.7 Da',
+    mech: 'Ghrelin mimetic, GH secretagogue',
+    apps: 'Growth hormone research, muscle studies',
+    purity: '≥ 99%',
+    store: 'https://rplpeptides.com/product/mk-677/'
+  },
+  ipamorelin: {
+    name: 'Ipamorelin',
+    class: 'GHS Pentapeptide',
+    cat: 'Growth Factors',
+    length: '5 AA',
+    mw: '711.9 Da',
+    mech: 'Selective GHS receptor agonist',
+    apps: 'GH research, metabolic studies',
+    purity: '≥ 98%',
+    store: 'https://rplpeptides.com/product/ipamorelin/'
+  }
+};
+
+function comparePeptides() {
+  const checkboxes = document.querySelectorAll('.comp-cb:checked');
+  const selected = Array.from(checkboxes).map(cb => cb.value);
+
+  if (selected.length < 2 || selected.length > 4) {
+    alert('Please select 2–4 peptides to compare.');
+    return;
+  }
+
+  // Build table
+  const fields = ['name', 'class', 'cat', 'length', 'mw', 'mech', 'apps', 'purity'];
+  const labels = ['Peptide', 'Class', 'Category', 'Length', 'Molecular Weight', 'Mechanism', 'Research Applications', 'Standard Purity'];
+
+  let html = '<thead><tr><th>Parameter</th>';
+  for (let id of selected) {
+    const p = PEPTIDE_DATA[id];
+    html += '<th>' + (p ? p.name : id) + '</th>';
+  }
+  html += '</tr></thead><tbody>';
+
+  for (let i = 0; i < fields.length; i++) {
+    html += '<tr><td><strong>' + labels[i] + '</strong></td>';
+    for (let id of selected) {
+      const p = PEPTIDE_DATA[id];
+      html += '<td>' + (p ? p[fields[i]] || '—' : '—') + '</td>';
+    }
+    html += '</tr>';
+  }
+
+  html += '</tbody>';
+
+  document.getElementById('comp-table').innerHTML = html;
+  document.getElementById('comp-result').style.display = 'block';
+  document.getElementById('comp-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Update CTA links
+  const firstId = selected[0];
+  const p = PEPTIDE_DATA[firstId];
+  if (p) {
+    document.getElementById('comp-coa-link').href = 'https://rplpeptides.com/coa-request/?product=' + encodeURIComponent(p.name);
+  }
+}
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

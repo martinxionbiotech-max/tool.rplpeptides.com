@@ -1,0 +1,25 @@
+# robots.txt — Peptide Research Tools
+# https://tool.rplpeptides.com/
+
+# Allow all AI crawlers
+User-agent: GPTBot
+Disallow:
+
+User-agent: Google-Extended
+Disallow:
+
+User-agent: CCBot
+Disallow:
+
+User-agent: anthropic-ai
+Disallow:
+
+User-agent: PerplexityBot
+Disallow:
+
+# Allow all standard search engines
+User-agent: *
+Disallow:
+
+# Sitemap
+Sitemap: https://tool.rplpeptides.com/sitemap.xml

@@ -1,0 +1,1104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/purity-calculator/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Peptide Purity Calculator - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Purity Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/purity-calculator/",
+    "description": "Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Purity Calculator", "item": "https://tool.rplpeptides.com/purity-calculator/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/purity-calculator/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Purity Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/purity-calculator/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Purity Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peptide-purity-calculator" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peptide Purity Calculator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molecular-weight-calculator/" class="md-nav__link">
+        Molecular Weight Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dilution-calculator/" class="md-nav__link">
+        Dilution Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Purity Calculator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Purity Calculator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-purity-affects-dosing" class="md-nav__link">
+    How Purity Affects Dosing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-scenario" class="md-nav__link">
+    Real-World Scenario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purity-reference-for-common-peptide-grades" class="md-nav__link">
+    Purity Reference for Common Peptide Grades
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-purity-matters" class="md-nav__link">
+    Why Purity Matters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools_1" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-comparison/" class="md-nav__link">
+        Peptide Comparison Tool
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-purity-affects-dosing" class="md-nav__link">
+    How Purity Affects Dosing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-formula" class="md-nav__link">
+    Core Formula
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-scenario" class="md-nav__link">
+    Real-World Scenario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purity-reference-for-common-peptide-grades" class="md-nav__link">
+    Purity Reference for Common Peptide Grades
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-purity-matters" class="md-nav__link">
+    Why Purity Matters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools_1" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="peptide-purity-calculator">Peptide Purity Calculator<a class="headerlink" href="#peptide-purity-calculator" title="Permanent link">&para;</a></h1>
+<p>Calculate the active (peptide-only) mass and impurity content based on stated purity. Essential for accurate dosing — a 100 mg peptide at 95% purity contains only 95 mg of active peptide.</p>
+<hr />
+<h2 id="calculator">Calculator<a class="headerlink" href="#calculator" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <label for="pur-stated">Stated Purity (%)</label>
+  <input type="number" id="pur-stated" value="98" step="0.1" min="0" max="100">
+
+  <label for="pur-amount">Total Amount</label>
+  <div style="display:flex; gap:0.5rem;">
+    <input type="number" id="pur-amount" value="100" step="0.1" min="0" style="flex:2;">
+    <select id="pur-unit" style="flex:1;">
+      <option value="mg">mg</option>
+      <option value="g">g</option>
+      <option value="ug">µg</option>
+    </select>
+  </div>
+
+  <label for="pur-mw">Molecular Weight (Da) — optional (for molar corrected values)</label>
+  <input type="number" id="pur-mw" value="0" step="0.1" min="0">
+
+  <button class="calc-btn" onclick="calcPurity()">Calculate</button>
+  <button class="calc-btn secondary" onclick="clearPur()" style="margin-left:0.5rem;">Clear</button>
+
+  <div id="pur-result" class="calc-result">
+    <h3>Purity-Adjusted Results</h3>
+    <table>
+      <tr><td>Active Peptide Mass</td><td id="pur-active">—</td></tr>
+      <tr><td>Impurity Content</td><td id="pur-impurity">—</td></tr>
+      <tr><td>Active Peptide Percentage</td><td id="pur-pct">—</td></tr>
+      <tr><td>Effective Concentration Adjustment</td><td id="pur-adjustment">—</td></tr>
+    </table>
+    <div id="pur-molar-section" style="display:none;">
+      <h3>Molar Values</h3>
+      <table>
+        <tr><td>Active nmol</td><td id="pur-nmol">—</td></tr>
+        <tr><td>Corrected Molarity (1 mg/mL = )</td><td id="pur-corrected-m">—</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h2 id="how-purity-affects-dosing">How Purity Affects Dosing<a class="headerlink" href="#how-purity-affects-dosing" title="Permanent link">&para;</a></h2>
+<div class="principle-box">
+<p><strong>Active peptide mass</strong> is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active peptide mass</td>
+<td>Active = Total × (Purity ÷ 100)</td>
+</tr>
+<tr>
+<td>Impurity content</td>
+<td>Impurity = Total − Active</td>
+</tr>
+<tr>
+<td>Correction factor</td>
+<td>CF = 100 ÷ Purity (multiply your desired dose by this)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why HPLC purity ≠ biological activity:</strong> HPLC (high-performance liquid chromatography) measures chemical purity — the proportion of your target peptide sequence relative to other UV-absorbing species. It does not measure:
+- <strong>Bioactivity</strong> — whether the peptide folds correctly or binds its target
+- <strong>Salt/water content</strong> — counterions (TFA, acetate) and residual water that add mass
+- <strong>Peptide content</strong> — the actual peptide fraction after accounting for counterions</p>
+<p>A peptide at 98% HPLC purity could still have only 75–85% <em>peptide content</em> due to salts and water. This is why some labs report both "purity" (HPLC) and "peptide content" (by AAA or gravimetric analysis).</p>
+</div>
+<hr />
+<h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
+<div class="formula-box">
+<p>The mathematics behind purity correction is straightforward:</p>
+<div class="arithmatex">\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]</div>
+<p>Where:
+- <strong>m_active</strong> = Active peptide mass (what you can actually use)
+- <strong>m_total</strong> = Total mass weighed (what the vial says)
+- <strong>P%</strong> = Stated purity percentage</p>
+<p><strong>Correction Factor (CF):</strong></p>
+<div class="arithmatex">\[ \text{CF} = \frac{100}{P} \]</div>
+<p>Use the correction factor to adjust any dose calculation:</p>
+<div class="arithmatex">\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]</div>
+<p><strong>Example:</strong> For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = <strong>5.26 mg total</strong>.</p>
+</div>
+<hr />
+<h2 id="real-world-scenario">Real-World Scenario<a class="headerlink" href="#real-world-scenario" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Situation:</strong> You need <strong>2 mg of active peptide</strong> for your experiment. Your vial is labeled "10 mg, ≥ 95% purity."</p>
+</blockquote>
+<p><strong>Step 1 — Calculate actual active:</strong>
+10 mg × 95% = <strong>9.5 mg</strong> active peptide (not 10 mg)</p>
+<p><strong>Step 2 — Calculate adjusted weight for your dose:</strong>
+2 mg (target) × (100 ÷ 95) = <strong>2.11 mg</strong> total mass needed</p>
+<p><strong>Why dosing by total mass causes systematic under-dosing:</strong></p>
+<p>If you ignore purity and dose based on the total mass labeled on the vial, you consistently deliver less active peptide than intended. The error scales linearly with impurity.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Truth (95% purity)</th>
+<th>Assumption (100% purity)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total vial mass</td>
+<td>10.00 mg</td>
+<td>10.00 mg</td>
+</tr>
+<tr>
+<td>Active peptide in vial</td>
+<td><strong>9.50 mg</strong></td>
+<td>10.00 mg</td>
+</tr>
+<tr>
+<td>Dose target</td>
+<td>2.00 mg active</td>
+<td>2.00 mg active</td>
+</tr>
+<tr>
+<td>Mass actually needed</td>
+<td><strong>2.11 mg total</strong></td>
+<td>2.00 mg total</td>
+</tr>
+<tr>
+<td>Active delivered</td>
+<td><strong>2.00 mg</strong> (correct)</td>
+<td><strong>1.90 mg</strong> (5% low)</td>
+</tr>
+</tbody>
+</table>
+<p>Over many doses, this 5% error can shift dose-response curves, reduce statistical power, and lead to incorrect conclusions. For premium-grade peptides (≥ 98%), the error is smaller (~2%); for standard-grade (85–95%), it can be 5–15%.</p>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<div class="faq-q">**How is peptide purity determined?**</div>
+
+<p>Peptide purity is most commonly measured by <strong>RP-HPLC</strong> (Reverse-Phase High-Performance Liquid Chromatography). The sample is run through a column, and the area under the target peak is compared to the total area of all peaks. This gives an area-percentage purity. Supplementary methods include Mass Spectrometry (MS) for identity confirmation and Amino Acid Analysis (AAA) for peptide content.</p>
+<div class="faq-q">**Does 98% purity mean 2% is something harmful?**</div>
+
+<p>Not necessarily. The remaining 2% typically consists of:
+- <strong>Truncated sequences</strong> — shorter peptide fragments from incomplete synthesis
+- <strong>Deleted sequences</strong> — missing amino acids in the chain
+- <strong>Oxidized variants</strong> — methionine or cysteine oxidation
+- <strong>Residual solvents</strong> — TFA, acetonitrile, or water
+These are generally not toxic at the small quantities present, but they can interfere with sensitive assays or cause off-target effects in biological systems.</p>
+<div class="faq-q">**Should I always dose based on active mass?**</div>
+
+<p>Yes — for any quantitative experiment where dose accuracy matters (dose-response curves, in vivo studies, cell-based assays). The only exceptions are:
+- Crude peptides used for preliminary screening where exact dosing is not critical
+- When the supplier explicitly states the mass is already "peptide content" adjusted
+For best practice, always use a purity correction when preparing stock solutions.</p>
+<div class="faq-q">**What's the difference between peptide content and peptide purity?**</div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HPLC Purity</th>
+<th>Peptide Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it measures</td>
+<td>Chemical purity of the peptide sequence</td>
+<td>Actual peptide mass fraction of the powder</td>
+</tr>
+<tr>
+<td>Influenced by</td>
+<td>Truncations, deletions, byproducts</td>
+<td>Salts, water, counterions (TFA, acetate)</td>
+</tr>
+<tr>
+<td>Typical value</td>
+<td>95–99% for premium grade</td>
+<td>70–90% after accounting for counterions</td>
+</tr>
+<tr>
+<td>How measured</td>
+<td>RP-HPLC (UV absorbance)</td>
+<td>Amino Acid Analysis, gravimetric</td>
+</tr>
+<tr>
+<td>A peptide can be 98% pure by HPLC but contain only 80% <em>peptide content</em> if it carries heavy counterions.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="faq-q">**Can I adjust my molarity calculations for purity?**</div>
+
+<p>Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes <strong>MW × (100 ÷ 95)</strong> for weighing purposes. The <a href="molarity-calculator/">Molarity Calculator</a> includes a purity field for this exact purpose.</p>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<div class="related-tools">
+
+For further peptide calculations involving purity correction:
+
+- [Dilution Calculator](dilution-calculator/) — Reconstitution using corrected active mass
+- [Molarity Calculator](molarity-calculator/) — Concentration conversions with purity adjustment
+- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
+
+</div>
+
+<hr />
+<h2 id="purity-reference-for-common-peptide-grades">Purity Reference for Common Peptide Grades<a class="headerlink" href="#purity-reference-for-common-peptide-grades" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Purity</th>
+<th>Typical Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crude</td>
+<td>70–80%</td>
+<td>Initial screening, exploratory research</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>85–95%</td>
+<td>General research, in vitro assays</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td>≥ 98%</td>
+<td>Cell-based assays, in vivo studies</td>
+</tr>
+<tr>
+<td>Ultra-Pure</td>
+<td>≥ 99%</td>
+<td>Clinical research, structural studies</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-purity-matters">Why Purity Matters<a class="headerlink" href="#why-purity-matters" title="Permanent link">&para;</a></h2>
+<p>Peptide purity directly affects experimental results. A common scenario:</p>
+<blockquote>
+<p><strong>Example:</strong> You need 5 mg of active peptide for an in vivo study. Your peptide is labeled "100 mg, ≥ 95% purity."</p>
+<ul>
+<li>Active content: <strong>95 mg</strong> (not 100 mg)</li>
+<li>If you dose based on the total mass (100 mg), you under-dose by 5%</li>
+<li>For dose-response studies, this can lead to systematically shifted curves</li>
+</ul>
+</blockquote>
+<p><strong>Always dose based on active peptide mass, not total vial mass.</strong></p>
+<hr />
+<h2 id="related-tools_1">Related Tools<a class="headerlink" href="#related-tools_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="dilution-calculator/">Dilution Calculator</a> — Reconstitution using corrected mass</li>
+<li><a href="molarity-calculator/">Molarity Calculator</a> — Concentration conversions</li>
+<li><a href="molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW from sequence</li>
+</ul>
+<script>
+function calcPurity() {
+  const purity = parseFloat(document.getElementById('pur-stated').value);
+  const amount = parseFloat(document.getElementById('pur-amount').value);
+  const unit = document.getElementById('pur-unit').value;
+  const mw = parseFloat(document.getElementById('pur-mw').value);
+
+  if (!purity || !amount) {
+    document.getElementById('pur-result').style.display = 'block';
+    document.getElementById('pur-active').textContent = 'Please enter values';
+    return;
+  }
+
+  const active = amount * purity / 100;
+  const impurity = amount - active;
+
+  let unitStr = unit;
+  if (unit === 'mg') unitStr = 'mg';
+  else if (unit === 'g') unitStr = 'g';
+  else if (unit === 'ug') unitStr = 'µg';
+
+  document.getElementById('pur-result').style.display = 'block';
+  document.getElementById('pur-active').textContent = active.toFixed(2) + ' ' + unitStr;
+  document.getElementById('pur-impurity').textContent = impurity.toFixed(2) + ' ' + unitStr;
+  document.getElementById('pur-pct').textContent = purity.toFixed(1) + '%';
+
+  // Adjustment factor
+  const factor = 100 / purity;
+  document.getElementById('pur-adjustment').textContent = 'Multiply desired dose by ' + factor.toFixed(3) + ' to account for purity';
+
+  // Molar values if MW provided
+  if (mw && mw > 0) {
+    const activeMg = unit === 'mg' ? active : (unit === 'g' ? active * 1000 : active / 1000);
+    const nmol = (activeMg / mw) * 1e6;
+    const corrMM = (1 / mw) * 1000 * (purity / 100); // mM for 1 mg/mL solution
+
+    document.getElementById('pur-molar-section').style.display = 'block';
+    document.getElementById('pur-nmol').textContent = nmol.toFixed(2) + ' nmol';
+    document.getElementById('pur-corrected-m').textContent = corrMM.toFixed(4) + ' mM (at 1 mg/mL)';
+  } else {
+    document.getElementById('pur-molar-section').style.display = 'none';
+  }
+
+  document.getElementById('pur-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearPur() {
+  document.getElementById('pur-stated').value = '';
+  document.getElementById('pur-amount').value = '';
+  document.getElementById('pur-mw').value = '0';
+  document.getElementById('pur-result').style.display = 'none';
+}
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

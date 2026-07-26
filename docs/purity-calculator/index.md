@@ -53,7 +53,7 @@ Calculate the active (peptide-only) mass and impurity content based on stated pu
 
 ## How Purity Affects Dosing
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 **Active peptide mass** is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.
 
@@ -76,7 +76,7 @@ A peptide at 98% HPLC purity could still have only 75–85% *peptide content* du
 
 ## Core Formula
 
-<div class="formula-box">
+<div class="formula-box" markdown="1">
 
 The mathematics behind purity correction is straightforward:
 
