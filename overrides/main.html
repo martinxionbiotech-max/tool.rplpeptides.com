@@ -90,6 +90,22 @@
   <meta name="twitter:title" content="{{ page.title if page else config.site_name }} — {{ config.site_name }}">
   <meta name="twitter:description" content="{{ page.meta.get('description', config.site_description) if page and page.meta else config.site_description }}">
   <meta name="twitter:image" content="{{ config.site_url }}/assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 {% endblock %}
 
 {% block styles %}
@@ -161,17 +177,17 @@
     .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
     .formula-box {
       background: var(--md-default-bg-color);
-      border: 1px solid var(--md-primary-fg-color);
-      border-left: 4px solid var(--md-primary-fg-color);
-      border-radius: 6px;
-      padding: 1rem 1.5rem;
-      margin: 1rem 0;
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
       text-align: center;
       overflow-x: auto;
+      font-size: 1.1rem;
     }
-    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.3rem; }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
     .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
     .principle-box {
       background: rgba(0,188,212,0.06);
