@@ -52,7 +52,7 @@ Calculate comprehensive physicochemical properties of a peptide from its amino a
 | GLP-1 (7-37) | HGEGTFTSDVSSYLEEQAAKEFIAWLVKGRG | 31 | 3,297.6 | 5.4 | -1.9 |
 | Epitalon | AEDG | 4 | 375.4 | 3.6 | -2.0 |
 | Semax | MEHFPGP | 7 | 706.8 | 6.1 | 0.0 |
-|| BPC-157 | GEPPPGKPADDAGLV | 15 | 1,419.5 | 8.1 | +1.0 |
+| BPC-157 | GEPPPGKPADDAGLV | 15 | 1,419.5 | 8.1 | +1.0 |
 |
 
 ---
@@ -188,8 +188,6 @@ Charge and solubility are closely related. In general:
 - For basic peptides (high pI), solubility is highest at acidic pH where the peptide is positively charged.
 
 This relationship is the basis for **pH-dependent solubility** and is exploited in purification strategies such as isoelectric precipitation and ion-exchange chromatography.
-
-</div>
 
 ---
 

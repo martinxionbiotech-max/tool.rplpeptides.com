@@ -188,9 +188,9 @@ Not recommended. Degradation products can interfere with experimental results or
 
 Cross-check your storage strategy with our other peptide calculators:
 
-- [**Peptide Dilution Calculator**](/tools/dilution-calculator/) — Calculate the exact volume needed to reach your target concentration
-- [**Molecular Weight Calculator**](/tools/molecular-weight-calculator/) — Determine peptide molecular weight from sequence
-- [**Peptide Purity Calculator**](/tools/purity-calculator/) — Assess purity and adjust concentrations accordingly
+- [**Peptide Dilution Calculator**](dilution-calculator/) — Calculate the exact volume needed to reach your target concentration
+- [**Molecular Weight Calculator**](molecular-weight-calculator/) — Determine peptide molecular weight from sequence
+- [**Peptide Purity Calculator**](purity-calculator/) — Assess purity and adjust concentrations accordingly
 
 ---
 
