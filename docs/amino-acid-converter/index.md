@@ -84,45 +84,25 @@ Convert between one-letter and three-letter amino acid codes. Includes a complet
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
-
-**Why are there both one-letter and three-letter codes?**
+<div class="faq-q">**Why are there both one-letter and three-letter codes?**</div>
 
 The three-letter system was developed first and is more descriptive, making it useful in written text. The one-letter system was introduced later to support computer sequence analysis and compact representation of long sequences. Both standards are maintained by IUPAC.
 
-</div>
-
-<div class="faq-q">
-
-**How do I remember the one-letter codes?**
+<div class="faq-q">**How do I remember the one-letter codes?**</div>
 
 A few mnemonic aids: A = Alanine (first letter), C = Cysteine (first letter), G = Glycine (first letter), H = Histidine (first letter), P = Proline (first letter), S = Serine (first letter), V = Valine (first letter). For others: F = **P**henylalanine (ph → F), R = a**R**ginine (letter R in name), Y = t**Y**rosine, K = lysine (sounds like **K**), D = aspar**D**ic acid, E = glutam**E**ic acid, M = **M** (contains M), T = **T** (contains T), W = t**W** (tryptophan, double ring), I = **I** (contains I), L = **L** (contains L), N = **N** (contains N), Q = **Q** (sounds like "cue" → glutamine).
 
-</div>
-
-<div class="faq-q">
-
-**What about non-standard amino acids?**
+<div class="faq-q">**What about non-standard amino acids?**</div>
 
 Non-standard amino acids (e.g., selenocysteine Sec/U, pyrrolysine Pyl/O, hydroxyproline Hyp) do not have universally accepted one-letter codes. In sequences, they are often represented by special letters (U for selenocysteine, O for pyrrolysine) or written out in full. The converter above handles only the 20 standard amino acids.
 
-</div>
-
-<div class="faq-q">
-
-**Why are I and L different if they have the same mass?**
+<div class="faq-q">**Why are I and L different if they have the same mass?**</div>
 
 Isoleucine (I) and Leucine (L) are structural isomers — they share the same molecular formula (C₆H₁₃NO₂) and therefore the same molecular weight (113.16 Da). However, they differ in the arrangement of their side chains: Leu has an unbranched isobutyl side chain, while Ile has a branched sec-butyl side chain. This structural difference gives them distinct biochemical properties and roles in proteins.
 
-</div>
-
-<div class="faq-q">
-
-**What does the U stand for in some sequences?**
+<div class="faq-q">**What does the U stand for in some sequences?**</div>
 
 The letter U stands for **selenocysteine** (Sec), the 21st proteinogenic amino acid. It is a cysteine analog where sulfur is replaced by selenium. Selenocysteine is encoded by a special UGA codon (normally a stop codon) in the presence of a selenocysteine insertion sequence (SECIS) element. It is found in several selenoproteins important for antioxidant defense.
-
-</div>
 
 ---
 

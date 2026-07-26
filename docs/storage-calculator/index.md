@@ -148,33 +148,19 @@ Peptide length, sequence complexity, and chemical modifications all influence st
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
-
-**Can I store reconstituted peptide at room temperature?**
+<div class="faq-q">**Can I store reconstituted peptide at room temperature?**</div>
 
 Only for very short durations (hours to 1 day). Room temperature accelerates all degradation pathways — hydrolysis, oxidation, and microbial growth. If you must keep a reconstituted peptide at room temperature (e.g., during an experiment), use it as quickly as possible and discard any unused material. For anything longer, refrigerate (2–8°C for up to 7 days) or freeze (–20°C or –80°C in aliquots).
 
-</div>
-
-<div class="faq-q">
-
-**How many times can I freeze-thaw a peptide solution?**
+<div class="faq-q">**How many times can I freeze-thaw a peptide solution?**</div>
 
 As a general rule, limit freeze-thaw cycles to **3–5** for standard peptides and **1–2** for large or disulfide-containing peptides. Each freeze-thaw cycle causes mechanical stress — ice crystal formation can denature the peptide, concentrate solutes, and promote aggregation. Always **aliquot** your peptide solution into single-use portions before freezing to avoid repeated cycles entirely.
 
-</div>
-
-<div class="faq-q">
-
-**Does lyophilized peptide expire?**
+<div class="faq-q">**Does lyophilized peptide expire?**</div>
 
 Yes. Even in lyophilized form, peptides slowly degrade over time through oxidation and other residual reactions. Most lyophilized peptides have a practical shelf life of **2–5 years** when stored at –20°C under desiccated, light-protected conditions. Over time, you may notice reduced solubility, loss of biological activity, or formation of insoluble aggregates. Check the manufacturer's expiration date and always validate your peptide by mass spectrometry or HPLC before critical use.
 
-</div>
-
-<div class="faq-q">
-
-**What's the best way to aliquot peptides for storage?**
+<div class="faq-q">**What's the best way to aliquot peptides for storage?**</div>
 
 1. **Reconstitute** with an appropriate sterile buffer (water, PBS, or as recommended)
 2. **Divide** into single-use volumes — 10–50 µL per tube is typical
@@ -183,30 +169,18 @@ Yes. Even in lyophilized form, peptides slowly degrade over time through oxidati
 5. **Flash-freeze** in liquid nitrogen or on dry ice before transferring to –80°C or –20°C
 6. **Avoid repeated thawing** — once thawed, use immediately or discard
 
-</div>
-
-<div class="faq-q">
-
-**Why does my peptide solution look different after thawing?**
+<div class="faq-q">**Why does my peptide solution look different after thawing?**</div>
 
 Appearance changes after thawing can indicate degradation:
-
 - **Cloudy or turbid** → Likely aggregation or precipitation
 - **Colored** → Oxidation (especially Trp-containing peptides develop a yellowish tint)
 - **Gel-like** → High-concentration peptide forming a hydrogel
 - **Particulates** → Insoluble aggregates or bacterial contamination
-
 If the appearance has changed, assess peptide integrity by analytical methods (HPLC, MS) before using in critical experiments.
 
-</div>
-
-<div class="faq-q">
-
-**Is it safe to use peptide past its recommended storage date?**
+<div class="faq-q">**Is it safe to use peptide past its recommended storage date?**</div>
 
 Not recommended. Degradation products can interfere with experimental results or, in cell-based or in vivo work, cause toxic effects. Oxidized peptides may produce off-target signaling, aggregated peptides can trigger immunogenic responses, and microbial contamination is a safety hazard. When in doubt, analyze purity by HPLC or mass spectrometry. Discard the peptide if purity has dropped below acceptable thresholds (typically &lt; 90%).
-
-</div>
 
 ---
 

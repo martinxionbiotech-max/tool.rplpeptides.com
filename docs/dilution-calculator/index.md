@@ -124,40 +124,25 @@ Add **2 mL** of suitable solvent to your 10 mg peptide vial.
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
+<div class="faq-q">**Q: What solvent should I use for reconstitution?**</div>
 
-**Q: What solvent should I use for reconstitution?**
 A: The choice of solvent depends on your peptide's hydrophobicity and your downstream application. For hydrophilic peptides, sterile water, PBS, or 0.9% saline often works. For hydrophobic peptides, a small amount of DMSO or acetic acid may be needed. Always check the manufacturer's recommendations on the COA.
 
-</div>
+<div class="faq-q">**Q: Can I use this calculator for non-peptide compounds?**</div>
 
-<div class="faq-q">
-
-**Q: Can I use this calculator for non-peptide compounds?**
 A: Yes — the underlying formulas (C = m/V for mass concentration, and the molarity formula for mM/µM) are universal. You can use this calculator for any soluble compound as long as you have its mass, desired concentration, and molecular weight (for molar units).
 
-</div>
+<div class="faq-q">**Q: How do I account for peptide purity in my dilution?**</div>
 
-<div class="faq-q">
-
-**Q: How do I account for peptide purity in my dilution?**
 A: Divide your peptide mass by the purity fraction before calculating. For example, if you have 5 mg of 80% pure peptide, the effective mass is 5 × 0.80 = 4 mg. Use 4 mg in the calculator. Alternatively, use our [Purity Calculator](purity-calculator/) to adjust your values.
 
-</div>
+<div class="faq-q">**Q: Why is my peptide not fully dissolving at the calculated volume?**</div>
 
-<div class="faq-q">
-
-**Q: Why is my peptide not fully dissolving at the calculated volume?**
 A: Common reasons include: (1) the peptide is hydrophobic and needs a different solvent, (2) the calculated volume is too small for the peptide to dissolve in (solubility limit), or (3) the peptide has formed aggregates. Try sonicating briefly, warming gently, or adding a small amount of co-solvent.
 
-</div>
+<div class="faq-q">**Q: Is it better to prepare a stock solution at higher concentration and dilute?**</div>
 
-<div class="faq-q">
-
-**Q: Is it better to prepare a stock solution at higher concentration and dilute?**
 A: Yes — preparing a concentrated stock (e.g., 10× the final working concentration) and then diluting it for experiments is best practice. This minimizes pipetting errors, reduces freeze-thaw cycles (if aliquoted), and gives you flexibility for different assay conditions.
-
-</div>
 
 ---
 

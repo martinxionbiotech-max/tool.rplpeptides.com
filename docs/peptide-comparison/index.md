@@ -109,30 +109,25 @@ This guide maps research goals to specific peptides, but always verify detailed 
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
-  <strong>How do I know which peptide is right for my research?</strong>
-  <p>Start by identifying your research goal (e.g., metabolic studies, tissue repair, cognitive function). Use the <strong>Peptide Selection Guide</strong> above to match your goal to a recommended peptide. Then use the comparison tool to evaluate 2–4 candidates side-by-side by class, mechanism, molecular weight, and research applications. Finally, review the detailed technical profiles at <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> and request a Certificate of Analysis to verify purity and specifications.</p>
-</div>
+<div class="faq-q"><strong>How do I know which peptide is right for my research?</strong></div>
 
-<div class="faq-q">
-  <strong>What's the difference between GLP-1 agonists?</strong>
-  <p>GLP-1 agonists differ primarily in their <strong>receptor selectivity profile</strong>. Semaglutide is a selective GLP-1 receptor agonist, targeting only the GLP-1 pathway. Tirzepatide is a dual agonist (GIP + GLP-1), activating two receptor systems simultaneously. Retatrutide is a triple agonist (GIP + GLP-1 + glucagon), adding glucagon receptor activation for broader metabolic research. The choice depends on whether your research requires single-pathway selectivity, dual-pathway comparison, or multi-receptor crosstalk analysis.</p>
-</div>
+<p>Start by identifying your research goal (e.g., metabolic studies, tissue repair, cognitive function). Use the <strong>Peptide Selection Guide</strong> above to match your goal to a recommended peptide. Then use the comparison tool to evaluate 2–4 candidates side-by-side by class, mechanism, molecular weight, and research applications. Finally, review the detailed technical profiles at <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> and request a Certificate of Analysis to verify purity and specifications.</p>
 
-<div class="faq-q">
-  <strong>Can I compare peptides from different categories?</strong>
-  <p>Yes — the comparison tool is designed to work across categories. You can select peptides from any combination of classes (e.g., a GLP-1 agonist alongside a tissue repair peptide). The matrix will display all key parameters side-by-side, allowing you to evaluate class, mechanism, and structural differences even across unrelated peptide families. This is useful for broad surveying or when designing multi-compound research protocols.</p>
-</div>
+<div class="faq-q"><strong>What's the difference between GLP-1 agonists?</strong></div>
 
-<div class="faq-q">
-  <strong>How do I request a Certificate of Analysis?</strong>
-  <p>After selecting the peptides you'd like to compare, click the <strong>"Request COA →"</strong> button displayed in the comparison results. This will take you to the COA request form at <a href="https://rplpeptides.com/coa-request/" target="_blank">rplpeptides.com/coa-request/</a> with the first compared peptide pre-selected. You can request COAs for any or all of the compared peptides from the form. Certificates include verified purity, sequence confirmation, and analytical data.</p>
-</div>
+<p>GLP-1 agonists differ primarily in their <strong>receptor selectivity profile</strong>. Semaglutide is a selective GLP-1 receptor agonist, targeting only the GLP-1 pathway. Tirzepatide is a dual agonist (GIP + GLP-1), activating two receptor systems simultaneously. Retatrutide is a triple agonist (GIP + GLP-1 + glucagon), adding glucagon receptor activation for broader metabolic research. The choice depends on whether your research requires single-pathway selectivity, dual-pathway comparison, or multi-receptor crosstalk analysis.</p>
 
-<div class="faq-q">
-  <strong>Where can I find more detailed technical data?</strong>
-  <p>Visit <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> for comprehensive technical profiles on each peptide, including detailed sequence information, structural data, stability studies, and research references. Product-specific specification sheets are also available from each product page at <a href="https://rplpeptides.com/product-list/" target="_blank">rplpeptides.com</a>.</p>
-</div>
+<div class="faq-q"><strong>Can I compare peptides from different categories?</strong></div>
+
+<p>Yes — the comparison tool is designed to work across categories. You can select peptides from any combination of classes (e.g., a GLP-1 agonist alongside a tissue repair peptide). The matrix will display all key parameters side-by-side, allowing you to evaluate class, mechanism, and structural differences even across unrelated peptide families. This is useful for broad surveying or when designing multi-compound research protocols.</p>
+
+<div class="faq-q"><strong>How do I request a Certificate of Analysis?</strong></div>
+
+<p>After selecting the peptides you'd like to compare, click the <strong>"Request COA →"</strong> button displayed in the comparison results. This will take you to the COA request form at <a href="https://rplpeptides.com/coa-request/" target="_blank">rplpeptides.com/coa-request/</a> with the first compared peptide pre-selected. You can request COAs for any or all of the compared peptides from the form. Certificates include verified purity, sequence confirmation, and analytical data.</p>
+
+<div class="faq-q"><strong>Where can I find more detailed technical data?</strong></div>
+
+<p>Visit <a href="https://data.rplpeptides.com/" target="_blank">data.rplpeptides.com</a> for comprehensive technical profiles on each peptide, including detailed sequence information, structural data, stability studies, and research references. Product-specific specification sheets are also available from each product page at <a href="https://rplpeptides.com/product-list/" target="_blank">rplpeptides.com</a>.</p>
 
 ---
 

@@ -129,43 +129,27 @@ Over many doses, this 5% error can shift dose-response curves, reduce statistica
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
-
-**How is peptide purity determined?**
+<div class="faq-q">**How is peptide purity determined?**</div>
 
 Peptide purity is most commonly measured by **RP-HPLC** (Reverse-Phase High-Performance Liquid Chromatography). The sample is run through a column, and the area under the target peak is compared to the total area of all peaks. This gives an area-percentage purity. Supplementary methods include Mass Spectrometry (MS) for identity confirmation and Amino Acid Analysis (AAA) for peptide content.
 
-</div>
-
-<div class="faq-q">
-
-**Does 98% purity mean 2% is something harmful?**
+<div class="faq-q">**Does 98% purity mean 2% is something harmful?**</div>
 
 Not necessarily. The remaining 2% typically consists of:
 - **Truncated sequences** — shorter peptide fragments from incomplete synthesis
 - **Deleted sequences** — missing amino acids in the chain
 - **Oxidized variants** — methionine or cysteine oxidation
 - **Residual solvents** — TFA, acetonitrile, or water
-
 These are generally not toxic at the small quantities present, but they can interfere with sensitive assays or cause off-target effects in biological systems.
 
-</div>
-
-<div class="faq-q">
-
-**Should I always dose based on active mass?**
+<div class="faq-q">**Should I always dose based on active mass?**</div>
 
 Yes — for any quantitative experiment where dose accuracy matters (dose-response curves, in vivo studies, cell-based assays). The only exceptions are:
 - Crude peptides used for preliminary screening where exact dosing is not critical
 - When the supplier explicitly states the mass is already "peptide content" adjusted
-
 For best practice, always use a purity correction when preparing stock solutions.
 
-</div>
-
-<div class="faq-q">
-
-**What's the difference between peptide content and peptide purity?**
+<div class="faq-q">**What's the difference between peptide content and peptide purity?**</div>
 
 | | HPLC Purity | Peptide Content |
 |---|---|---|
@@ -173,18 +157,11 @@ For best practice, always use a purity correction when preparing stock solutions
 | Influenced by | Truncations, deletions, byproducts | Salts, water, counterions (TFA, acetate) |
 | Typical value | 95–99% for premium grade | 70–90% after accounting for counterions |
 | How measured | RP-HPLC (UV absorbance) | Amino Acid Analysis, gravimetric |
-
 A peptide can be 98% pure by HPLC but contain only 80% *peptide content* if it carries heavy counterions.
 
-</div>
-
-<div class="faq-q">
-
-**Can I adjust my molarity calculations for purity?**
+<div class="faq-q">**Can I adjust my molarity calculations for purity?**</div>
 
 Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes **MW × (100 ÷ 95)** for weighing purposes. The [Molarity Calculator](molarity-calculator/) includes a purity field for this exact purpose.
-
-</div>
 
 ---
 

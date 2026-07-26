@@ -146,9 +146,7 @@ These pKa values are embedded in the calculator's source code and are used for b
 
 ## Frequently Asked Questions
 
-<div class="faq-q">
-
-**What is the isoelectric point and why is it important?**
+<div class="faq-q">**What is the isoelectric point and why is it important?**</div>
 
 The isoelectric point (pI) is the pH at which a peptide or protein carries no net electrical charge. It is important because:
 
@@ -157,22 +155,14 @@ The isoelectric point (pI) is the pH at which a peptide or protein carries no ne
 - It influences electrophoretic mobility in isoelectric focusing (IEF).
 - It helps predict peptide behavior in buffer systems and biological fluids.
 
-</div>
-
-<div class="faq-q">
-
-**What does a positive vs negative GRAVY score mean?**
+<div class="faq-q">**What does a positive vs negative GRAVY score mean?**</div>
 
 GRAVY (Grand Average of Hydropathy) quantifies the overall hydrophobicity of a peptide:
 
 - **Positive GRAVY:** The peptide is predominantly hydrophobic. It is likely to interact with lipid membranes, micelles, or hydrophobic surfaces. These peptides often require organic solvents (DMSO, ethanol) or detergents for solubilization in aqueous solution.
 - **Negative GRAVY:** The peptide is predominantly hydrophilic. It should dissolve readily in water and aqueous buffers, making it easier to work with in standard biochemical assays.
 
-</div>
-
-<div class="faq-q">
-
-**How accurate is the instability index?**
+<div class="faq-q">**How accurate is the instability index?**</div>
 
 The instability index is a **statistical predictor** based on the occurrence frequencies of certain dipeptide pairs observed in known stable and unstable proteins. It was originally developed by Guruprasad et al. (1990) for proteins. For short peptides, the index should be treated as a **rough guide** rather than a definitive measurement. Actual stability depends on many additional factors:
 
@@ -184,19 +174,11 @@ The instability index is a **statistical predictor** based on the occurrence fre
 
 A peptide with an instability index above 40 may still be perfectly usable if handled properly (e.g., stored frozen, used fresh, or formulated with stabilizers).
 
-</div>
-
-<div class="faq-q">
-
-**Can I calculate properties for modified peptides?**
+<div class="faq-q">**Can I calculate properties for modified peptides?**</div>
 
 The current calculator supports one N-terminal modification (**acetylation**) via the dropdown menu. Other modifications — such as C-terminal amidation, phosphorylation, glycosylation, cyclization, or D-amino acid substitutions — are not yet implemented. The molecular weight values shown assume standard L-amino acids with free N- and C-termini (unless acetylation is selected). For modified peptides, you can manually adjust the molecular weight by accounting for the mass difference of the modification.
 
-</div>
-
-<div class="faq-q">
-
-**What's the relationship between charge and solubility?**
+<div class="faq-q">**What's the relationship between charge and solubility?**</div>
 
 Charge and solubility are closely related. In general:
 
