@@ -1,0 +1,64 @@
+site_name: Peptide Research Tools & Calculators — tool.rplpeptides.com
+site_description: Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.
+site_url: https://tool.rplpeptides.com
+site_author: RPL Peptides
+copyright: © 2026 RPL Peptides Co., Ltd. All rights reserved.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  features:
+    - navigation.top
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - header.autohide
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  logo: assets/images/logo.svg
+  favicon: assets/images/favicon.png
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://rplpeptides.com
+      name: RPL Peptides Official Website
+
+nav:
+  - Home: index.md
+  - Molecular Weight Calculator: molecular-weight-calculator/index.md
+  - Peptide Properties Calculator: peptide-property-calculator/index.md
+  - Dilution Calculator: dilution-calculator/index.md
+  - Molarity Calculator: molarity-calculator/index.md
+  - Purity Calculator: purity-calculator/index.md
+  - Peptide Comparison Tool: peptide-comparison/index.md
+  - Storage Stability Calculator: storage-calculator/index.md
+  - Amino Acid Code Converter: amino-acid-converter/index.md

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#283593;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a237e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="80" y="200" font-family="Arial,sans-serif" font-size="64" font-weight="bold" fill="#ffffff">Peptide Research Tools</text>
+  <text x="80" y="270" font-family="Arial,sans-serif" font-size="34" fill="#00bcd4">tool.rplpeptides.com</text>
+  <rect x="80" y="300" width="500" height="3" fill="#00bcd4"/>
+  <text x="80" y="350" font-family="Arial,sans-serif" font-size="22" fill="#b3e5fc">Molecular Weight Calculator · Dilution Calculator</text>
+  <text x="80" y="390" font-family="Arial,sans-serif" font-size="22" fill="#b3e5fc">Molarity Converter · Peptide Comparison · &amp; More</text>
+  <text x="80" y="480" font-family="Arial,sans-serif" font-size="16" fill="#80deea">Free online calculators for peptide research professionals</text>
+  <text x="80" y="520" font-family="Arial,sans-serif" font-size="14" fill="#4dd0e1">Powering R&D with RPL Peptides — data.rplpeptides.com · rplpeptides.com</text>
+</svg>
