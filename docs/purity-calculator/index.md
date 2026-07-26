@@ -161,7 +161,7 @@ A peptide can be 98% pure by HPLC but contain only 80% *peptide content* if it c
 
 <div class="faq-q">**Can I adjust my molarity calculations for purity?**</div>
 
-Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes **MW × (100 ÷ 95)** for weighing purposes. The [Molarity Calculator](molarity-calculator/) includes a purity field for this exact purpose.
+Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes **MW × (100 ÷ 95)** for weighing purposes. The [Molarity Calculator](../molarity-calculator/) includes a purity field for this exact purpose.
 
 ---
 
@@ -171,9 +171,9 @@ Absolutely. When preparing a solution of known molarity, multiply the molecular 
 
 For further peptide calculations involving purity correction:
 
-- [Dilution Calculator](dilution-calculator/) — Reconstitution using corrected active mass
-- [Molarity Calculator](molarity-calculator/) — Concentration conversions with purity adjustment
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
+- [Dilution Calculator](../dilution-calculator/) — Reconstitution using corrected active mass
+- [Molarity Calculator](../molarity-calculator/) — Concentration conversions with purity adjustment
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW from sequence
 
 </div>
 
@@ -206,9 +206,9 @@ Peptide purity directly affects experimental results. A common scenario:
 
 ## Related Tools
 
-- [Dilution Calculator](dilution-calculator/) — Reconstitution using corrected mass
-- [Molarity Calculator](molarity-calculator/) — Concentration conversions
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
+- [Dilution Calculator](../dilution-calculator/) — Reconstitution using corrected mass
+- [Molarity Calculator](../molarity-calculator/) — Concentration conversions
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW from sequence
 
 <script>
 function calcPurity() {

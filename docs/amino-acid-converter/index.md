@@ -108,9 +108,9 @@ The letter U stands for **selenocysteine** (Sec), the 21st proteinogenic amino a
 
 ## Related Tools
 
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate peptide mass from sequence
-- [Peptide Properties Calculator](peptide-property-calculator/) — Compute pI, charge, GRAVY
-- [Peptide Comparison Tool](peptide-comparison/) — Compare peptides side-by-side
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate peptide mass from sequence
+- [Peptide Properties Calculator](../peptide-property-calculator/) — Compute pI, charge, GRAVY
+- [Peptide Comparison Tool](../peptide-comparison/) — Compare peptides side-by-side
 
 <script>
 const AA_MAP_1TO3 = {

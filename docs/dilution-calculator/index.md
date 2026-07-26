@@ -134,7 +134,7 @@ A: Yes — the underlying formulas (C = m/V for mass concentration, and the mola
 
 <div class="faq-q">**Q: How do I account for peptide purity in my dilution?**</div>
 
-A: Divide your peptide mass by the purity fraction before calculating. For example, if you have 5 mg of 80% pure peptide, the effective mass is 5 × 0.80 = 4 mg. Use 4 mg in the calculator. Alternatively, use our [Purity Calculator](purity-calculator/) to adjust your values.
+A: Divide your peptide mass by the purity fraction before calculating. For example, if you have 5 mg of 80% pure peptide, the effective mass is 5 × 0.80 = 4 mg. Use 4 mg in the calculator. Alternatively, use our [Purity Calculator](../purity-calculator/) to adjust your values.
 
 <div class="faq-q">**Q: Why is my peptide not fully dissolving at the calculated volume?**</div>
 
@@ -159,10 +159,10 @@ A: Yes — preparing a concentrated stock (e.g., 10× the final working concentr
 
 ## Related Tools
 
-- [Molarity Calculator](molarity-calculator/) — Convert between concentration units
-- [Purity Calculator](purity-calculator/) — Account for peptide purity in dosing
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate peptide molecular weight from sequence
-- [Storage Calculator](storage-calculator/) — Storage stability guidelines
+- [Molarity Calculator](../molarity-calculator/) — Convert between concentration units
+- [Purity Calculator](../purity-calculator/) — Account for peptide purity in dosing
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate peptide molecular weight from sequence
+- [Storage Calculator](../storage-calculator/) — Storage stability guidelines
 
 <script>
 document.getElementById('dil-conc-unit').addEventListener('change', function() {

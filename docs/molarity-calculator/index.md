@@ -244,8 +244,8 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
     <p>For best results:</p>
     <ul>
       <li>Prepare stocks at 1–10 mM for most peptides</li>
-      <li>Use our <a href="dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
-      <li>Account for peptide purity and salt/counterion content — use our <a href="purity-calculator/">Purity Calculator</a> for precise adjustments</li>
+      <li>Use our <a href="../dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
+      <li>Account for peptide purity and salt/counterion content — use our <a href="../purity-calculator/">Purity Calculator</a> for precise adjustments</li>
       <li>Store peptide stocks aliquoted at −20°C or −80°C to avoid freeze-thaw degradation</li>
     </ul>
   </details>
@@ -278,9 +278,9 @@ To convert to common units:
 
 ## Related Tools
 
-- [Dilution Calculator](dilution-calculator/) — Calculate reconstitution volumes
-- [Purity Calculator](purity-calculator/) — Account for purity in mass calculations
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
+- [Dilution Calculator](../dilution-calculator/) — Calculate reconstitution volumes
+- [Purity Calculator](../purity-calculator/) — Account for purity in mass calculations
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW from sequence
 
 <script>
 function calcMolarity() {

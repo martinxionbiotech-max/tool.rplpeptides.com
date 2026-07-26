@@ -193,10 +193,10 @@ This relationship is the basis for **pH-dependent solubility** and is exploited 
 
 ## Related Tools
 
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Detailed mass + formula calculation
-- [Amino Acid Code Converter](amino-acid-converter/) — Convert between one-letter and three-letter codes
-- [Peptide Comparison Tool](peptide-comparison/) — Compare multiple peptides
-- [Dilution Calculator](dilution-calculator/) — Reconstitution volumes
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Detailed mass + formula calculation
+- [Amino Acid Code Converter](../amino-acid-converter/) — Convert between one-letter and three-letter codes
+- [Peptide Comparison Tool](../peptide-comparison/) — Compare multiple peptides
+- [Dilution Calculator](../dilution-calculator/) — Reconstitution volumes
 
 <script>
 const AA_PROP = {

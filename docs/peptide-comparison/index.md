@@ -179,8 +179,8 @@ The comparison tool helps you:
 
 ## Related Tools
 
-- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW of custom sequences
-- [Peptide Properties Calculator](peptide-property-calculator/) — Detailed characterization
+- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW of custom sequences
+- [Peptide Properties Calculator](../peptide-property-calculator/) — Detailed characterization
 - [Visit data.rplpeptides.com](https://data.rplpeptides.com/) — Complete peptide database
 
 <script>
