@@ -80,7 +80,7 @@ A peptide at 98% HPLC purity could still have only 75–85% *peptide content* du
 
 The mathematics behind purity correction is straightforward:
 
-> **m_active = m_total × P% ÷ 100**
+\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]
 
 Where:
 - **m_active** = Active peptide mass (what you can actually use)
@@ -89,11 +89,11 @@ Where:
 
 **Correction Factor (CF):**
 
-> **CF = 100 ÷ P%**
+\[ \text{CF} = \frac{100}{P} \]
 
 Use the correction factor to adjust any dose calculation:
 
-> **Adjusted Dose = Target Dose × CF**
+\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]
 
 **Example:** For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = **5.26 mg total**.
 
