@@ -211,7 +211,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
 
 ## Frequently Asked Questions
 
-<details markdown="1">
+<details>
   <summary><strong>What is the Henderson–Hasselbalch equation and how is it used for buffers?</strong></summary>
   <p>The Henderson–Hasselbalch equation is the mathematical foundation of buffer preparation:</p>
   <p style="text-align:center;font-family:monospace;font-size:1.05rem;">
@@ -226,7 +226,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   <p>The equation assumes ideal behavior and is most accurate when the concentrations of the acid and base forms are within roughly an order of magnitude of each other (i.e., pH within ±1 unit of pKₐ).</p>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>What is buffering capacity and how do I maximize it?</strong></summary>
   <p><strong>Buffering capacity (β)</strong> is a measure of a buffer's ability to resist pH change upon addition of acid or base. It is defined as:</p>
   <p style="text-align:center;font-family:monospace;font-size:1.05rem;">
@@ -242,7 +242,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   <p>For most biological applications, buffer concentrations of 10–100 mM provide adequate buffering capacity.</p>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>Is this calculator suitable for cell culture buffer preparation?</strong></summary>
   <p><strong>Yes, with caveats.</strong> The calculator provides accurate recipes for common cell culture buffers including PBS and HEPES. However, for cell culture applications:</p>
   <ul>
@@ -253,7 +253,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   </ul>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>How do I prepare 1× PBS from a 10× stock?</strong></summary>
   <p>To prepare 1 L of 1× PBS from a 10× stock:</p>
   <ol>
@@ -265,7 +265,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   <p>Alternatively, use the recipe from this calculator at 1× concentration (e.g., 137 mM NaCl, 2.7 mM KCl, 10 mM phosphate, pH 7.4) for direct preparation. Use our <a href="../dilution-calculator/">Dilution Calculator</a> for other dilution factors.</p>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>Why does my Tris buffer pH change when I cool it to 4°C?</strong></summary>
   <p>Tris buffers have a strong temperature coefficient of –0.028 pH units/°C. This means that the pH of a Tris buffer increases by approximately 0.028 units for every 1°C decrease in temperature. A Tris buffer prepared at pH 8.0 at 25°C will have a pH of approximately <strong>8.6 at 4°C</strong> and approximately <strong>7.7 at 37°C</strong>.</p>
   <p>For temperature-sensitive experiments:</p>
@@ -276,7 +276,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   </ul>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>Can I use this calculator for MOPS or MES buffers?</strong></summary>
   <p><strong>Not directly</strong> — this calculator supports PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. However, MOPS (pKₐ = 7.20) and MES (pKₐ = 6.15) are zwitterionic "Good's buffers" that follow the same Henderson–Hasselbalch principles. To prepare them manually:</p>
   <ul>
@@ -288,7 +288,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   <p>The calculation procedure is identical to the Tris-HCl or HEPES examples shown above — substitute the appropriate pKₐ and molecular weight.</p>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>How do I account for hydrated salts in buffer recipes?</strong></summary>
   <p>Hydrated salts contain water molecules in their crystal structure, which adds to their molecular weight. Common hydrated forms include:</p>
   <ul>
@@ -300,7 +300,7 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
   <p>When calculating the mass needed, always use the molecular weight corresponding to the specific hydrated form you have in your reagent bottle. Using the anhydrous MW for a hydrated salt will result in weighing too little of the actual reagent.</p>
 </details>
 
-<details markdown="1">
+<details>
   <summary><strong>What is the difference between PBS and phosphate buffer?</strong></summary>
   <p><strong>Phosphate buffer</strong> contains only phosphate species (NaH₂PO₄/Na₂HPO₄) and provides pH buffering. <strong>PBS (Phosphate-Buffered Saline)</strong> additionally contains NaCl and KCl to provide physiological osmolarity and ionic strength — it mimics the salt concentration of the human body.</p>
   <p>Use PBS for:</p>
