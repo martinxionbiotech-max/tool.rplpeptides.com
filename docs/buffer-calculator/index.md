@@ -63,30 +63,14 @@ Easily calculate the exact masses and volumes of components needed to prepare co
 
 A buffer is a solution that resists changes in pH when small amounts of acid or base are added. Buffers consist of a weak acid (HA) and its conjugate base (A⁻). The ability of a buffer to maintain pH is governed by the **Henderson–Hasselbalch equation**:
 
-
-$$
-  \text{pH} = \text{p}K_a + \log_{10} \frac{[\text{A}^-]}{[\text{HA}]}
-$$
-
+\[ \text{pH} = \text{p}K_a + \log_{10} \frac{[\text{A}^-]}{[\text{HA}]} \]
 This equation is the foundation of buffer preparation. To prepare a buffer at a target pH, we use the known pKₐ of the weak acid to determine the required ratio of conjugate base to acid:
 
-
-$$
-  \frac{[\text{A}^-]}{[\text{HA}]} = 10^{(\text{pH} - \text{p}K_a)}
-$$
-
+\[ \frac{[\text{A}^-]}{[\text{HA}]} = 10^{(\text{pH} - \text{p}K_a)} \]
 Once the ratio is known, we calculate the individual concentrations of the acid and base forms that together sum to the total buffer concentration:
 
-
-$$
-  [\text{HA}] = \frac{C_{\text{total}}}{1 + 10^{(\text{pH} - \text{p}K_a)}}
-$$
-
-
-$$
-  [\text{A}^-] = C_{\text{total}} - [\text{HA}]
-$$
-
+\[ [\text{HA}] = \frac{C_{\text{total}}}{1 + 10^{(\text{pH} - \text{p}K_a)}} \]
+\[ [\text{A}^-] = C_{\text{total}} - [\text{HA}] \]
 Where \\(C_{\text{total}}\\) is the total buffer concentration (the sum of both forms). For buffers with multiple relevant pKₐ values (e.g., phosphate with pKₐ₁ = 2.14, pKₐ₂ = 7.21, pKₐ₃ = 12.67), the dominant equilibrium near the target pH is used.
 
 ### Important Considerations
@@ -128,11 +112,7 @@ Phosphate-buffered saline is the most widely used buffer in biological research.
 
 **Step 1 — Calculate the phosphate ratio using Henderson–Hasselbalch:**
 
-
-$$
-  \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(7.4 - 7.21)} = 10^{0.19} = 1.55
-$$
-
+\[ \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(7.4 - 7.21)} = 10^{0.19} = 1.55 \]
 **Step 2 — Determine component concentrations:**
 - Total phosphate concentration = 10× 10 mM = 100 mM
 - [H₂PO₄⁻] = 100 / (1 + 1.55) = 39.2 mM
@@ -153,18 +133,10 @@ Tris buffer at 1 M is a common stock solution for electrophoresis and biochemica
 **Given:** 1 M Tris-HCl, 500 mL, pH 8.0
 
 **Step 1 — Calculate mass of Tris base:**
-
-$$
-  m = C \times \text{MW} \times V = 1.0 \times 121.14 \times 0.5 = 60.57 \text{ g}
-$$
-
+\[ m = C \times \text{MW} \times V = 1.0 \times 121.14 \times 0.5 = 60.57 \text{ g} \]
 **Step 2 — Calculate HCl volume for pH adjustment:**
 At pH 8.0, the ratio of Tris·H⁺ (conjugate acid) to Tris (base) is:
-
-$$
-  \frac{[\text{Tris·H}^+]}{[\text{Tris}]} = 10^{(8.07 - 8.0)} = 10^{0.07} = 1.17
-$$
-
+\[ \frac{[\text{Tris·H}^+]}{[\text{Tris}]} = 10^{(8.07 - 8.0)} = 10^{0.07} = 1.17 \]
 Fraction protonated = 1.17 / (1 + 1.17) = 0.539
 HCl needed = 0.539 × 1.0 M × 0.5 L = 0.27 moles
 
@@ -181,11 +153,7 @@ Phosphate buffer at pH 6.8 is commonly used for protein chromatography and enzym
 **Given:** 0.2 M sodium phosphate buffer, 1 L, pH 6.8
 
 **Step 1 — Calculate ratio:**
-
-$$
-  \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(6.8 - 7.21)} = 10^{-0.41} = 0.389
-$$
-
+\[ \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(6.8 - 7.21)} = 10^{-0.41} = 0.389 \]
 **Step 2 — Component concentrations:**
 - Total phosphate = 0.2 M = 200 mM
 - [H₂PO₄⁻] = 200 / (1 + 0.389) = 144 mM

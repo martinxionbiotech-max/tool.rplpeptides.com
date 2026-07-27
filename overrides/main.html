@@ -91,15 +91,15 @@
   <meta name="twitter:description" content="{{ page.meta.get('description', config.site_description) if page and page.meta else config.site_description }}">
   <meta name="twitter:image" content="{{ config.site_url }}/assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="{{ base_url }}/assets/katex/katex.min.css">
+  <script src="{{ base_url }}/assets/katex/katex.min.js"></script>
+  <script src="{{ base_url }}/assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
         delimiters: [
-          {left: '\[', right: '\]', display: true},
+          {left: '\\[', right: '\\]', display: true},
           {left: '\\(', right: '\\)', display: false}
         ],
         throwOnError: false
