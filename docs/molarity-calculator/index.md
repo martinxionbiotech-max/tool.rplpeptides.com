@@ -93,9 +93,7 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   <h3>How Molarity Calculations Work</h3>
   <p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
   <p>The fundamental relationship is:</p>
-  <p style="text-align:center;font-size:1.15rem;">
-    \\[ C = \\frac{n}{V} = \\frac{m}{\\text{MW} \\times V} \\]
-  </p>
+  \\\\[ C = \\frac{n}{V} = \\frac{m}{\\text{MW} \\times V} \\\\]
   <p>Where <em>C</em> = concentration (M), <em>n</em> = amount (mol), <em>V</em> = volume (L), <em>m</em> = mass (g), and <em>MW</em> = molecular weight (Da, equivalent to g/mol).</p>
   <p><strong>Why molarity over mass concentration?</strong> Molarity tells you the actual number of molecules in solution. Two peptides at 1 mg/mL may have very different molar concentrations if their molecular weights differ. For reactions, binding studies, and dose-response experiments, it is the number of molecules — not the mass — that matters.</p>
   <p><strong>Unit relationships:</strong></p>
@@ -236,22 +234,14 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
       <li>Choose a target concentration appropriate for your intended use (typically 1–10 mM for stock solutions).</li>
       <li>Calculate the required volume using:</li>
 </ol>
-<div class="formula-box" markdown="1">
-
-\\[ V(\\text{mL}) = \\frac{m(\\text{mg}) \\times 1000}{C(\\text{mM}) \\times \\text{MW}} \\]
-
-</div>
+\\\\[ V(\text{mL}) = \frac{m(\text{mg}) \times 1000}{C(\text{mM}) \times \text{MW}} \\\\]
 <ol start="4">
 
   <details>
     <summary><strong>What's the relationship between mM and mg/mL?</strong></summary>
     <p>The two are directly linked by molecular weight:</p>
-    <p style="text-align:center;font-size:1.1rem;">
-      \\[ \\text{mM} = \\frac{\\text{(mg/mL)} \\times 1000}{\\text{MW}} \\]
-    </p>
-    <p style="text-align:center;font-size:1.1rem;">
-      \\[ \\text{mg/mL} = \\frac{\\text{(mM)} \\times \\text{MW}}{1000} \\]
-    </p>
+    \\\\[ \text{mM} = \frac{\text{(mg/mL)} \times 1000}{\text{MW}} \\\\]
+    \\\\[ \text{mg/mL} = \frac{\text{(mM)} \times \text{MW}}{1000} \\\\]
     <p>For example, a peptide with MW = 1,000 Da at 1 mg/mL is 1 mM. The same mass concentration of a peptide with MW = 500 Da would be 2 mM — twice as many molecules per mL because each molecule weighs half as much.</p>
   </details>
 
