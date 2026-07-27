@@ -59,11 +59,11 @@ Calculate the solvent volume required to reconstitute a peptide to a target conc
 
 Peptide reconstitution calculations are based on the fundamental relationship between **concentration (C)**, **mass (m)**, and **volume (V)**:
 
-\[ C = \frac{m}{V} \]
+\\[ C = \frac{m}{V} \\]
 
 - **For mg/mL (mass concentration):** This is the simplest case. If you have 5 mg of peptide and want a 2 mg/mL solution, you need 2.5 mL of solvent. The calculation is a direct proportion — no molecular weight needed.
 - **For mM/µM (molar concentration):** To calculate molar concentration, you need the peptide's **molecular weight (MW)**. The formula becomes:
-  \[ C_{\text{mM}} = \frac{m}{\text{MW} \times V} \times 1000 \]
+  \\[ C_{\text{mM}} = \frac{m}{\text{MW} \times V} \times 1000 \\]
   where m is in mg, MW is in Da (g/mol), and V is in mL.
 - **Why proper reconstitution matters:** Accurate reconstitution is critical for experimental reproducibility. Errors in solvent volume directly change peptide concentration, leading to inconsistent dosing, failed binding assays, or misleading bioactivity results. Always use calibrated pipettes and account for peptide purity.
 
@@ -75,11 +75,11 @@ Peptide reconstitution calculations are based on the fundamental relationship be
 
 #### Mass Concentration (mg/mL)
 
-\[ V(\text{mL}) = \frac{m(\text{mg})}{C(\text{mg/mL})} \]
+\\[ V(\text{mL}) = \frac{m(\text{mg})}{C(\text{mg/mL})} \\]
 
 #### Molar Concentration (mM)
 
-\[ V(\text{mL}) = \frac{m(\text{mg})}{\text{MW} \times C(\text{mM})} \times 1000 \]
+\\[ V(\text{mL}) = \frac{m(\text{mg})}{\text{MW} \times C(\text{mM})} \times 1000 \\]
 
 #### Variables
 
@@ -97,14 +97,14 @@ Peptide reconstitution calculations are based on the fundamental relationship be
 **Example 1: Mass concentration (mg/mL)**
 You have 5 mg of lyophilized peptide and need a 2 mg/mL solution.
 
-\[ V = \frac{5}{2} = 2.5 \text{ mL} \]
+\\[ V = \frac{5}{2} = 2.5 \text{ mL} \\]
 
 Add **2.5 mL** of suitable solvent to your 5 mg peptide vial.
 
 **Example 2: Molar concentration (mM)**
 You have 10 mg of a peptide with molecular weight 1000 Da and need a 5 mM solution.
 
-\[ V = \left[\frac{10}{1000 \times 5}\right] \times 1000 = 2 \text{ mL} \]
+\\[ V = \left[\frac{10}{1000 \times 5}\right] \times 1000 = 2 \text{ mL} \\]
 
 Add **2 mL** of suitable solvent to your 10 mg peptide vial.
 

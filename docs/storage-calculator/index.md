@@ -107,9 +107,9 @@ Peptide degradation is governed by chemical and physical processes that accelera
 
 The **Arrhenius equation** describes how temperature governs degradation kinetics:
 
-\[
+\\[
 k = A e^{-E_a / RT}
-\]
+\\]
 
 In practical terms, **reaction rates approximately double for every 10 °C increase in temperature**. A peptide stable for 5 years at –20 °C may degrade in months at 4 °C and in days at room temperature. Ultra-low temperatures (–80 °C) effectively arrest most chemical reactions, making them ideal for long-term archival storage.
 

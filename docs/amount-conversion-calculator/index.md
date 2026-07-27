@@ -112,12 +112,12 @@ The calculation converts between peptide mass, solution concentration, and admin
 
 #### Total Amount Required
 
-\[ \\text{Total Amount (mg)} = \\text{Weight (kg)} \\times \\text{Amount per kg} \]
+\\[ \\text{Total Amount (mg)} = \\text{Weight (kg)} \\times \\text{Amount per kg} \\]
 Where amount per kg is converted to consistent units:
-\[ \\text{Amount per kg (mg/kg)} = \\frac{\\text{Amount (µg/kg)}}{1000} \]
+\\[ \\text{Amount per kg (mg/kg)} = \\frac{\\text{Amount (µg/kg)}}{1000} \\]
 #### Effective Peptide Mass
 
-\[ m_{\\text{effective}} = m_{\\text{total}} \\times \\frac{P}{100} \]
+\\[ m_{\\text{effective}} = m_{\\text{total}} \\times \\frac{P}{100} \\]
 Where:
 - **m_effective** = active peptide mass in the vial
 - **m_total** = total peptide mass stated on the vial
@@ -125,10 +125,10 @@ Where:
 
 #### Vial Concentration
 
-\[ C_{\\text{vial}} = \\frac{m_{\\text{effective}}}{V_{\\text{recon}}} \]
+\\[ C_{\\text{vial}} = \\frac{m_{\\text{effective}}}{V_{\\text{recon}}} \\]
 #### Administered Volume
 
-\[ V_{\\text{admin}} \\text{ (µL)} = \\frac{\\text{BW (kg)} \\times \\text{Amount (µg/kg)} \\times V_{\\text{recon}} \\text{ (mL)} \\times 100}{m_{\\text{total}} \\text{ (mg)} \\times P} \]
+\\[ V_{\\text{admin}} \\text{ (µL)} = \\frac{\\text{BW (kg)} \\times \\text{Amount (µg/kg)} \\times V_{\\text{recon}} \\text{ (mL)} \\times 100}{m_{\\text{total}} \\text{ (mg)} \\times P} \\]
 </div>
 
 ---
@@ -143,22 +143,22 @@ Where:
 
 **Step 1 — Convert subject weight to kg:**
 
-\[ 25 \\text{ g} = 25 \\div 1000 = 0.025 \\text{ kg} \]
+\\[ 25 \\text{ g} = 25 \\div 1000 = 0.025 \\text{ kg} \\]
 **Step 2 — Calculate total amount required:**
 
-\[ \\text{Total Amount} = 0.025 \\text{ kg} \\times 200 \\text{ µg/kg} = 5 \\text{ µg} \]
+\\[ \\text{Total Amount} = 0.025 \\text{ kg} \\times 200 \\text{ µg/kg} = 5 \\text{ µg} \\]
 In mg:
 
-\[ 5 \\text{ µg} \\div 1000 = 0.005 \\text{ mg} \]
+\\[ 5 \\text{ µg} \\div 1000 = 0.005 \\text{ mg} \\]
 **Step 3 — Calculate effective peptide mass (accounting for purity):**
 
-\[ m_{\\text{effective}} = 5 \\text{ mg} \\times \\frac{98}{100} = 4.9 \\text{ mg} \]
+\\[ m_{\\text{effective}} = 5 \\text{ mg} \\times \\frac{98}{100} = 4.9 \\text{ mg} \\]
 **Step 4 — Calculate vial concentration:**
 
-\[ C_{\\text{vial}} = \\frac{4.9 \\text{ mg}}{2 \\text{ mL}} = 2.45 \\text{ mg/mL} \]
+\\[ C_{\\text{vial}} = \\frac{4.9 \\text{ mg}}{2 \\text{ mL}} = 2.45 \\text{ mg/mL} \\]
 **Step 5 — Calculate administered volume:**
 
-\[ V_{\\text{admin}} = \\frac{0.005 \\text{ mg}}{2.45 \\text{ mg/mL}} \\times 1000 = 2.04 \\text{ µL} \]
+\\[ V_{\\text{admin}} = \\frac{0.005 \\text{ mg}}{2.45 \\text{ mg/mL}} \\times 1000 = 2.04 \\text{ µL} \\]
 **Result:** The calculated volume is **2.0 µL** of the reconstituted peptide solution for a 25 g subject at 200 µg/kg.
 
 </div>
@@ -251,8 +251,8 @@ A: Yes, with considerations:
 <div class="faq-q">**Q: How do I convert between mg/kg and µg/kg?**</div>
 
 A: The conversion is straightforward:
-\[ 1 \\text{ mg/kg} = 1000 \\text{ µg/kg} \]
-\[ 1 \\text{ µg/kg} = 0.001 \\text{ mg/kg} \]
+\\[ 1 \\text{ mg/kg} = 1000 \\text{ µg/kg} \\]
+\\[ 1 \\text{ µg/kg} = 0.001 \\text{ mg/kg} \\]
 The calculator accepts both units. Simply select the appropriate unit from the dropdown menu.
 
 <div class="faq-q">**Q: Why does my calculated volume change when I adjust the purity value?**</div>

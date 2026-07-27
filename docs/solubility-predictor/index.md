@@ -71,19 +71,19 @@ Peptide solubility is governed by a balance between **peptide-solvent interactio
 
 The **Grand Average of Hydropathy (GRAVY)** is the arithmetic mean of Kyte-Doolittle hydropathy values across all residues:
 
-\[
+\\[
 \text{GRAVY} = \frac{1}{n} \sum_{i=1}^{n} \text{KD}(a_i)
-\]
+\\]
 
-where \(\text{KD}(a_i)\) is the Kyte-Doolittle hydropathy score for residue \(a_i\) and \(n\) is the sequence length. The Kyte-Doolittle scale ranges from **−4.5** (most hydrophilic, Arg) to **+4.5** (most hydrophobic, Ile). A negative GRAVY indicates a hydrophilic peptide that prefers aqueous environments; a positive GRAVY indicates a hydrophobic peptide that may require organic co-solvents.
+where \\(\text{KD}(a_i)\\) is the Kyte-Doolittle hydropathy score for residue \\(a_i\\) and \\(n\\) is the sequence length. The Kyte-Doolittle scale ranges from **−4.5** (most hydrophilic, Arg) to **+4.5** (most hydrophobic, Ile). A negative GRAVY indicates a hydrophilic peptide that prefers aqueous environments; a positive GRAVY indicates a hydrophobic peptide that may require organic co-solvents.
 
 ### 2. Net Charge Analysis
 
 The net charge at the target pH is computed via the Henderson–Hasselbalch equation:
 
-\[
+\\[
 Q = \sum_{\text{bases}} \frac{1}{1 + 10^{(\text{pH} - \text{pKa})}} \;-\; \sum_{\text{acids}} \frac{1}{1 + 10^{(\text{pKa} - \text{pH})}}
-\]
+\\]
 
 **Ionizable groups considered:**
 
@@ -105,9 +105,9 @@ Peptides with higher absolute net charge are generally more soluble because elec
 
 Charge density normalizes the net charge by the sequence length:
 
-\[
+\\[
 \text{Charge Density} = \frac{|Q|}{n}
-\]
+\\]
 
 A charge density above **0.15** is considered favourable for aqueous solubility. Values below **0.08** suggest the peptide may have solubility challenges at the given pH.
 
@@ -119,11 +119,11 @@ The aggregation propensity score identifies hydrophobic "hot spots" and beta-she
 - **Beta-sheet-prone residues** (V, I, Y, F, W, T) add additional weight.
 - **Charge clusters** (≥ 3 consecutive charged residues) reduce the score.
 
-\[
+\\[
 \text{Aggregation Score} = \frac{\sum w_i}{n}
-\]
+\\]
 
-where \(w_i\) is the aggregation weight of residue \(i\). Scores above **0.40** indicate high aggregation risk.
+where \\(w_i\\) is the aggregation weight of residue \\(i\\). Scores above **0.40** indicate high aggregation risk.
 
 </div>
 
@@ -330,7 +330,7 @@ The current calculator is optimised for linear peptides. For cyclic peptides, tr
 
 <div class="faq-q">**What is charge density and why is it important?**</div>
 
-Charge density is the absolute net charge per residue (\(|Q|/n\)). It captures the **concentration of electrostatic charge** on the peptide surface, which drives electrostatic repulsion between peptide molecules. Two peptides with the same net charge but different lengths have different charge densities — a short peptide with |Q| = 2 has high charge density (> 0.2 for a 10-mer), while a long peptide with |Q| = 2 has low charge density (< 0.05 for a 40-mer). Higher charge density correlates with better solubility because the repulsive force per unit surface area is greater.
+Charge density is the absolute net charge per residue (\\(|Q|/n\\)). It captures the **concentration of electrostatic charge** on the peptide surface, which drives electrostatic repulsion between peptide molecules. Two peptides with the same net charge but different lengths have different charge densities — a short peptide with |Q| = 2 has high charge density (> 0.2 for a 10-mer), while a long peptide with |Q| = 2 has low charge density (< 0.05 for a 40-mer). Higher charge density correlates with better solubility because the repulsive force per unit surface area is greater.
 
 
 ---

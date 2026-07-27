@@ -72,9 +72,9 @@ The isoelectric point is the pH at which the peptide carries no net electrical c
 
 The net charge at a given pH is computed using the Henderson-Hasselbalch equation:
 
-\[
+\\[
 \text{charge} = \sum_{\text{bases}} \frac{1}{1 + 10^{(\text{pH} - \text{pKa})}} \;-\; \sum_{\text{acids}} \frac{1}{1 + 10^{(\text{pKa} - \text{pH})}}
-\]
+\\]
 
 Bases (positive charges): N-terminus, Lys, Arg, His.  
 Acids (negative charges): C-terminus, Asp, Glu, Cys, Tyr.
@@ -101,9 +101,9 @@ The index is a statistical predictor — while useful as a guide, actual stabili
 
 The aliphatic index is the relative volume occupied by aliphatic side chains (Ala, Val, Ile, Leu) expressed as a percentage. It reflects the thermostability of the peptide:
 
-\[
+\\[
 \text{Aliphatic Index} = \frac{(1.0 \times f_{\text{Ala}}) + (2.9 \times f_{\text{Val}}) + (3.9 \times f_{\text{Ile+Leu}})}{\text{Length}} \times 100
-\]
+\\]
 
 - **Higher values:** Greater thermostability — the peptide is more resistant to heat denaturation.
 - **Lower values:** Less thermostable — the peptide may unfold or aggregate at elevated temperatures.

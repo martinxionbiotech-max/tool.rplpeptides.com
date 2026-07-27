@@ -128,13 +128,13 @@ Estimated at 280 nm using the Edelhoch method:
 
 **Peptide Bond Formation:** Peptides are linear chains of amino acids linked by peptide bonds (amide bonds). Each peptide bond forms through a condensation reaction between the carboxyl group (—COOH) of one amino acid and the amino group (—NH₂) of the next, releasing a water molecule (H₂O).
 
-**Water Loss During Synthesis:** For a peptide containing \(n\) amino acid residues, exactly \(n-1\) water molecules are lost during peptide bond formation. Each water molecule has a mass of **18.01056 Da** (monoisotopic) or **18.0153 Da** (average). This water loss is the single most important correction applied in peptide mass calculation.
+**Water Loss During Synthesis:** For a peptide containing \\(n\\) amino acid residues, exactly \\(n-1\\) water molecules are lost during peptide bond formation. Each water molecule has a mass of **18.01056 Da** (monoisotopic) or **18.0153 Da** (average). This water loss is the single most important correction applied in peptide mass calculation.
 
 **General Relationship:**
 
-\[
+\\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times \text{H}_2\text{O mass} + \sum \text{modifications}
-\]
+\\]
 
 **Monoisotopic vs. Average Mass:**
 
@@ -165,27 +165,27 @@ Monoisotopic mass is the default for most peptide mass spectrometry applications
 
 **Complete Molecular Weight Formula:**
 
-\[
+\\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056 + \sum \text{modifications} - 2.01565 \times \text{disulfide\_count}
-\]
+\\]
 
 **Where:**
 
 | Variable | Definition |
 |----------|------------|
-| \(\sum_{i=1}^{n} \text{AA}_i\) | Sum of monoisotopic (or average) masses of all \(n\) amino acid residues in the sequence |
-| \(n\) | Total number of amino acids in the peptide |
-| \(18.01056\) | Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed |
-| \((n-1) \times 18.01056\) | Total water loss from all peptide bond condensation reactions |
-| \(\sum \text{modifications}\) | Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation) |
-| \(2.01565\) | Mass of two hydrogen atoms lost per disulfide bridge |
-| \(\text{disulfide\_count}\) | Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H) |
+| \\(\sum_{i=1}^{n} \text{AA}_i\\) | Sum of monoisotopic (or average) masses of all \\(n\\) amino acid residues in the sequence |
+| \\(n\\) | Total number of amino acids in the peptide |
+| \\(18.01056\\) | Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed |
+| \\((n-1) \times 18.01056\\) | Total water loss from all peptide bond condensation reactions |
+| \\(\sum \text{modifications}\\) | Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation) |
+| \\(2.01565\\) | Mass of two hydrogen atoms lost per disulfide bridge |
+| \\(\text{disulfide\_count}\\) | Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H) |
 
 **Simplified for unmodified linear peptides:**
 
-\[
+\\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056
-\]
+\\]
 
 </div>
 
@@ -204,17 +204,17 @@ Let's calculate the molecular weight of the tripeptide **GHK** (Glycine-Histidin
 
 **Step 2: Account for water loss from peptide bonds**
 
-GHK has 3 amino acids, therefore \(n-1 = 2\) peptide bonds. Each bond formation releases one H₂O.
+GHK has 3 amino acids, therefore \\(n-1 = 2\\) peptide bonds. Each bond formation releases one H₂O.
 
-\[
+\\[
 \text{Water loss} = 2 \times 18.01056 = 36.02 \text{ Da}
-\]
+\\]
 
 **Step 3: Calculate unmodified molecular weight**
 
-\[
+\\[
 \text{MW} = 322.17 - 36.02 = 286.15 \text{ Da}
-\]
+\\]
 
 **Step 4: Apply modifications (optional)**
 
@@ -298,9 +298,9 @@ A disulfide bridge (cystine bond) forms between the thiol groups (—SH) of two 
 
 The formula impact is straightforward:
 
-\[
+\\[
 \text{MW}_{\text{with disulfide}} = \text{MW}_{\text{linear}} - (2.01565 \times \text{disulfide\_count})
-\]
+\\]
 
 Disulfide bridges also:
 - Introduce structural constraints that affect peptide folding and bioactivity
