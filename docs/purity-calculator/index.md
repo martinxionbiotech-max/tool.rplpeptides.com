@@ -167,7 +167,7 @@ Absolutely. When preparing a solution of known molarity, multiply the molecular 
 
 ## Related Tools
 
-<div class="related-tools">
+<div class="related-tools" markdown="1">
 
 For further peptide calculations involving purity correction:
 

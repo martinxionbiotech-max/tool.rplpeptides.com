@@ -189,7 +189,6 @@ Charge and solubility are closely related. In general:
 
 This relationship is the basis for **pH-dependent solubility** and is exploited in purification strategies such as isoelectric precipitation and ion-exchange chromatography.
 
-</div>
 
 ---
 

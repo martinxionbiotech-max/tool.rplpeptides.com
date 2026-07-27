@@ -332,7 +332,6 @@ The current calculator is optimised for linear peptides. For cyclic peptides, tr
 
 Charge density is the absolute net charge per residue (\(|Q|/n\)). It captures the **concentration of electrostatic charge** on the peptide surface, which drives electrostatic repulsion between peptide molecules. Two peptides with the same net charge but different lengths have different charge densities — a short peptide with |Q| = 2 has high charge density (> 0.2 for a 10-mer), while a long peptide with |Q| = 2 has low charge density (< 0.05 for a 40-mer). Higher charge density correlates with better solubility because the repulsive force per unit surface area is greater.
 
-</div>
 
 ---
 

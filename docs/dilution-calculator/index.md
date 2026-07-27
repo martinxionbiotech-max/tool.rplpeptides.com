@@ -110,7 +110,7 @@ Add **2 mL** of suitable solvent to your 10 mg peptide vial.
 
 ## Common Mistakes
 
-<div class="mistake">
+<div class="mistake" markdown="1">
 
 - **Forgetting to account for peptide purity** — Peptide manufacturers quote a purity percentage (e.g., 95%). If you have 5 mg of 80% pure peptide, the effective peptide mass is only 4 mg. Always calculate using the **actual peptide content**: effective mass = total mass × (purity / 100).
 
