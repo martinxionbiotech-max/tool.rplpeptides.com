@@ -583,6 +583,40 @@
     How Solubility Prediction Works
   </a>
   
+    <nav class="md-nav" aria-label="How Solubility Prediction Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gravy-hydropathy-score" class="md-nav__link">
+    1. GRAVY Hydropathy Score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-net-charge-analysis" class="md-nav__link">
+    2. Net Charge Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-charge-density" class="md-nav__link">
+    3. Charge Density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-aggregation-propensity" class="md-nav__link">
+    4. Aggregation Propensity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -818,6 +852,40 @@
     How Solubility Prediction Works
   </a>
   
+    <nav class="md-nav" aria-label="How Solubility Prediction Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gravy-hydropathy-score" class="md-nav__link">
+    1. GRAVY Hydropathy Score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-net-charge-analysis" class="md-nav__link">
+    2. Net Charge Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-charge-density" class="md-nav__link">
+    3. Charge Density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-aggregation-propensity" class="md-nav__link">
+    4. Aggregation Propensity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1046,69 +1114,84 @@
 <hr />
 <h2 id="how-solubility-prediction-works">How Solubility Prediction Works<a class="headerlink" href="#how-solubility-prediction-works" title="Permanent link">&para;</a></h2>
 <div class="principle-box">
-
-Peptide solubility is governed by a balance between **peptide-solvent interactions** and **peptide-peptide interactions**. When peptide-peptide interactions (hydrophobic packing, hydrogen bonding, electrostatic attraction) dominate over peptide-solvent interactions, the peptide aggregates and precipitates. The calculator estimates solubility using four key parameters:
-
-### 1. GRAVY Hydropathy Score
-
-The **Grand Average of Hydropathy (GRAVY)** is the arithmetic mean of Kyte-Doolittle hydropathy values across all residues:
-
-\[
+<p>Peptide solubility is governed by a balance between <strong>peptide-solvent interactions</strong> and <strong>peptide-peptide interactions</strong>. When peptide-peptide interactions (hydrophobic packing, hydrogen bonding, electrostatic attraction) dominate over peptide-solvent interactions, the peptide aggregates and precipitates. The calculator estimates solubility using four key parameters:</p>
+<h3 id="1-gravy-hydropathy-score">1. GRAVY Hydropathy Score<a class="headerlink" href="#1-gravy-hydropathy-score" title="Permanent link">&para;</a></h3>
+<p>The <strong>Grand Average of Hydropathy (GRAVY)</strong> is the arithmetic mean of Kyte-Doolittle hydropathy values across all residues:</p>
+<div class="arithmatex">\[
 \text{GRAVY} = \frac{1}{n} \sum_{i=1}^{n} \text{KD}(a_i)
-\]
-
-where \(\text{KD}(a_i)\) is the Kyte-Doolittle hydropathy score for residue \(a_i\) and \(n\) is the sequence length. The Kyte-Doolittle scale ranges from **−4.5** (most hydrophilic, Arg) to **+4.5** (most hydrophobic, Ile). A negative GRAVY indicates a hydrophilic peptide that prefers aqueous environments; a positive GRAVY indicates a hydrophobic peptide that may require organic co-solvents.
-
-### 2. Net Charge Analysis
-
-The net charge at the target pH is computed via the Henderson–Hasselbalch equation:
-
-\[
+\]</div>
+<p>where <span class="arithmatex">\(\text{KD}(a_i)\)</span> is the Kyte-Doolittle hydropathy score for residue <span class="arithmatex">\(a_i\)</span> and <span class="arithmatex">\(n\)</span> is the sequence length. The Kyte-Doolittle scale ranges from <strong>−4.5</strong> (most hydrophilic, Arg) to <strong>+4.5</strong> (most hydrophobic, Ile). A negative GRAVY indicates a hydrophilic peptide that prefers aqueous environments; a positive GRAVY indicates a hydrophobic peptide that may require organic co-solvents.</p>
+<h3 id="2-net-charge-analysis">2. Net Charge Analysis<a class="headerlink" href="#2-net-charge-analysis" title="Permanent link">&para;</a></h3>
+<p>The net charge at the target pH is computed via the Henderson–Hasselbalch equation:</p>
+<div class="arithmatex">\[
 Q = \sum_{\text{bases}} \frac{1}{1 + 10^{(\text{pH} - \text{pKa})}} \;-\; \sum_{\text{acids}} \frac{1}{1 + 10^{(\text{pKa} - \text{pH})}}
-\]
-
-**Ionizable groups considered:**
-
-| Group | pKa |
-|-------|-----|
-| N-terminus (NH₃⁺) | 8.0 |
-| C-terminus (COOH) | 3.1 |
-| Asp (D) side chain | 3.90 |
-| Glu (E) side chain | 4.07 |
-| His (H) side chain | 6.00 |
-| Cys (C) side chain | 8.37 |
-| Tyr (Y) side chain | 10.10 |
-| Lys (K) side chain | 10.50 |
-| Arg (R) side chain | 12.48 |
-
-Peptides with higher absolute net charge are generally more soluble because electrostatic repulsion prevents aggregation. Solubility is typically lowest near the isoelectric point (pI), where the net charge approaches zero.
-
-### 3. Charge Density
-
-Charge density normalizes the net charge by the sequence length:
-
-\[
+\]</div>
+<p><strong>Ionizable groups considered:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>pKa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N-terminus (NH₃⁺)</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>C-terminus (COOH)</td>
+<td>3.1</td>
+</tr>
+<tr>
+<td>Asp (D) side chain</td>
+<td>3.90</td>
+</tr>
+<tr>
+<td>Glu (E) side chain</td>
+<td>4.07</td>
+</tr>
+<tr>
+<td>His (H) side chain</td>
+<td>6.00</td>
+</tr>
+<tr>
+<td>Cys (C) side chain</td>
+<td>8.37</td>
+</tr>
+<tr>
+<td>Tyr (Y) side chain</td>
+<td>10.10</td>
+</tr>
+<tr>
+<td>Lys (K) side chain</td>
+<td>10.50</td>
+</tr>
+<tr>
+<td>Arg (R) side chain</td>
+<td>12.48</td>
+</tr>
+</tbody>
+</table>
+<p>Peptides with higher absolute net charge are generally more soluble because electrostatic repulsion prevents aggregation. Solubility is typically lowest near the isoelectric point (pI), where the net charge approaches zero.</p>
+<h3 id="3-charge-density">3. Charge Density<a class="headerlink" href="#3-charge-density" title="Permanent link">&para;</a></h3>
+<p>Charge density normalizes the net charge by the sequence length:</p>
+<div class="arithmatex">\[
 \text{Charge Density} = \frac{|Q|}{n}
-\]
-
-A charge density above **0.15** is considered favourable for aqueous solubility. Values below **0.08** suggest the peptide may have solubility challenges at the given pH.
-
-### 4. Aggregation Propensity
-
-The aggregation propensity score identifies hydrophobic "hot spots" and beta-sheet-promoting residues that increase the risk of self-association. The calculator uses a weighted scoring approach:
-
-- **Hydrophobic residues** (I, L, V, F, W, M, A) contribute positively.
-- **Beta-sheet-prone residues** (V, I, Y, F, W, T) add additional weight.
-- **Charge clusters** (≥ 3 consecutive charged residues) reduce the score.
-
-\[
+\]</div>
+<p>A charge density above <strong>0.15</strong> is considered favourable for aqueous solubility. Values below <strong>0.08</strong> suggest the peptide may have solubility challenges at the given pH.</p>
+<h3 id="4-aggregation-propensity">4. Aggregation Propensity<a class="headerlink" href="#4-aggregation-propensity" title="Permanent link">&para;</a></h3>
+<p>The aggregation propensity score identifies hydrophobic "hot spots" and beta-sheet-promoting residues that increase the risk of self-association. The calculator uses a weighted scoring approach:</p>
+<ul>
+<li><strong>Hydrophobic residues</strong> (I, L, V, F, W, M, A) contribute positively.</li>
+<li><strong>Beta-sheet-prone residues</strong> (V, I, Y, F, W, T) add additional weight.</li>
+<li><strong>Charge clusters</strong> (≥ 3 consecutive charged residues) reduce the score.</li>
+</ul>
+<div class="arithmatex">\[
 \text{Aggregation Score} = \frac{\sum w_i}{n}
-\]
-
-where \(w_i\) is the aggregation weight of residue \(i\). Scores above **0.40** indicate high aggregation risk.
-
+\]</div>
+<p>where <span class="arithmatex">\(w_i\)</span> is the aggregation weight of residue <span class="arithmatex">\(i\)</span>. Scores above <strong>0.40</strong> indicate high aggregation risk.</p>
 </div>
-
 <hr />
 <h2 id="understanding-your-results">Understanding Your Results<a class="headerlink" href="#understanding-your-results" title="Permanent link">&para;</a></h2>
 <table>

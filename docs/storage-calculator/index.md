@@ -89,7 +89,7 @@ Estimate the expected stability of a peptide based on its form, storage conditio
 
 ## The Science of Peptide Stability
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 Peptide degradation is governed by chemical and physical processes that accelerate under unfavorable conditions. Understanding these pathways helps you make informed storage decisions.
 

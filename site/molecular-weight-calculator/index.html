@@ -494,6 +494,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#principles-of-peptide-mass-calculation" class="md-nav__link">
+    Principles of Peptide Mass Calculation
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -764,6 +771,13 @@
           <li class="md-nav__item">
   <a href="#extinction-coefficient" class="md-nav__link">
     Extinction Coefficient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles-of-peptide-mass-calculation" class="md-nav__link">
+    Principles of Peptide Mass Calculation
   </a>
   
 </li>
@@ -1095,32 +1109,47 @@
 </ul>
 <hr />
 <div class="principle-box">
-
-### Principles of Peptide Mass Calculation
-
-**Peptide Bond Formation:** Peptides are linear chains of amino acids linked by peptide bonds (amide bonds). Each peptide bond forms through a condensation reaction between the carboxyl group (—COOH) of one amino acid and the amino group (—NH₂) of the next, releasing a water molecule (H₂O).
-
-**Water Loss During Synthesis:** For a peptide containing \(n\) amino acid residues, exactly \(n-1\) water molecules are lost during peptide bond formation. Each water molecule has a mass of **18.01056 Da** (monoisotopic) or **18.0153 Da** (average). This water loss is the single most important correction applied in peptide mass calculation.
-
-**General Relationship:**
-
-\[
+<h3 id="principles-of-peptide-mass-calculation">Principles of Peptide Mass Calculation<a class="headerlink" href="#principles-of-peptide-mass-calculation" title="Permanent link">&para;</a></h3>
+<p><strong>Peptide Bond Formation:</strong> Peptides are linear chains of amino acids linked by peptide bonds (amide bonds). Each peptide bond forms through a condensation reaction between the carboxyl group (—COOH) of one amino acid and the amino group (—NH₂) of the next, releasing a water molecule (H₂O).</p>
+<p><strong>Water Loss During Synthesis:</strong> For a peptide containing <span class="arithmatex">\(n\)</span> amino acid residues, exactly <span class="arithmatex">\(n-1\)</span> water molecules are lost during peptide bond formation. Each water molecule has a mass of <strong>18.01056 Da</strong> (monoisotopic) or <strong>18.0153 Da</strong> (average). This water loss is the single most important correction applied in peptide mass calculation.</p>
+<p><strong>General Relationship:</strong></p>
+<div class="arithmatex">\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times \text{H}_2\text{O mass} + \sum \text{modifications}
-\]
-
-**Monoisotopic vs. Average Mass:**
-
-| Aspect | Monoisotopic Mass | Average Mass |
-|--------|-------------------|--------------|
-| Definition | Exact mass of the most abundant isotope of each element (e.g., ¹²C, ¹H, ¹⁴N, ¹⁶O, ³²S) | Weighted average of all naturally occurring isotopes for each element |
-| Typical Use | High-resolution mass spectrometry (FT-ICR, Orbitrap, Q-TOF) | Lower-resolution instruments, preparative work, gravimetric calculations |
-| Difference Scale | ~0.1–0.5 Da for peptides under 1,500 Da | Larger differences for larger peptides |
-| Accuracy | More precise for individual molecular species | Represents bulk isotopic distribution |
-
-Monoisotopic mass is the default for most peptide mass spectrometry applications, while average mass is more commonly used for determining reconstitution volumes and molar concentrations.
-
+\]</div>
+<p><strong>Monoisotopic vs. Average Mass:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Monoisotopic Mass</th>
+<th>Average Mass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>Exact mass of the most abundant isotope of each element (e.g., ¹²C, ¹H, ¹⁴N, ¹⁶O, ³²S)</td>
+<td>Weighted average of all naturally occurring isotopes for each element</td>
+</tr>
+<tr>
+<td>Typical Use</td>
+<td>High-resolution mass spectrometry (FT-ICR, Orbitrap, Q-TOF)</td>
+<td>Lower-resolution instruments, preparative work, gravimetric calculations</td>
+</tr>
+<tr>
+<td>Difference Scale</td>
+<td>~0.1–0.5 Da for peptides under 1,500 Da</td>
+<td>Larger differences for larger peptides</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>More precise for individual molecular species</td>
+<td>Represents bulk isotopic distribution</td>
+</tr>
+</tbody>
+</table>
+<p>Monoisotopic mass is the default for most peptide mass spectrometry applications, while average mass is more commonly used for determining reconstitution volumes and molar concentrations.</p>
 </div>
-
 <h2 id="example-calculations">Example Calculations<a class="headerlink" href="#example-calculations" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1155,33 +1184,54 @@ Monoisotopic mass is the default for most peptide mass spectrometry applications
 <hr />
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
-
-**Complete Molecular Weight Formula:**
-
-\[
+<p><strong>Complete Molecular Weight Formula:</strong></p>
+<div class="arithmatex">\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056 + \sum \text{modifications} - 2.01565 \times \text{disulfide\_count}
-\]
-
-**Where:**
-
-| Variable | Definition |
-|----------|------------|
-| \(\sum_{i=1}^{n} \text{AA}_i\) | Sum of monoisotopic (or average) masses of all \(n\) amino acid residues in the sequence |
-| \(n\) | Total number of amino acids in the peptide |
-| \(18.01056\) | Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed |
-| \((n-1) \times 18.01056\) | Total water loss from all peptide bond condensation reactions |
-| \(\sum \text{modifications}\) | Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation) |
-| \(2.01565\) | Mass of two hydrogen atoms lost per disulfide bridge |
-| \(\text{disulfide\_count}\) | Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H) |
-
-**Simplified for unmodified linear peptides:**
-
-\[
+\]</div>
+<p><strong>Where:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\sum_{i=1}^{n} \text{AA}_i\)</span></td>
+<td>Sum of monoisotopic (or average) masses of all <span class="arithmatex">\(n\)</span> amino acid residues in the sequence</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\)</span></td>
+<td>Total number of amino acids in the peptide</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(18.01056\)</span></td>
+<td>Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((n-1) \times 18.01056\)</span></td>
+<td>Total water loss from all peptide bond condensation reactions</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum \text{modifications}\)</span></td>
+<td>Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(2.01565\)</span></td>
+<td>Mass of two hydrogen atoms lost per disulfide bridge</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{disulfide\_count}\)</span></td>
+<td>Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simplified for unmodified linear peptides:</strong></p>
+<div class="arithmatex">\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056
-\]
-
+\]</div>
 </div>
-
 <h2 id="worked-example-ghk-gly-his-lys">Worked Example: GHK (Gly-His-Lys)<a class="headerlink" href="#worked-example-ghk-gly-his-lys" title="Permanent link">&para;</a></h2>
 <p>Let's calculate the molecular weight of the tripeptide <strong>GHK</strong> (Glycine-Histidine-Lysine), a copper-binding peptide found in human plasma.</p>
 <p><strong>Step 1: Sum the amino acid monoisotopic masses</strong></p>

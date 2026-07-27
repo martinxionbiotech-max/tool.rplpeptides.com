@@ -820,49 +820,50 @@
 <hr />
 <h2 id="how-purity-affects-dosing">How Purity Affects Dosing<a class="headerlink" href="#how-purity-affects-dosing" title="Permanent link">&para;</a></h2>
 <div class="principle-box">
-
-**Active peptide mass** is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.
-
-| Concept | Formula |
-|---------|---------|
-| Active peptide mass | Active = Total × (Purity ÷ 100) |
-| Impurity content | Impurity = Total − Active |
-| Correction factor | CF = 100 ÷ Purity (multiply your desired dose by this) |
-
-**Why HPLC purity ≠ biological activity:** HPLC (high-performance liquid chromatography) measures chemical purity — the proportion of your target peptide sequence relative to other UV-absorbing species. It does not measure:
-- **Bioactivity** — whether the peptide folds correctly or binds its target
-- **Salt/water content** — counterions (TFA, acetate) and residual water that add mass
-- **Peptide content** — the actual peptide fraction after accounting for counterions
-
-A peptide at 98% HPLC purity could still have only 75–85% *peptide content* due to salts and water. This is why some labs report both "purity" (HPLC) and "peptide content" (by AAA or gravimetric analysis).
-
+<p><strong>Active peptide mass</strong> is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active peptide mass</td>
+<td>Active = Total × (Purity ÷ 100)</td>
+</tr>
+<tr>
+<td>Impurity content</td>
+<td>Impurity = Total − Active</td>
+</tr>
+<tr>
+<td>Correction factor</td>
+<td>CF = 100 ÷ Purity (multiply your desired dose by this)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why HPLC purity ≠ biological activity:</strong> HPLC (high-performance liquid chromatography) measures chemical purity — the proportion of your target peptide sequence relative to other UV-absorbing species. It does not measure:
+- <strong>Bioactivity</strong> — whether the peptide folds correctly or binds its target
+- <strong>Salt/water content</strong> — counterions (TFA, acetate) and residual water that add mass
+- <strong>Peptide content</strong> — the actual peptide fraction after accounting for counterions</p>
+<p>A peptide at 98% HPLC purity could still have only 75–85% <em>peptide content</em> due to salts and water. This is why some labs report both "purity" (HPLC) and "peptide content" (by AAA or gravimetric analysis).</p>
 </div>
-
 <hr />
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
-
-The mathematics behind purity correction is straightforward:
-
-\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]
-
-Where:
-- **m_active** = Active peptide mass (what you can actually use)
-- **m_total** = Total mass weighed (what the vial says)
-- **P%** = Stated purity percentage
-
-**Correction Factor (CF):**
-
-\[ \text{CF} = \frac{100}{P} \]
-
-Use the correction factor to adjust any dose calculation:
-
-\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]
-
-**Example:** For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = **5.26 mg total**.
-
+<p>The mathematics behind purity correction is straightforward:</p>
+<div class="arithmatex">\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]</div>
+<p>Where:
+- <strong>m_active</strong> = Active peptide mass (what you can actually use)
+- <strong>m_total</strong> = Total mass weighed (what the vial says)
+- <strong>P%</strong> = Stated purity percentage</p>
+<p><strong>Correction Factor (CF):</strong></p>
+<div class="arithmatex">\[ \text{CF} = \frac{100}{P} \]</div>
+<p>Use the correction factor to adjust any dose calculation:</p>
+<div class="arithmatex">\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]</div>
+<p><strong>Example:</strong> For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = <strong>5.26 mg total</strong>.</p>
 </div>
-
 <hr />
 <h2 id="real-world-scenario">Real-World Scenario<a class="headerlink" href="#real-world-scenario" title="Permanent link">&para;</a></h2>
 <blockquote>

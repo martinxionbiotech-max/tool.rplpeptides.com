@@ -63,7 +63,7 @@ Predict peptide solubility in various solvents directly from the amino acid sequ
 
 ## How Solubility Prediction Works
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 Peptide solubility is governed by a balance between **peptide-solvent interactions** and **peptide-peptide interactions**. When peptide-peptide interactions (hydrophobic packing, hydrogen bonding, electrostatic attraction) dominate over peptide-solvent interactions, the peptide aggregates and precipitates. The calculator estimates solubility using four key parameters:
 

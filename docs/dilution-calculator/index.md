@@ -55,7 +55,7 @@ Calculate the solvent volume required to reconstitute a peptide to a target conc
 
 ## How the Calculation Works
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 Peptide reconstitution calculations are based on the fundamental relationship between **concentration (C)**, **mass (m)**, and **volume (V)**:
 
@@ -71,7 +71,7 @@ Peptide reconstitution calculations are based on the fundamental relationship be
 
 ## Core Formula
 
-<div class="formula-box">
+<div class="formula-box" markdown="1">
 
 #### Mass Concentration (mg/mL)
 

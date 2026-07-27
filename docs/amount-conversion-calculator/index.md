@@ -95,7 +95,7 @@ Convert between peptide mass, solution concentration, and injection volume for l
 
 ## How the Conversion Works
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 The calculation converts between peptide mass, solution concentration, and administered volume using a straightforward chain of unit conversions:
 
@@ -108,7 +108,7 @@ The calculation converts between peptide mass, solution concentration, and admin
 
 ## Core Formulas
 
-<div class="formula-box">
+<div class="formula-box" markdown="1">
 
 #### Total Amount Required
 
@@ -140,7 +140,7 @@ Where:
 
 ## Example Calculation Scenario
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 ### Example: 25 g Research Subject with a Standard Protocol Peptide
 
@@ -178,7 +178,7 @@ In mg:
 
 ## Laboratory Best Practices
 
-<div class="principle-box">
+<div class="principle-box" markdown="1">
 
 ### Preparation and Handling
 
