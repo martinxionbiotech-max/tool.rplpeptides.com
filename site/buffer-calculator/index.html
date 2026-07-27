@@ -1,0 +1,1778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online buffer preparation calculator — calculate buffer components for common laboratory buffers including PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. Calculates mass of buffer components needed.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/buffer-calculator/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Buffer Preparation Calculator - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Buffer Preparation Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/buffer-calculator/",
+    "description": "Free online buffer preparation calculator — calculate buffer components for common laboratory buffers including PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. Calculates mass of buffer components needed.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Buffer Preparation Calculator", "item": "https://tool.rplpeptides.com/buffer-calculator/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/buffer-calculator/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online buffer preparation calculator — calculate buffer components for common laboratory buffers including PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. Calculates mass of buffer components needed.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Buffer Preparation Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online buffer preparation calculator — calculate buffer components for common laboratory buffers including PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. Calculates mass of buffer components needed.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/buffer-calculator/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buffer Preparation Calculator — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online buffer preparation calculator — calculate buffer components for common laboratory buffers including PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. Calculates mass of buffer components needed.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#buffer-preparation-calculator" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Buffer Preparation Calculator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molecular-weight-calculator/" class="md-nav__link">
+        Molecular Weight Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dilution-calculator/" class="md-nav__link">
+        Dilution Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purity-calculator/" class="md-nav__link">
+        Purity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-comparison/" class="md-nav__link">
+        Peptide Comparison Tool
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solubility-predictor/" class="md-nav__link">
+        Peptide Solubility Predictor
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Buffer Preparation Calculator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Buffer Preparation Calculator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-buffer-calculations-work" class="md-nav__link">
+    How Buffer Calculations Work
+  </a>
+  
+    <nav class="md-nav" aria-label="How Buffer Calculations Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-considerations" class="md-nav__link">
+    Important Considerations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-laboratory-buffers" class="md-nav__link">
+    Common Laboratory Buffers
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Laboratory Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buffer-selection-guidelines" class="md-nav__link">
+    Buffer Selection Guidelines
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-examples" class="md-nav__link">
+    Step-by-Step Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-10-pbs-buffer-1-l-ph-74" class="md-nav__link">
+    Example 1: 10× PBS Buffer (1 L, pH 7.4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-1-m-tris-hcl-buffer-500-ml-ph-80" class="md-nav__link">
+    Example 2: 1 M Tris-HCl Buffer (500 mL, pH 8.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-02-m-phosphate-buffer-1-l-ph-68" class="md-nav__link">
+    Example 3: 0.2 M Phosphate Buffer (1 L, pH 6.8)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-preparation-best-practices" class="md-nav__link">
+    Buffer Preparation Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffer Preparation Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-protocol" class="md-nav__link">
+    General Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    Common Mistakes to Avoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-dependence-of-common-buffers" class="md-nav__link">
+    Temperature Dependence of Common Buffers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-component-reference" class="md-nav__link">
+    Quick Component Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amount-conversion-calculator/" class="md-nav__link">
+        Peptide Amount Conversion Calculator
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-buffer-calculations-work" class="md-nav__link">
+    How Buffer Calculations Work
+  </a>
+  
+    <nav class="md-nav" aria-label="How Buffer Calculations Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-considerations" class="md-nav__link">
+    Important Considerations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-laboratory-buffers" class="md-nav__link">
+    Common Laboratory Buffers
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Laboratory Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buffer-selection-guidelines" class="md-nav__link">
+    Buffer Selection Guidelines
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-examples" class="md-nav__link">
+    Step-by-Step Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-10-pbs-buffer-1-l-ph-74" class="md-nav__link">
+    Example 1: 10× PBS Buffer (1 L, pH 7.4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-1-m-tris-hcl-buffer-500-ml-ph-80" class="md-nav__link">
+    Example 2: 1 M Tris-HCl Buffer (500 mL, pH 8.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-02-m-phosphate-buffer-1-l-ph-68" class="md-nav__link">
+    Example 3: 0.2 M Phosphate Buffer (1 L, pH 6.8)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buffer-preparation-best-practices" class="md-nav__link">
+    Buffer Preparation Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffer Preparation Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-protocol" class="md-nav__link">
+    General Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    Common Mistakes to Avoid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-dependence-of-common-buffers" class="md-nav__link">
+    Temperature Dependence of Common Buffers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-component-reference" class="md-nav__link">
+    Quick Component Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="buffer-preparation-calculator">Buffer Preparation Calculator<a class="headerlink" href="#buffer-preparation-calculator" title="Permanent link">&para;</a></h1>
+<p>Easily calculate the exact masses and volumes of components needed to prepare common laboratory buffers. Select your buffer type, enter the target concentration, volume, and pH, and the calculator provides a complete recipe with precise amounts of each reagent.</p>
+<p><strong>Keywords:</strong> buffer calculator, PBS buffer preparation, Tris buffer, HEPES buffer, acetate buffer, citrate buffer, phosphate buffer, Henderson-Hasselbalch, buffer recipe</p>
+<hr />
+<h2 id="calculator">Calculator<a class="headerlink" href="#calculator" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <h3 style="margin-top:0;">Buffer Recipe Calculator</h3>
+
+  <label for="buf-type">Buffer Type</label>
+  <select id="buf-type" onchange="updateBufferOptions()">
+    <option value="pbs">PBS (Phosphate-Buffered Saline)</option>
+    <option value="tris">Tris-HCl</option>
+    <option value="hepes">HEPES</option>
+    <option value="acetate">Acetate Buffer</option>
+    <option value="citrate">Citrate Buffer</option>
+    <option value="phosphate">Phosphate Buffer</option>
+  </select>
+
+  <label for="buf-conc">Target Concentration (mM)</label>
+  <input type="number" id="buf-conc" value="50" step="1" min="1" max="1000">
+
+  <label for="buf-vol">Target Volume (mL)</label>
+  <input type="number" id="buf-vol" value="500" step="10" min="1" max="10000">
+
+  <div id="buf-ph-field">
+    <label for="buf-ph">Target pH</label>
+    <input type="number" id="buf-ph" value="7.4" step="0.01" min="0" max="14">
+    <small id="buf-ph-range" style="display:block;color:#888;margin-top:4px;">Recommended range: 5.5–8.0</small>
+  </div>
+
+  <div id="buf-nacl-field" style="display:none;">
+    <label for="buf-nacl">NaCl Concentration (mM) — for PBS</label>
+    <input type="number" id="buf-nacl" value="137" step="1" min="0">
+  </div>
+
+  <button class="calc-btn" onclick="calcBuffer()">Calculate Buffer Recipe</button>
+  <button class="calc-btn secondary" onclick="clearBuffer()" style="margin-left:0.5rem;">Clear</button>
+
+  <div id="buf-result" class="calc-result" style="display:none;">
+    <h3>Buffer Recipe</h3>
+    <p id="buf-summary" style="font-weight:bold;"></p>
+    <table id="buf-components-table">
+      <thead>
+        <tr><th>Component</th><th>Molecular Weight (g/mol)</th><th>Amount Needed</th><th>Unit</th></tr>
+      </thead>
+      <tbody id="buf-components-body"></tbody>
+    </table>
+    <div id="buf-instructions" style="margin-top:1rem;padding:1rem;background:#f8f9fa;border-radius:8px;"></div>
+  </div>
+</div>
+
+<h2 id="how-buffer-calculations-work">How Buffer Calculations Work<a class="headerlink" href="#how-buffer-calculations-work" title="Permanent link">&para;</a></h2>
+<p>A buffer is a solution that resists changes in pH when small amounts of acid or base are added. Buffers consist of a weak acid (HA) and its conjugate base (A⁻). The ability of a buffer to maintain pH is governed by the <strong>Henderson–Hasselbalch equation</strong>:</p>
+<p>\[ \text{pH} = \text{p}K_a + \log_{10} \frac{[\text{A}^-]}{[\text{HA}]} \]</p>
+<p>This equation is the foundation of buffer preparation. To prepare a buffer at a target pH, we use the known pKₐ of the weak acid to determine the required ratio of conjugate base to acid:</p>
+<p>\[ \frac{[\text{A}^-]}{[\text{HA}]} = 10^{(\text{pH} - \text{p}K_a)} \]</p>
+<p>Once the ratio is known, we calculate the individual concentrations of the acid and base forms that together sum to the total buffer concentration:</p>
+<p>\[ [\text{HA}] = \frac{C_{\text{total}}}{1 + 10^{(\text{pH} - \text{p}K_a)}} \]
+\[ [\text{A}^-] = C_{\text{total}} - [\text{HA}] \]</p>
+<p>Where \(C_{\text{total}}\) is the total buffer concentration (the sum of both forms). For buffers with multiple relevant pKₐ values (e.g., phosphate with pKₐ₁ = 2.14, pKₐ₂ = 7.21, pKₐ₃ = 12.67), the dominant equilibrium near the target pH is used.</p>
+<h3 id="important-considerations">Important Considerations<a class="headerlink" href="#important-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>pKₐ is temperature-dependent:</strong> The pKₐ of Tris changes by approximately –0.028 units per °C. A Tris buffer prepared at 25°C will have a different pH at 4°C or 37°C.</li>
+<li><strong>Ionic strength affects buffer capacity:</strong> Higher buffer concentrations provide greater buffering capacity but also increase ionic strength, which may affect biological systems.</li>
+<li><strong>Dilution effects:</strong> When preparing concentrated stock buffers, remember that diluting to working concentration may slightly alter the pH.</li>
+</ul>
+<h2 id="common-laboratory-buffers">Common Laboratory Buffers<a class="headerlink" href="#common-laboratory-buffers" title="Permanent link">&para;</a></h2>
+<p>The table below summarizes the buffers supported by this calculator, their pKₐ values, useful pH ranges, and typical components.</p>
+<table>
+<thead>
+<tr>
+<th>Buffer</th>
+<th>pKₐ (25°C)</th>
+<th>Useful pH Range</th>
+<th>Components</th>
+<th>Typical Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PBS</strong></td>
+<td>7.21 (phosphate)</td>
+<td>7.2–7.6</td>
+<td>NaCl, KCl, Na₂HPO₄, KH₂PO₄</td>
+<td>Cell culture, immunohistochemistry, ELISA</td>
+</tr>
+<tr>
+<td><strong>Tris-HCl</strong></td>
+<td>8.07</td>
+<td>7.0–9.0</td>
+<td>Tris base, HCl</td>
+<td>DNA/RNA electrophoresis, biochemical assays</td>
+</tr>
+<tr>
+<td><strong>HEPES</strong></td>
+<td>7.55</td>
+<td>6.8–8.2</td>
+<td>HEPES free acid, NaOH</td>
+<td>Cell culture (CO₂-independent), enzyme assays</td>
+</tr>
+<tr>
+<td><strong>Acetate</strong></td>
+<td>4.76</td>
+<td>3.5–5.5</td>
+<td>Sodium acetate, acetic acid</td>
+<td>DNA extraction, protein purification, HPLC</td>
+</tr>
+<tr>
+<td><strong>Citrate</strong></td>
+<td>3.13, 4.76, 6.40</td>
+<td>3.0–6.5</td>
+<td>Citric acid, sodium citrate</td>
+<td>Anticoagulant, antigen retrieval, ELISA</td>
+</tr>
+<tr>
+<td><strong>Phosphate</strong></td>
+<td>2.14, 7.21, 12.67</td>
+<td>5.5–8.0</td>
+<td>NaH₂PO₄, Na₂HPO₄</td>
+<td>General biochemical buffers, protein purification</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buffer-selection-guidelines">Buffer Selection Guidelines<a class="headerlink" href="#buffer-selection-guidelines" title="Permanent link">&para;</a></h3>
+<p>Choosing the right buffer for your experiment depends on several factors:</p>
+<ol>
+<li><strong>Target pH:</strong> Select a buffer whose pKₐ is within ±1 pH unit of your target pH. Buffering capacity is maximal when pH = pKₐ.</li>
+<li><strong>Temperature sensitivity:</strong> Tris buffers change significantly with temperature. For temperature-sensitive experiments, consider HEPES or phosphate buffers.</li>
+<li><strong>Biological compatibility:</strong> Some buffers interfere with specific assays. Phosphate can precipitate calcium and magnesium ions. Tris contains a primary amine that can interfere with protein assays (e.g., Bradford, BCA).</li>
+<li><strong>Metal ion interactions:</strong> Phosphate buffers can chelate divalent cations. Citrate is a strong chelator of calcium ions.</li>
+<li><strong>UV absorbance:</strong> Tris and HEPES have minimal absorbance at 280 nm, making them suitable for protein UV spectroscopy. Acetate absorbs strongly below 230 nm.</li>
+</ol>
+<h2 id="step-by-step-examples">Step-by-Step Examples<a class="headerlink" href="#step-by-step-examples" title="Permanent link">&para;</a></h2>
+<h3 id="example-1-10-pbs-buffer-1-l-ph-74">Example 1: 10× PBS Buffer (1 L, pH 7.4)<a class="headerlink" href="#example-1-10-pbs-buffer-1-l-ph-74" title="Permanent link">&para;</a></h3>
+<p>Phosphate-buffered saline is the most widely used buffer in biological research. A 10× concentrate is typically prepared and diluted to 1× before use.</p>
+<p><strong>Given:</strong> Target 10× PBS, 1 L total volume, pH 7.4</p>
+<p><strong>Step 1 — Calculate the phosphate ratio using Henderson–Hasselbalch:</strong></p>
+<p>\[ \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(7.4 - 7.21)} = 10^{0.19} = 1.55 \]</p>
+<p><strong>Step 2 — Determine component concentrations:</strong>
+- Total phosphate concentration = 10× 10 mM = 100 mM
+- [H₂PO₄⁻] = 100 / (1 + 1.55) = 39.2 mM
+- [HPO₄²⁻] = 100 – 39.2 = 60.8 mM</p>
+<p><strong>Step 3 — Calculate masses for 1 L:</strong>
+- <strong>NaCl:</strong> 1370 mM → 1370 × 10⁻³ mol/L × 58.44 g/mol × 1 L = <strong>80.1 g</strong>
+- <strong>KCl:</strong> 27 mM → 27 × 10⁻³ × 74.55 × 1 = <strong>2.01 g</strong>
+- <strong>Na₂HPO₄:</strong> 60.8 mM → 60.8 × 10⁻³ × 141.96 × 1 = <strong>8.63 g</strong> (anhydrous)
+- <strong>KH₂PO₄:</strong> 39.2 mM → 39.2 × 10⁻³ × 136.09 × 1 = <strong>5.33 g</strong></p>
+<p><strong>Step 4 — Preparation:</strong> Dissolve the salts in ~800 mL of ultrapure water, adjust pH to 7.4 with HCl or NaOH if necessary, and bring to 1 L final volume. Filter sterilize for cell culture use.</p>
+<h3 id="example-2-1-m-tris-hcl-buffer-500-ml-ph-80">Example 2: 1 M Tris-HCl Buffer (500 mL, pH 8.0)<a class="headerlink" href="#example-2-1-m-tris-hcl-buffer-500-ml-ph-80" title="Permanent link">&para;</a></h3>
+<p>Tris buffer at 1 M is a common stock solution for electrophoresis and biochemical assays.</p>
+<p><strong>Given:</strong> 1 M Tris-HCl, 500 mL, pH 8.0</p>
+<p><strong>Step 1 — Calculate mass of Tris base:</strong>
+\[ m = C \times \text{MW} \times V = 1.0 \times 121.14 \times 0.5 = 60.57 \text{ g} \]</p>
+<p><strong>Step 2 — Calculate HCl volume for pH adjustment:</strong>
+At pH 8.0, the ratio of Tris·H⁺ (conjugate acid) to Tris (base) is:
+\[ \frac{[\text{Tris·H}^+]}{[\text{Tris}]} = 10^{(8.07 - 8.0)} = 10^{0.07} = 1.17 \]</p>
+<p>Fraction protonated = 1.17 / (1 + 1.17) = 0.539
+HCl needed = 0.539 × 1.0 M × 0.5 L = 0.27 moles</p>
+<p>Using 6 M HCl: 0.27 mol / 6 M = <strong>0.045 L = 45 mL</strong></p>
+<blockquote>
+<p><strong>Note:</strong> In practice, you add concentrated HCl dropwise while monitoring pH until the target is reached. The calculated value serves as an estimate of the volume needed.</p>
+</blockquote>
+<p><strong>Step 3 — Preparation:</strong> Dissolve 60.57 g Tris base in ~400 mL water, slowly add ~45 mL of 6 M HCl while stirring, adjust to pH 8.0, bring to 500 mL final volume.</p>
+<h3 id="example-3-02-m-phosphate-buffer-1-l-ph-68">Example 3: 0.2 M Phosphate Buffer (1 L, pH 6.8)<a class="headerlink" href="#example-3-02-m-phosphate-buffer-1-l-ph-68" title="Permanent link">&para;</a></h3>
+<p>Phosphate buffer at pH 6.8 is commonly used for protein chromatography and enzymatic assays.</p>
+<p><strong>Given:</strong> 0.2 M sodium phosphate buffer, 1 L, pH 6.8</p>
+<p><strong>Step 1 — Calculate ratio:</strong>
+\[ \frac{[\text{HPO}_4^{2-}]}{[\text{H}_2\text{PO}_4^-]} = 10^{(6.8 - 7.21)} = 10^{-0.41} = 0.389 \]</p>
+<p><strong>Step 2 — Component concentrations:</strong>
+- Total phosphate = 0.2 M = 200 mM
+- [H₂PO₄⁻] = 200 / (1 + 0.389) = 144 mM
+- [HPO₄²⁻] = 200 – 144 = 56 mM</p>
+<p><strong>Step 3 — Calculate masses:</strong>
+- <strong>NaH₂PO₄·H₂O</strong> (MW = 137.99): 0.144 mol/L × 137.99 g/mol × 1 L = <strong>19.87 g</strong>
+- <strong>Na₂HPO₄</strong> (anhydrous, MW = 141.96): 0.056 mol/L × 141.96 g/mol × 1 L = <strong>7.95 g</strong></p>
+<p><strong>Step 4 — Preparation:</strong> Dissolve both salts in ~900 mL water, adjust pH to 6.8, bring to 1 L.</p>
+<h2 id="buffer-preparation-best-practices">Buffer Preparation Best Practices<a class="headerlink" href="#buffer-preparation-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="general-protocol">General Protocol<a class="headerlink" href="#general-protocol" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Use high-quality water:</strong> Always use ultrapure deionized water (≥18.2 MΩ·cm) for buffer preparation. Impurities can alter pH, introduce contaminants, and interfere with downstream applications.</p>
+</li>
+<li>
+<p><strong>Weigh accurately:</strong> Use a calibrated analytical balance. For precision, account for the hydration state of salts (e.g., Na₂HPO₄·7H₂O vs. anhydrous). The molecular weight used in calculation must match the form of the chemical being weighed.</p>
+</li>
+<li>
+<p><strong>Dissolve completely:</strong> Add the weighed components to approximately 80% of the final volume of water. Stir or sonicate until fully dissolved before adjusting pH.</p>
+</li>
+<li>
+<p><strong>Calibrate the pH meter:</strong> Always calibrate your pH meter with fresh standards (typically pH 4.0, 7.0, and 10.0) at the same temperature at which the buffer will be used. Allow the reading to stabilize before recording.</p>
+</li>
+<li>
+<p><strong>Adjust pH carefully:</strong> Add acid (HCl) or base (NaOH) dropwise while stirring. For fine adjustments near the target pH, use dilute solutions (e.g., 0.1 M or 1 M rather than concentrated stocks). Avoid overshooting — if you pass the target pH, it is better to discard and start over than to "back-titrate," as this introduces excess ions.</p>
+</li>
+<li>
+<p><strong>Bring to final volume:</strong> After pH adjustment, transfer the solution to a volumetric flask and bring to the final volume with water. Mix thoroughly by inverting.</p>
+</li>
+<li>
+<p><strong>Filter and store:</strong> Filter through a 0.22 µm or 0.45 µm filter for long-term storage or cell culture use. Store buffers at the appropriate temperature (room temperature, 4°C, or frozen) in tightly sealed containers. Label with buffer type, concentration, pH, date, and preparer initials.</p>
+</li>
+</ol>
+<h3 id="common-mistakes-to-avoid">Common Mistakes to Avoid<a class="headerlink" href="#common-mistakes-to-avoid" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Consequence</th>
+<th>Prevention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using wrong salt form (e.g., anhydrous vs. heptahydrate)</td>
+<td>Incorrect concentration</td>
+<td>Verify MW on the reagent bottle matches the form used</td>
+</tr>
+<tr>
+<td>Adjusting pH before dissolving all components</td>
+<td>Inaccurate final pH</td>
+<td>Dissolve all solutes first, then adjust pH</td>
+</tr>
+<tr>
+<td>pH meter not calibrated or temperature-compensated</td>
+<td>Wrong pH reading</td>
+<td>Calibrate daily; use automatic temperature compensation</td>
+</tr>
+<tr>
+<td>Adding too much strong acid/base (overshooting)</td>
+<td>Excess ionic strength, altered buffer properties</td>
+<td>Use dilute acid/base near target pH; never back-titrate</td>
+</tr>
+<tr>
+<td>Not accounting for temperature effects</td>
+<td>pH drift at experimental temperature</td>
+<td>Prepare or verify pH at the working temperature</td>
+</tr>
+<tr>
+<td>Storing buffers inappropriately</td>
+<td>Microbial growth, pH drift</td>
+<td>Filter sterilize; store at 4°C; discard after 1 month</td>
+</tr>
+<tr>
+<td>Using metal spatulas with Tris or phosphate buffers</td>
+<td>Contamination</td>
+<td>Use plastic spatulas for buffer salts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="temperature-dependence-of-common-buffers">Temperature Dependence of Common Buffers<a class="headerlink" href="#temperature-dependence-of-common-buffers" title="Permanent link">&para;</a></h3>
+<p>Temperature changes affect buffer pH differently depending on the buffer system:</p>
+<table>
+<thead>
+<tr>
+<th>Buffer</th>
+<th>dpH/dT (units/°C)</th>
+<th>pH at 4°C</th>
+<th>pH at 25°C</th>
+<th>pH at 37°C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tris-HCl</td>
+<td>–0.028</td>
+<td>8.58</td>
+<td>8.07</td>
+<td>7.73</td>
+</tr>
+<tr>
+<td>HEPES</td>
+<td>–0.014</td>
+<td>7.90</td>
+<td>7.55</td>
+<td>7.33</td>
+</tr>
+<tr>
+<td>Phosphate</td>
+<td>–0.003</td>
+<td>7.25</td>
+<td>7.21</td>
+<td>7.18</td>
+</tr>
+<tr>
+<td>Acetate</td>
+<td>+0.0002</td>
+<td>4.76</td>
+<td>4.76</td>
+<td>4.76</td>
+</tr>
+<tr>
+<td>PBS</td>
+<td>–0.003</td>
+<td>7.44</td>
+<td>7.40</td>
+<td>7.37</td>
+</tr>
+</tbody>
+</table>
+<p>Tris buffers are particularly sensitive to temperature. A Tris buffer prepared at room temperature (pH 8.0) will have a pH of approximately 8.6 at 4°C and 7.7 at 37°C. Always verify the pH at the temperature of your experiment.</p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<details>
+  <summary><strong>What is the Henderson–Hasselbalch equation and how is it used for buffers?</strong></summary>
+  <p>The Henderson–Hasselbalch equation is the mathematical foundation of buffer preparation:</p>
+  <p style="text-align:center;font-family:monospace;font-size:1.05rem;">
+    pH = pKₐ + log([A⁻]/[HA])
+  </p>
+  <p>It relates the pH of a buffer solution to the pKₐ of the weak acid and the ratio of its conjugate base to its conjugate acid. To prepare a buffer at a specific pH, you:</p>
+  <ol>
+    <li>Determine the pKₐ of the buffer system closest to your target pH</li>
+    <li>Calculate the required ratio [A⁻]/[HA] = 10^(pH – pKₐ)</li>
+    <li>Distribute the total buffer concentration between the acid and base forms according to this ratio</li>
+  </ol>
+  <p>The equation assumes ideal behavior and is most accurate when the concentrations of the acid and base forms are within roughly an order of magnitude of each other (i.e., pH within ±1 unit of pKₐ).</p>
+</details>
+
+<details>
+  <summary><strong>What is buffering capacity and how do I maximize it?</strong></summary>
+  <p><strong>Buffering capacity (β)</strong> is a measure of a buffer's ability to resist pH change upon addition of acid or base. It is defined as:</p>
+  <p style="text-align:center;font-family:monospace;font-size:1.05rem;">
+    β = d[C<sub>b</sub>] / dpH = –d[C<sub>a</sub>] / dpH
+  </p>
+  <p>where d[C<sub>b</sub>] is the amount of strong base added and dpH is the resulting pH change.</p>
+  <p>To maximize buffering capacity:</p>
+  <ul>
+    <li><strong>Match pH to pKₐ:</strong> Buffering capacity is maximal when pH = pKₐ and decreases as the pH deviates from the pKₐ.</li>
+    <li><strong>Use higher concentrations:</strong> A 100 mM buffer has roughly twice the capacity of a 50 mM buffer at the same pH.</li>
+    <li><strong>Stay within ±1 pH unit of pKₐ:</strong> Outside this range, the buffer has very little capacity in one direction.</li>
+  </ul>
+  <p>For most biological applications, buffer concentrations of 10–100 mM provide adequate buffering capacity.</p>
+</details>
+
+<details>
+  <summary><strong>Is this calculator suitable for cell culture buffer preparation?</strong></summary>
+  <p><strong>Yes, with caveats.</strong> The calculator provides accurate recipes for common cell culture buffers including PBS and HEPES. However, for cell culture applications:</p>
+  <ul>
+    <li>Always filter-sterilize (0.22 µm) buffers before adding to cells.</li>
+    <li>Verify osmolarity — cell culture media should be isotonic (~280–320 mOsm/L).</li>
+    <li>HEPES is preferred for CO₂-independent culture; PBS is a wash buffer, not a growth medium.</li>
+    <li>Endotoxin levels should be monitored for sensitive cell types.</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>How do I prepare 1× PBS from a 10× stock?</strong></summary>
+  <p>To prepare 1 L of 1× PBS from a 10× stock:</p>
+  <ol>
+    <li>Measure <strong>100 mL</strong> of 10× PBS stock solution.</li>
+    <li>Add to ~800 mL of ultrapure water.</li>
+    <li>Mix thoroughly and check the pH — adjust if necessary.</li>
+    <li>Bring to a final volume of <strong>1 L</strong> with water.</li>
+  </ol>
+  <p>Alternatively, use the recipe from this calculator at 1× concentration (e.g., 137 mM NaCl, 2.7 mM KCl, 10 mM phosphate, pH 7.4) for direct preparation. Use our <a href="../dilution-calculator/">Dilution Calculator</a> for other dilution factors.</p>
+</details>
+
+<details>
+  <summary><strong>Why does my Tris buffer pH change when I cool it to 4°C?</strong></summary>
+  <p>Tris buffers have a strong temperature coefficient of –0.028 pH units/°C. This means that the pH of a Tris buffer increases by approximately 0.028 units for every 1°C decrease in temperature. A Tris buffer prepared at pH 8.0 at 25°C will have a pH of approximately <strong>8.6 at 4°C</strong> and approximately <strong>7.7 at 37°C</strong>.</p>
+  <p>For temperature-sensitive experiments:</p>
+  <ul>
+    <li>Prepare and adjust pH at the temperature at which the buffer will be used.</li>
+    <li>Consider using HEPES (dpH/dT = –0.014) or phosphate (dpH/dT = –0.003) buffers instead.</li>
+    <li>Always report the temperature at which pH was measured when publishing results.</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>Can I use this calculator for MOPS or MES buffers?</strong></summary>
+  <p><strong>Not directly</strong> — this calculator supports PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers. However, MOPS (pKₐ = 7.20) and MES (pKₐ = 6.15) are zwitterionic "Good's buffers" that follow the same Henderson–Hasselbalch principles. To prepare them manually:</p>
+  <ul>
+    <li>Weigh the calculated mass of MOPS or MES free acid.</li>
+    <li>Dissolve in ~80% of the final volume of water.</li>
+    <li>Adjust pH with NaOH (for MOPS/MES free acid) or HCl (for MOPS/MES sodium salt).</li>
+    <li>Bring to final volume.</li>
+  </ul>
+  <p>The calculation procedure is identical to the Tris-HCl or HEPES examples shown above — substitute the appropriate pKₐ and molecular weight.</p>
+</details>
+
+<details>
+  <summary><strong>How do I account for hydrated salts in buffer recipes?</strong></summary>
+  <p>Hydrated salts contain water molecules in their crystal structure, which adds to their molecular weight. Common hydrated forms include:</p>
+  <ul>
+    <li><strong>Na₂HPO₄·7H₂O</strong> (dibasic sodium phosphate heptahydrate, MW = 268.07 g/mol)</li>
+    <li><strong>NaH₂PO₄·H₂O</strong> (monobasic sodium phosphate monohydrate, MW = 137.99 g/mol)</li>
+    <li><strong>Sodium acetate·3H₂O</strong> (trihydrate, MW = 136.08 g/mol)</li>
+    <li><strong>Sodium citrate·2H₂O</strong> (dihydrate, MW = 294.10 g/mol)</li>
+  </ul>
+  <p>When calculating the mass needed, always use the molecular weight corresponding to the specific hydrated form you have in your reagent bottle. Using the anhydrous MW for a hydrated salt will result in weighing too little of the actual reagent.</p>
+</details>
+
+<details>
+  <summary><strong>What is the difference between PBS and phosphate buffer?</strong></summary>
+  <p><strong>Phosphate buffer</strong> contains only phosphate species (NaH₂PO₄/Na₂HPO₄) and provides pH buffering. <strong>PBS (Phosphate-Buffered Saline)</strong> additionally contains NaCl and KCl to provide physiological osmolarity and ionic strength — it mimics the salt concentration of the human body.</p>
+  <p>Use PBS for:</p>
+  <ul>
+    <li>Washing cells or tissues</li>
+    <li>Immunoassay wash steps (ELISA, Western blot)</li>
+    <li>Cell culture applications requiring isotonic conditions</li>
+  </ul>
+  <p>Use plain phosphate buffer for:</p>
+  <ul>
+    <li>Chromatography (where NaCl may interfere)</li>
+    <li>Enzyme assays where specific ionic strength is desired</li>
+    <li>Applications where potassium or sodium concentration must be controlled</li>
+  </ul>
+</details>
+
+<hr />
+<h2 id="quick-component-reference">Quick Component Reference<a class="headerlink" href="#quick-component-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Buffer System</th>
+<th>Acid Form</th>
+<th>Base Form</th>
+<th align="center">pKₐ (25°C)</th>
+<th align="center">Typical Conc. Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phosphate (pK₂)</td>
+<td>NaH₂PO₄</td>
+<td>Na₂HPO₄</td>
+<td align="center">7.21</td>
+<td align="center">10–500 mM</td>
+</tr>
+<tr>
+<td>Tris</td>
+<td>Tris·HCl (cationic acid)</td>
+<td>Tris base</td>
+<td align="center">8.07</td>
+<td align="center">10–1000 mM</td>
+</tr>
+<tr>
+<td>HEPES</td>
+<td>HEPES (free acid)</td>
+<td>HEPES⁻ (anion)</td>
+<td align="center">7.55</td>
+<td align="center">10–100 mM</td>
+</tr>
+<tr>
+<td>Acetate</td>
+<td>CH₃COOH (acetic acid)</td>
+<td>CH₃COO⁻ (acetate)</td>
+<td align="center">4.76</td>
+<td align="center">10–200 mM</td>
+</tr>
+<tr>
+<td>Citrate (pK₂)</td>
+<td>H₂Cit⁻</td>
+<td>HCit²⁻</td>
+<td align="center">4.76</td>
+<td align="center">10–100 mM</td>
+</tr>
+<tr>
+<td>Citrate (pK₃)</td>
+<td>HCit²⁻</td>
+<td>Cit³⁻</td>
+<td align="center">6.40</td>
+<td align="center">10–100 mM</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../dilution-calculator/">Dilution Calculator</a> — Calculate dilution volumes for stock solutions</li>
+<li><a href="../molarity-calculator/">Molarity Calculator</a> — Convert between concentration units</li>
+<li><a href="../peptide-property-calculator/">Peptide Properties Calculator</a> — Calculate peptide physicochemical properties</li>
+<li><a href="../molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate molecular weight from peptide sequence</li>
+<li><a href="../solubility-predictor/">pH Solubility Predictor</a> — Predict peptide solubility as a function of pH</li>
+</ul>
+<script>
+// Buffer preparation calculator — complete implementation
+
+const BUFFER_DATA = {
+  pbs: {
+    name: 'PBS (Phosphate-Buffered Saline)',
+    hasPh: true,
+    phMin: 6.5,
+    phMax: 8.0,
+    phDefault: 7.4,
+    hasNaCl: true,
+    naclDefault: 137,
+    kcl: 2.7,
+    totalPhosphate: 10,
+    pka: 7.21,
+    description: 'Standard phosphate-buffered saline for biological research.',
+    components: function(conc, vol, ph, nacl) {
+      const volL = vol / 1000;
+      const ratio = Math.pow(10, ph - this.pka);
+      const totalP = this.totalPhosphate / 1000; // converted to M
+      const ha = totalP / (1 + ratio);
+      const a = totalP - ha;
+      const naclM = (nacl || this.naclDefault) / 1000;
+      const kclM = this.kcl / 1000;
+      return {
+        'NaCl': { mw: 58.44, moles: naclM * volL },
+        'KCl': { mw: 74.55, moles: kclM * volL },
+        'Na₂HPO₄ (dibasic, anhydrous)': { mw: 141.96, moles: a * volL },
+        'KH₂PO₄ (monobasic)': { mw: 136.09, moles: ha * volL }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve the weighed salts in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Adjust pH to ' + ph.toFixed(1) + ' using 1 M HCl or 1 M NaOH. Bring the final volume to ' + vol + ' mL with water. Filter sterilize through a 0.22 µm filter for cell culture use. Store at 4°C or room temperature.';
+    }
+  },
+  tris: {
+    name: 'Tris-HCl',
+    hasPh: true,
+    phMin: 7.0,
+    phMax: 9.0,
+    phDefault: 8.0,
+    hasNaCl: false,
+    pka: 8.07,
+    description: 'Tris(hydroxymethyl)aminomethane buffer, common in biochemistry.',
+    components: function(conc, vol, ph) {
+      const volL = vol / 1000;
+      const concM = conc / 1000;
+      const totalMoles = concM * volL;
+      // At the target pH, fraction of Tris that is protonated (Tris·H+)
+      // pH = pKa + log([base]/[acid])  →  [base]/[acid] = 10^(pH-pKa)
+      // But note: Tris pKa refers to the equilibrium Tris·H+ ⇌ Tris + H+
+      // So [base]/[acid] = [Tris]/[Tris·H+] = 10^(pH-pKa)
+      const ratio = Math.pow(10, ph - this.pka);
+      const acidFrac = 1 / (1 + ratio); // fraction that is Tris·H+ (protonated)
+      const trisMoles = totalMoles; // all Tris, regardless of protonation state
+      // HCl needed = acidFrac * totalMoles (to protonate that fraction)
+      const hclMoles = acidFrac * totalMoles;
+      // Estimate volume of concentrated HCl
+      const hclVol6M = hclMoles / 6; // liters of 6M HCl
+      const hclVol1M = hclMoles / 1; // liters of 1M HCl
+      return {
+        'Tris base (MW 121.14)': { mw: 121.14, moles: trisMoles },
+        'HCl (6 M) — estimated volume': { mw: 36.46, moles: hclMoles, vol: hclVol6M * 1000, volUnit: 'mL (6 M HCl)' },
+        'HCl (1 M) — estimated volume (for fine adjustment)': { mw: 36.46, moles: 0, vol: hclVol1M * 1000, volUnit: 'mL (1 M HCl)' }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve the Tris base in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Add the estimated volume of 6 M HCl dropwise while stirring, monitoring pH continuously. Adjust carefully to pH ' + ph.toFixed(2) + ' using 1 M HCl for fine adjustments near the target. Bring to a final volume of ' + vol + ' mL. Note: Tris pH is highly temperature-dependent (ΔpH/°C = –0.028). Adjust pH at the temperature at which the buffer will be used.';
+    }
+  },
+  hepes: {
+    name: 'HEPES',
+    hasPh: true,
+    phMin: 6.8,
+    phMax: 8.2,
+    phDefault: 7.5,
+    hasNaCl: false,
+    pka: 7.55,
+    description: 'N-2-hydroxyethylpiperazine-N\'-2-ethanesulfonic acid buffer, ideal for cell culture.',
+    components: function(conc, vol, ph) {
+      const volL = vol / 1000;
+      const concM = conc / 1000;
+      const totalMoles = concM * volL;
+      const ratio = Math.pow(10, ph - this.pka);
+      const acidFrac = 1 / (1 + ratio); // HEPES free acid fraction
+      const baseFrac = 1 - acidFrac;    // HEPES⁻ (anion) fraction
+      const hepesAcidMoles = acidFrac * totalMoles;
+      // NaOH needed to deprotonate the acid fraction
+      const naohMoles = hepesAcidMoles;
+      return {
+        'HEPES free acid (MW 238.30)': { mw: 238.30, moles: totalMoles },
+        'NaOH (5 M) — estimated volume for pH adjustment': { mw: 40.00, moles: naohMoles, vol: naohMoles / 5 * 1000, volUnit: 'mL (5 M NaOH)' }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve the HEPES free acid in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Add the estimated volume of 5 M NaOH slowly while stirring until the pH reaches ' + ph.toFixed(2) + '. Use 1 M NaOH for fine adjustments. Bring to a final volume of ' + vol + ' mL. Filter sterilize for cell culture use. Store at 4°C.';
+    }
+  },
+  acetate: {
+    name: 'Acetate Buffer',
+    hasPh: true,
+    phMin: 3.5,
+    phMax: 5.5,
+    phDefault: 4.8,
+    hasNaCl: false,
+    pka: 4.76,
+    description: 'Acetic acid / sodium acetate buffer, used in DNA extraction and HPLC.',
+    components: function(conc, vol, ph) {
+      const volL = vol / 1000;
+      const concM = conc / 1000;
+      const totalMoles = concM * volL;
+      const ratio = Math.pow(10, ph - this.pka);
+      const ha = totalMoles / (1 + ratio);  // acetic acid (CH₃COOH)
+      const a = totalMoles - ha;             // acetate ion (CH₃COO⁻)
+      // Acetic acid density ~1.05 g/mL, MW=60.05 → ~17.5 M for glacial
+      const glacialAA_M = 17.5; // approximate molarity of glacial acetic acid
+      const aaVol = ha / glacialAA_M * 1000; // mL of glacial acetic acid
+      return {
+        'Sodium acetate (anhydrous, MW 82.03)': { mw: 82.03, moles: a },
+        'Sodium acetate·3H₂O (trihydrate, MW 136.08) — alternate': { mw: 136.08, moles: 0, alt: true },
+        'Glacial acetic acid (17.5 M) — estimated volume': { mw: 60.05, moles: ha, vol: aaVol, volUnit: 'mL (glacial acetic acid)' }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve the sodium acetate in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Add the estimated volume of glacial acetic acid slowly while stirring. Adjust pH to ' + ph.toFixed(2) + ' using either acetic acid (to lower pH) or sodium acetate (to raise pH). Bring to a final volume of ' + vol + ' mL with water.';
+    }
+  },
+  citrate: {
+    name: 'Citrate Buffer',
+    hasPh: true,
+    phMin: 3.0,
+    phMax: 6.5,
+    phDefault: 4.8,
+    hasNaCl: false,
+    pka: 4.76, // use pKa2 as the dominant one for most biological citrate buffers
+    pka2: 6.40,
+    pka1: 3.13,
+    description: 'Citric acid / sodium citrate buffer, used for antigen retrieval and anticoagulation.',
+    components: function(conc, vol, ph) {
+      const volL = vol / 1000;
+      const concM = conc / 1000;
+      const totalMoles = concM * volL;
+      // For citrate, we have three pKa values. For the typical pH range:
+      // pH 3.0-4.0: use pKa1 (3.13) → H3Cit/H2Cit⁻
+      // pH 4.0-5.5: use pKa2 (4.76) → H2Cit⁻/HCit²⁻
+      // pH 5.5-6.5: use pKa3 (6.40) → HCit²⁻/Cit³⁻
+      let pka = this.pka2;
+      let acidLabel = 'Sodium citrate (dibasic, Na₂HCit)';
+      let baseLabel = 'Sodium citrate (tribasic, Na₃Cit)';
+      if (ph < 4.0) {
+        pka = this.pka1;
+        acidLabel = 'Citric acid (H₃Cit, MW 192.12)';
+        baseLabel = 'Sodium citrate (monobasic, NaH₂Cit)';
+      } else if (ph >= 4.0 && ph < 5.5) {
+        pka = this.pka2;
+        acidLabel = 'Sodium citrate (monobasic, NaH₂Cit)';
+        baseLabel = 'Sodium citrate (dibasic, Na₂HCit)';
+      } else {
+        pka = this.pka2;
+        acidLabel = 'Sodium citrate (dibasic, Na₂HCit)';
+        baseLabel = 'Sodium citrate (tribasic, Na₃Cit)';
+      }
+      const ratio = Math.pow(10, ph - pka);
+      const ha = totalMoles / (1 + ratio);
+      const a = totalMoles - ha;
+      return {
+        [acidLabel]: { mw: ph < 4.0 ? 192.12 : (ph < 5.5 ? 214.11 : 236.09), moles: ha },
+        [baseLabel]: { mw: ph < 4.0 ? 214.11 : (ph < 5.5 ? 236.09 : 258.07), moles: a }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve the weighed citrate salts in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Adjust pH to ' + ph.toFixed(2) + ' using 1 M HCl or 1 M NaOH as needed. Bring to a final volume of ' + vol + ' mL. Citrate buffers are commonly used at 10–50 mM for antigen retrieval (pH 6.0) and at 100 mM for anticoagulant applications (pH 4.5–5.0).';
+    }
+  },
+  phosphate: {
+    name: 'Phosphate Buffer',
+    hasPh: true,
+    phMin: 5.5,
+    phMax: 8.0,
+    phDefault: 7.2,
+    hasNaCl: false,
+    pka: 7.21,
+    description: 'Sodium phosphate buffer, widely used in protein biochemistry.',
+    components: function(conc, vol, ph) {
+      const volL = vol / 1000;
+      const concM = conc / 1000;
+      const totalMoles = concM * volL;
+      const ratio = Math.pow(10, ph - this.pka);
+      const ha = totalMoles / (1 + ratio);  // H₂PO₄⁻
+      const a = totalMoles - ha;             // HPO₄²⁻
+      return {
+        'NaH₂PO₄·H₂O (monobasic, MW 137.99)': { mw: 137.99, moles: ha },
+        'NaH₂PO₄ (anhydrous, MW 119.98) — alternate': { mw: 119.98, moles: 0, alt: true },
+        'Na₂HPO₄ (dibasic, anhydrous, MW 141.96)': { mw: 141.96, moles: a },
+        'Na₂HPO₄·7H₂O (dibasic heptahydrate, MW 268.07) — alternate': { mw: 268.07, moles: 0, alt: true }
+      };
+    },
+    instructions: function(conc, vol, ph) {
+      return 'Dissolve both phosphate salts in approximately ' + (vol * 0.8).toFixed(0) + ' mL of ultrapure water. Adjust pH to ' + ph.toFixed(2) + ' using 1 M H₃PO₄ (to lower pH) or 1 M NaOH (to raise pH). Bring to a final volume of ' + vol + ' mL. For chromatography applications, degas the buffer under vacuum with stirring before use.';
+    }
+  }
+};
+
+function updateBufferOptions() {
+  const type = document.getElementById('buf-type').value;
+  const data = BUFFER_DATA[type];
+  if (!data) return;
+
+  const phField = document.getElementById('buf-ph-field');
+  const phInput = document.getElementById('buf-ph');
+  const phRange = document.getElementById('buf-ph-range');
+  const naclField = document.getElementById('buf-nacl-field');
+  const naclInput = document.getElementById('buf-nacl');
+
+  if (data.hasPh) {
+    phField.style.display = 'block';
+    phInput.min = data.phMin;
+    phInput.max = data.phMax;
+    phInput.value = data.phDefault;
+    phRange.textContent = 'Recommended range: ' + data.phMin + '–' + data.phMax;
+  } else {
+    phField.style.display = 'none';
+  }
+
+  if (data.hasNaCl) {
+    naclField.style.display = 'block';
+    naclInput.value = data.naclDefault;
+  } else {
+    naclField.style.display = 'none';
+  }
+}
+
+function calcBuffer() {
+  const type = document.getElementById('buf-type').value;
+  const conc = parseFloat(document.getElementById('buf-conc').value);
+  const vol = parseFloat(document.getElementById('buf-vol').value);
+  const ph = parseFloat(document.getElementById('buf-ph').value);
+  const nacl = parseFloat(document.getElementById('buf-nacl').value);
+
+  const data = BUFFER_DATA[type];
+  if (!data) return;
+
+  // Validation
+  if (!conc || conc <= 0) { alert('Please enter a valid target concentration.'); return; }
+  if (!vol || vol <= 0) { alert('Please enter a valid target volume.'); return; }
+  if (data.hasPh && (!ph || ph < data.phMin || ph > data.phMax)) {
+    alert('pH must be between ' + data.phMin + ' and ' + data.phMax + ' for ' + data.name + '.');
+    return;
+  }
+
+  const components = data.components(conc, vol, ph, nacl);
+  const resultDiv = document.getElementById('buf-result');
+  const summary = document.getElementById('buf-summary');
+  const tbody = document.getElementById('buf-components-body');
+  const instructions = document.getElementById('buf-instructions');
+
+  // Show result
+  resultDiv.style.display = 'block';
+
+  // Summary
+  summary.textContent = data.name + ' — ' + conc + ' mM, ' + vol + ' mL, pH ' + (ph ? ph.toFixed(2) : 'N/A');
+
+  // Build table
+  tbody.innerHTML = '';
+  let totalMass = 0;
+  for (const [name, comp] of Object.entries(components)) {
+    if (comp.alt) continue; // skip alternate forms in main table
+    const tr = document.createElement('tr');
+    const mass = comp.moles * comp.mw;
+    totalMass += mass;
+    let amountStr, unitStr;
+    if (comp.vol !== undefined) {
+      amountStr = comp.vol.toFixed(2);
+      unitStr = comp.volUnit || 'mL';
+    } else if (mass >= 1) {
+      amountStr = mass.toFixed(4);
+      unitStr = 'g';
+    } else if (mass >= 0.001) {
+      amountStr = (mass * 1000).toFixed(2);
+      unitStr = 'mg';
+    } else {
+      amountStr = (mass * 1e6).toFixed(2);
+      unitStr = 'µg';
+    }
+    tr.innerHTML = '<td>' + name + '</td><td>' + comp.mw.toFixed(2) + '</td><td>' + amountStr + '</td><td>' + unitStr + '</td>';
+    tbody.appendChild(tr);
+
+    // Also add hydrated/alternate forms as notes
+    // Check if next is an alternate
+    const keys = Object.keys(components);
+    const idx = keys.indexOf(name);
+    if (idx < keys.length - 1 && components[keys[idx+1]] && components[keys[idx+1]].alt) {
+      const altComp = components[keys[idx+1]];
+      const altMass = comp.moles * altComp.mw;
+      const altTr = document.createElement('tr');
+      altTr.style.color = '#888';
+      altTr.style.fontStyle = 'italic';
+      let altAmountStr = altMass >= 1 ? altMass.toFixed(4) + ' g' : (altMass*1000).toFixed(2) + ' mg';
+      altTr.innerHTML = '<td>↳ ' + keys[idx+1] + '</td><td>' + altComp.mw.toFixed(2) + '</td><td colspan="2">' + altAmountStr + ' (alternate)</td>';
+      tbody.appendChild(altTr);
+    }
+  }
+
+  // Instructions
+  instructions.innerHTML = '<h4>Preparation Instructions</h4><p>' + data.instructions(conc, vol, ph) + '</p>';
+
+  // Scroll to result
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearBuffer() {
+  document.getElementById('buf-conc').value = '50';
+  document.getElementById('buf-vol').value = '500';
+  document.getElementById('buf-ph').value = '7.4';
+  document.getElementById('buf-nacl').value = '137';
+  document.getElementById('buf-result').style.display = 'none';
+  document.getElementById('buf-type').value = 'pbs';
+  updateBufferOptions();
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateBufferOptions();
+});
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

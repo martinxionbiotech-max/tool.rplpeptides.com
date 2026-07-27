@@ -64,3 +64,6 @@ nav:
   - Peptide Comparison Tool: peptide-comparison/index.md
   - Storage Stability Calculator: storage-calculator/index.md
   - Amino Acid Code Converter: amino-acid-converter/index.md
+  - Peptide Solubility Predictor: solubility-predictor/index.md
+  - Buffer Preparation Calculator: buffer-calculator/index.md
+  - Peptide Amount Conversion Calculator: amount-conversion-calculator/index.md

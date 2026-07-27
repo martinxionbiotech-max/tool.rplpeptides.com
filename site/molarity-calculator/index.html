@@ -501,26 +501,6 @@
     Calculator
   </a>
   
-    <nav class="md-nav" aria-label="Calculator">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-molarity-calculations-work" class="md-nav__link">
-    How Molarity Calculations Work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#core-formulas" class="md-nav__link">
-    Core Formulas
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -612,6 +592,51 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solubility-predictor/" class="md-nav__link">
+        Peptide Solubility Predictor
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buffer-calculator/" class="md-nav__link">
+        Buffer Preparation Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amount-conversion-calculator/" class="md-nav__link">
+        Peptide Amount Conversion Calculator
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -642,26 +667,6 @@
   <a href="#calculator" class="md-nav__link">
     Calculator
   </a>
-  
-    <nav class="md-nav" aria-label="Calculator">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-molarity-calculations-work" class="md-nav__link">
-    How Molarity Calculations Work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#core-formulas" class="md-nav__link">
-    Core Formulas
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -783,36 +788,37 @@
 </div>
 
 <div class="principle-box">
-<h3 id="how-molarity-calculations-work">How Molarity Calculations Work<a class="headerlink" href="#how-molarity-calculations-work" title="Permanent link">&para;</a></h3>
-<p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
-<p>The fundamental relationship is:</p>
-<p style="text-align:center;font-size:1.2rem;font-weight:bold;font-family:monospace;">C = n / V = m / (MW × V)</p>
-<p>Where <em>C</em> = concentration (M), <em>n</em> = amount (mol), <em>V</em> = volume (L), <em>m</em> = mass (g), and <em>MW</em> = molecular weight (Da, equivalent to g/mol).</p>
-<p><strong>Why molarity over mass concentration?</strong> Molarity tells you the actual number of molecules in solution. Two peptides at 1 mg/mL may have very different molar concentrations if their molecular weights differ. For reactions, binding studies, and dose-response experiments, it is the number of molecules — not the mass — that matters.</p>
-<p><strong>Unit relationships:</strong></p>
-<ul>
+  <h3>How Molarity Calculations Work</h3>
+  <p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
+  <p>The fundamental relationship is:</p>
+  <p style="text-align:center;font-size:1.2rem;font-weight:bold;font-family:monospace;">C = n / V = m / (MW × V)</p>
+  <p>Where <em>C</em> = concentration (M), <em>n</em> = amount (mol), <em>V</em> = volume (L), <em>m</em> = mass (g), and <em>MW</em> = molecular weight (Da, equivalent to g/mol).</p>
+  <p><strong>Why molarity over mass concentration?</strong> Molarity tells you the actual number of molecules in solution. Two peptides at 1 mg/mL may have very different molar concentrations if their molecular weights differ. For reactions, binding studies, and dose-response experiments, it is the number of molecules — not the mass — that matters.</p>
+  <p><strong>Unit relationships:</strong></p>
+  <ul>
     <li><strong>mg/mL</strong> is a <em>mass concentration</em> — it does not depend on MW</li>
     <li><strong>mM</strong> (millimolar) = 10⁻³ M — a <em>molar concentration</em> that depends on MW</li>
     <li><strong>µM</strong> (micromolar) = 10⁻⁶ M — standard for most peptide assays</li>
     <li>Converting between them: <strong>mM = (mg/mL) × 1000 / MW</strong></li>
   </ul>
 </div>
+
 <div class="formula-box">
-<h3 id="core-formulas">Core Formulas<a class="headerlink" href="#core-formulas" title="Permanent link">&para;</a></h3>
-<div class="formula-block">
+  <h3>Core Formulas</h3>
+  <div class="formula-block">
     <p class="formula-title">Molarity from mass and volume:</p>
     <p style="text-align:center;font-size:1.1rem;font-weight:bold;font-family:monospace;">C (M) = m (g) / (MW × V (L))</p>
   </div>
-<div class="formula-block">
+  <div class="formula-block">
     <p class="formula-title">Molarity in mM (practical lab form):</p>
     <p style="text-align:center;font-size:1.1rem;font-weight:bold;font-family:monospace;">C (mM) = [m (mg) / (MW × V (mL))] × 1000</p>
   </div>
-<div class="formula-block">
+  <div class="formula-block">
     <p class="formula-title">Mass needed for target molarity:</p>
     <p style="text-align:center;font-size:1.1rem;font-weight:bold;font-family:monospace;">m (mg) = C (mM) × MW × V (mL) / 1000</p>
   </div>
-<p><strong>Variable definitions:</strong></p>
-<ul>
+  <p><strong>Variable definitions:</strong></p>
+  <ul>
     <li><strong>C</strong> = concentration (M — mol/L; mM — mmol/L)</li>
     <li><strong>m</strong> = mass of peptide (g or mg)</li>
     <li><strong>MW</strong> = molecular weight (Da, g/mol)</li>
@@ -820,6 +826,7 @@
     <li><strong>n</strong> = amount of substance (mol or mmol)</li>
   </ul>
 </div>
+
 <div class="example-box">
   <h3>Worked Examples</h3>
 
@@ -935,8 +942,8 @@
     <p>For best results:</p>
     <ul>
       <li>Prepare stocks at 1–10 mM for most peptides</li>
-      <li>Use our <a href="../dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
-      <li>Account for peptide purity and salt/counterion content — use our <a href="../purity-calculator/">Purity Calculator</a> for precise adjustments</li>
+      <li>Use our <a href="dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
+      <li>Account for peptide purity and salt/counterion content — use our <a href="purity-calculator/">Purity Calculator</a> for precise adjustments</li>
       <li>Store peptide stocks aliquoted at −20°C or −80°C to avoid freeze-thaw degradation</li>
     </ul>
   </details>
@@ -996,9 +1003,9 @@
 <hr />
 <h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../dilution-calculator/">Dilution Calculator</a> — Calculate reconstitution volumes</li>
-<li><a href="../purity-calculator/">Purity Calculator</a> — Account for purity in mass calculations</li>
-<li><a href="../molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW from sequence</li>
+<li><a href="dilution-calculator/">Dilution Calculator</a> — Calculate reconstitution volumes</li>
+<li><a href="purity-calculator/">Purity Calculator</a> — Account for purity in mass calculations</li>
+<li><a href="molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW from sequence</li>
 </ul>
 <script>
 function calcMolarity() {

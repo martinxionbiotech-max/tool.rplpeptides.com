@@ -89,7 +89,7 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   </div>
 </div>
 
-<div class="principle-box" markdown="1">
+<div class="principle-box">
   <h3>How Molarity Calculations Work</h3>
   <p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
   <p>The fundamental relationship is:</p>
@@ -105,7 +105,7 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   </ul>
 </div>
 
-<div class="formula-box" markdown="1">
+<div class="formula-box">
   <h3>Core Formulas</h3>
   <div class="formula-block">
     <p class="formula-title">Molarity from mass and volume:</p>
@@ -244,8 +244,8 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
     <p>For best results:</p>
     <ul>
       <li>Prepare stocks at 1–10 mM for most peptides</li>
-      <li>Use our <a href="../dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
-      <li>Account for peptide purity and salt/counterion content — use our <a href="../purity-calculator/">Purity Calculator</a> for precise adjustments</li>
+      <li>Use our <a href="dilution-calculator/">Dilution Calculator</a> to plan serial dilutions from your stock</li>
+      <li>Account for peptide purity and salt/counterion content — use our <a href="purity-calculator/">Purity Calculator</a> for precise adjustments</li>
       <li>Store peptide stocks aliquoted at −20°C or −80°C to avoid freeze-thaw degradation</li>
     </ul>
   </details>
@@ -278,9 +278,9 @@ To convert to common units:
 
 ## Related Tools
 
-- [Dilution Calculator](../dilution-calculator/) — Calculate reconstitution volumes
-- [Purity Calculator](../purity-calculator/) — Account for purity in mass calculations
-- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW from sequence
+- [Dilution Calculator](dilution-calculator/) — Calculate reconstitution volumes
+- [Purity Calculator](purity-calculator/) — Account for purity in mass calculations
+- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
 
 <script>
 function calcMolarity() {

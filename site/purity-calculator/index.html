@@ -627,6 +627,51 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solubility-predictor/" class="md-nav__link">
+        Peptide Solubility Predictor
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buffer-calculator/" class="md-nav__link">
+        Buffer Preparation Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amount-conversion-calculator/" class="md-nav__link">
+        Peptide Amount Conversion Calculator
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -775,50 +820,49 @@
 <hr />
 <h2 id="how-purity-affects-dosing">How Purity Affects Dosing<a class="headerlink" href="#how-purity-affects-dosing" title="Permanent link">&para;</a></h2>
 <div class="principle-box">
-<p><strong>Active peptide mass</strong> is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.</p>
-<table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>Formula</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Active peptide mass</td>
-<td>Active = Total × (Purity ÷ 100)</td>
-</tr>
-<tr>
-<td>Impurity content</td>
-<td>Impurity = Total − Active</td>
-</tr>
-<tr>
-<td>Correction factor</td>
-<td>CF = 100 ÷ Purity (multiply your desired dose by this)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Why HPLC purity ≠ biological activity:</strong> HPLC (high-performance liquid chromatography) measures chemical purity — the proportion of your target peptide sequence relative to other UV-absorbing species. It does not measure:
-- <strong>Bioactivity</strong> — whether the peptide folds correctly or binds its target
-- <strong>Salt/water content</strong> — counterions (TFA, acetate) and residual water that add mass
-- <strong>Peptide content</strong> — the actual peptide fraction after accounting for counterions</p>
-<p>A peptide at 98% HPLC purity could still have only 75–85% <em>peptide content</em> due to salts and water. This is why some labs report both "purity" (HPLC) and "peptide content" (by AAA or gravimetric analysis).</p>
+
+**Active peptide mass** is always less than the total mass you weigh out. Impurities (truncated sequences, salts, water, residual solvents) contribute to the total mass but not to biological activity.
+
+| Concept | Formula |
+|---------|---------|
+| Active peptide mass | Active = Total × (Purity ÷ 100) |
+| Impurity content | Impurity = Total − Active |
+| Correction factor | CF = 100 ÷ Purity (multiply your desired dose by this) |
+
+**Why HPLC purity ≠ biological activity:** HPLC (high-performance liquid chromatography) measures chemical purity — the proportion of your target peptide sequence relative to other UV-absorbing species. It does not measure:
+- **Bioactivity** — whether the peptide folds correctly or binds its target
+- **Salt/water content** — counterions (TFA, acetate) and residual water that add mass
+- **Peptide content** — the actual peptide fraction after accounting for counterions
+
+A peptide at 98% HPLC purity could still have only 75–85% *peptide content* due to salts and water. This is why some labs report both "purity" (HPLC) and "peptide content" (by AAA or gravimetric analysis).
+
 </div>
+
 <hr />
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
-<p>The mathematics behind purity correction is straightforward:</p>
-<div class="arithmatex">\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]</div>
-<p>Where:
-- <strong>m_active</strong> = Active peptide mass (what you can actually use)
-- <strong>m_total</strong> = Total mass weighed (what the vial says)
-- <strong>P%</strong> = Stated purity percentage</p>
-<p><strong>Correction Factor (CF):</strong></p>
-<div class="arithmatex">\[ \text{CF} = \frac{100}{P} \]</div>
-<p>Use the correction factor to adjust any dose calculation:</p>
-<div class="arithmatex">\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]</div>
-<p><strong>Example:</strong> For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = <strong>5.26 mg total</strong>.</p>
+
+The mathematics behind purity correction is straightforward:
+
+\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]
+
+Where:
+- **m_active** = Active peptide mass (what you can actually use)
+- **m_total** = Total mass weighed (what the vial says)
+- **P%** = Stated purity percentage
+
+**Correction Factor (CF):**
+
+\[ \text{CF} = \frac{100}{P} \]
+
+Use the correction factor to adjust any dose calculation:
+
+\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]
+
+**Example:** For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = **5.26 mg total**.
+
 </div>
+
 <hr />
 <h2 id="real-world-scenario">Real-World Scenario<a class="headerlink" href="#real-world-scenario" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -926,16 +970,16 @@ For best practice, always use a purity correction when preparing stock solutions
 </table>
 <div class="faq-q">**Can I adjust my molarity calculations for purity?**</div>
 
-<p>Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes <strong>MW × (100 ÷ 95)</strong> for weighing purposes. The <a href="../molarity-calculator/">Molarity Calculator</a> includes a purity field for this exact purpose.</p>
+<p>Absolutely. When preparing a solution of known molarity, multiply the molecular weight by the correction factor (100 ÷ P%) or divide the calculated molarity by (P% ÷ 100). For example, to make a 1 mM solution from a 95% pure peptide, your effective molecular weight becomes <strong>MW × (100 ÷ 95)</strong> for weighing purposes. The <a href="molarity-calculator/">Molarity Calculator</a> includes a purity field for this exact purpose.</p>
 <hr />
 <h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
 <div class="related-tools">
 
 For further peptide calculations involving purity correction:
 
-- [Dilution Calculator](../dilution-calculator/) — Reconstitution using corrected active mass
-- [Molarity Calculator](../molarity-calculator/) — Concentration conversions with purity adjustment
-- [Molecular Weight Calculator](../molecular-weight-calculator/) — Calculate MW from sequence
+- [Dilution Calculator](dilution-calculator/) — Reconstitution using corrected active mass
+- [Molarity Calculator](molarity-calculator/) — Concentration conversions with purity adjustment
+- [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate MW from sequence
 
 </div>
 
@@ -987,9 +1031,9 @@ For further peptide calculations involving purity correction:
 <hr />
 <h2 id="related-tools_1">Related Tools<a class="headerlink" href="#related-tools_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../dilution-calculator/">Dilution Calculator</a> — Reconstitution using corrected mass</li>
-<li><a href="../molarity-calculator/">Molarity Calculator</a> — Concentration conversions</li>
-<li><a href="../molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW from sequence</li>
+<li><a href="dilution-calculator/">Dilution Calculator</a> — Reconstitution using corrected mass</li>
+<li><a href="molarity-calculator/">Molarity Calculator</a> — Concentration conversions</li>
+<li><a href="molecular-weight-calculator/">Molecular Weight Calculator</a> — Calculate MW from sequence</li>
 </ul>
 <script>
 function calcPurity() {

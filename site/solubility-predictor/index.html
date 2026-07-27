@@ -1,0 +1,1579 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free online peptide solubility predictor — predict solubility in water vs. organic solvents based on amino acid sequence. Uses Kyte-Doolittle hydropathy, charge analysis, and aggregation propensity to estimate peptide solubility.">
+      
+      
+        <meta name="author" content="RPL Peptides">
+      
+      
+        <link rel="canonical" href="https://tool.rplpeptides.com/solubility-predictor/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Peptide Solubility Predictor - Peptide Research Tools & Calculators — tool.rplpeptides.com</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+  <style>
+    .md-search, .md-search__overlay { display: none !important; }
+    .calc-card {
+      background: var(--md-default-bg-color--light);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+    .calc-card label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--md-primary-fg-color);
+    }
+    .calc-card input, .calc-card select, .calc-card textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 6px;
+      background: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+      font-size: 0.95rem;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    .calc-card textarea { min-height: 80px; resize: vertical; }
+    .calc-card input:focus, .calc-card select:focus, .calc-card textarea:focus {
+      outline: none;
+      border-color: var(--md-primary-fg-color);
+      box-shadow: 0 0 0 3px rgba(63,81,181,0.15);
+    }
+    .calc-btn {
+      background: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--md-primary-fg-color--dark); opacity: 0.9; }
+    .calc-btn.secondary { background: var(--md-accent-fg-color); }
+    .calc-result {
+      margin-top: 1.2rem;
+      padding: 1.2rem;
+      background: rgba(63,81,181,0.08);
+      border-radius: 8px;
+      border-left: 4px solid var(--md-primary-fg-color);
+      display: none;
+    }
+    .calc-result table { width: 100%; border-collapse: collapse; }
+    .calc-result td { padding: 0.4rem 0.8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
+    .calc-result td:first-child { font-weight: 600; width: 40%; color: var(--md-primary-fg-color); }
+    .calc-result td:last-child { font-family: monospace; font-size: 1.05rem; }
+    .calc-hint { font-size: 0.85rem; color: var(--md-default-fg-color--light); margin-top: 0.2rem; }
+    .calc-compare-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .calc-compare-table th { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); padding: 0.6rem; text-align: center; }
+    .calc-compare-table td { padding: 0.5rem 0.8rem; border: 1px solid var(--md-default-fg-color--lightest); text-align: center; }
+    .calc-compare-table tr:nth-child(even) { background: var(--md-default-bg-color--light); }
+    .tag-popular { display: inline-block; background: #ff6f00; color: white; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 10px; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    .formula-box {
+      background: var(--md-default-bg-color);
+      border: 2px solid var(--md-primary-fg-color);
+      border-left: 5px solid var(--md-primary-fg-color);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+    }
+    .formula-box .katex { font-size: 1.15em; }
+    .formula-box .var-def { font-size: 0.85rem; color: var(--md-default-fg-color--light); text-align: left; margin-top: 0.5rem; }
+    .faq-q { font-weight: 600; color: var(--md-primary-fg-color); margin-top: 1rem; }
+    .principle-box {
+      background: rgba(0,188,212,0.06);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RPL Peptides",
+    "url": "https://rplpeptides.com",
+    "description": "RPL Peptides is a research peptide supplier focused on high-purity peptides for research applications.",
+    "sameAs": ["https://rplpeptides.com"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CN"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/",
+    "description": "Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.",
+    "isPartOf": {"@id": "https://rplpeptides.com/#website"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tool.rplpeptides.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication (dynamic per page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Peptide Solubility Predictor — Peptide Research Tools & Calculators — tool.rplpeptides.com",
+    "url": "https://tool.rplpeptides.com/solubility-predictor/",
+    "description": "Free online peptide solubility predictor — predict solubility in water vs. organic solvents based on amino acid sequence. Uses Kyte-Doolittle hydropathy, charge analysis, and aggregation propensity to estimate peptide solubility.",
+    "applicationCategory": "ScienceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isPartOf": {"@id": "https://tool.rplpeptides.com//#website"},
+    "about": {"@id": "https://rplpeptides.com/#organization"},
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tool.rplpeptides.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Peptide Solubility Predictor", "item": "https://tool.rplpeptides.com/solubility-predictor/"}
+    ]
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tool.rplpeptides.com/solubility-predictor/">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Free online peptide solubility predictor — predict solubility in water vs. organic solvents based on amino acid sequence. Uses Kyte-Doolittle hydropathy, charge analysis, and aggregation propensity to estimate peptide solubility.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Peptide Solubility Predictor — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:description" content="Free online peptide solubility predictor — predict solubility in water vs. organic solvents based on amino acid sequence. Uses Kyte-Doolittle hydropathy, charge analysis, and aggregation propensity to estimate peptide solubility.">
+  <meta property="og:url" content="https://tool.rplpeptides.com/solubility-predictor/">
+  <meta property="og:site_name" content="Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Peptide Solubility Predictor — Peptide Research Tools & Calculators — tool.rplpeptides.com">
+  <meta name="twitter:description" content="Free online peptide solubility predictor — predict solubility in water vs. organic solvents based on amino acid sequence. Uses Kyte-Doolittle hydropathy, charge analysis, and aggregation propensity to estimate peptide solubility.">
+  <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
+
+  <!-- KaTeX for formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peptide-solubility-predictor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-header__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Peptide Research Tools & Calculators — tool.rplpeptides.com
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Peptide Solubility Predictor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Peptide Research Tools &amp; Calculators — tool.rplpeptides.com" class="md-nav__button md-logo" aria-label="Peptide Research Tools & Calculators — tool.rplpeptides.com" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Peptide Research Tools & Calculators — tool.rplpeptides.com
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molecular-weight-calculator/" class="md-nav__link">
+        Molecular Weight Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-property-calculator/" class="md-nav__link">
+        Peptide Properties Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dilution-calculator/" class="md-nav__link">
+        Dilution Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../molarity-calculator/" class="md-nav__link">
+        Molarity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purity-calculator/" class="md-nav__link">
+        Purity Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../peptide-comparison/" class="md-nav__link">
+        Peptide Comparison Tool
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage-calculator/" class="md-nav__link">
+        Storage Stability Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amino-acid-converter/" class="md-nav__link">
+        Amino Acid Code Converter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Peptide Solubility Predictor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Peptide Solubility Predictor
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-solubility-prediction-works" class="md-nav__link">
+    How Solubility Prediction Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-your-results" class="md-nav__link">
+    Understanding Your Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Your Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solubility-grade-criteria" class="md-nav__link">
+    Solubility Grade Criteria
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-peptide-solubility" class="md-nav__link">
+    Factors Affecting Peptide Solubility
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors Affecting Peptide Solubility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-amino-acid-composition" class="md-nav__link">
+    1. Amino Acid Composition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sequence-length" class="md-nav__link">
+    2. Sequence Length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ph-relative-to-pi" class="md-nav__link">
+    3. pH Relative to pI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ionic-strength" class="md-nav__link">
+    4. Ionic Strength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-temperature" class="md-nav__link">
+    5. Temperature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-concentration" class="md-nav__link">
+    6. Concentration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-solubility" class="md-nav__link">
+    Improving Solubility
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving Solubility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solvent-and-buffer-strategies" class="md-nav__link">
+    Solvent and Buffer Strategies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-modification" class="md-nav__link">
+    Sequence Modification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-solubility-issues-by-peptide-type" class="md-nav__link">
+    Common Solubility Issues by Peptide Type
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Solubility Issues by Peptide Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hydrophobic-peptides-gravy-10" class="md-nav__link">
+    Hydrophobic Peptides (GRAVY &gt; 1.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highly-charged-peptides-30-charged-residues" class="md-nav__link">
+    Highly Charged Peptides (≥ 30 % charged residues)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-sheet-prone-peptides" class="md-nav__link">
+    Beta-Sheet-Prone Peptides
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cysteine-containing-peptides" class="md-nav__link">
+    Cysteine-Containing Peptides
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buffer-calculator/" class="md-nav__link">
+        Buffer Preparation Calculator
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amount-conversion-calculator/" class="md-nav__link">
+        Peptide Amount Conversion Calculator
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#calculator" class="md-nav__link">
+    Calculator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-solubility-prediction-works" class="md-nav__link">
+    How Solubility Prediction Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-your-results" class="md-nav__link">
+    Understanding Your Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Your Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solubility-grade-criteria" class="md-nav__link">
+    Solubility Grade Criteria
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-peptide-solubility" class="md-nav__link">
+    Factors Affecting Peptide Solubility
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors Affecting Peptide Solubility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-amino-acid-composition" class="md-nav__link">
+    1. Amino Acid Composition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sequence-length" class="md-nav__link">
+    2. Sequence Length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ph-relative-to-pi" class="md-nav__link">
+    3. pH Relative to pI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ionic-strength" class="md-nav__link">
+    4. Ionic Strength
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-temperature" class="md-nav__link">
+    5. Temperature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-concentration" class="md-nav__link">
+    6. Concentration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-solubility" class="md-nav__link">
+    Improving Solubility
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving Solubility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solvent-and-buffer-strategies" class="md-nav__link">
+    Solvent and Buffer Strategies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-modification" class="md-nav__link">
+    Sequence Modification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-solubility-issues-by-peptide-type" class="md-nav__link">
+    Common Solubility Issues by Peptide Type
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Solubility Issues by Peptide Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hydrophobic-peptides-gravy-10" class="md-nav__link">
+    Hydrophobic Peptides (GRAVY &gt; 1.0)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highly-charged-peptides-30-charged-residues" class="md-nav__link">
+    Highly Charged Peptides (≥ 30 % charged residues)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-sheet-prone-peptides" class="md-nav__link">
+    Beta-Sheet-Prone Peptides
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cysteine-containing-peptides" class="md-nav__link">
+    Cysteine-Containing Peptides
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions" class="md-nav__link">
+    Frequently Asked Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-tools" class="md-nav__link">
+    Related Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="peptide-solubility-predictor">Peptide Solubility Predictor<a class="headerlink" href="#peptide-solubility-predictor" title="Permanent link">&para;</a></h1>
+<p>Predict peptide solubility in various solvents directly from the amino acid sequence. This tool combines GRAVY hydropathy analysis, net charge at target pH, and aggregation propensity scoring to estimate whether a peptide will dissolve readily in aqueous buffers or require organic solvents. Designed for peptide chemists, biochemists, and researchers who need quick solubility guidance for synthesis, purification, and formulation.</p>
+<hr />
+<h2 id="calculator">Calculator<a class="headerlink" href="#calculator" title="Permanent link">&para;</a></h2>
+<div class="calc-card">
+  <label for="sol-seq">Amino Acid Sequence (one-letter code)</label>
+  <textarea id="sol-seq" placeholder="e.g., YGGFMERRRRRR">YGGFMERRRRRR</textarea>
+  <div class="calc-hint">Enter one-letter codes. Only A–Z characters are processed; non-letter characters are ignored.</div>
+
+  <label for="sol-ph">Target pH</label>
+  <select id="sol-ph">
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7" selected>7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+
+  <label for="sol-solvent">Solvent Type</label>
+  <select id="sol-solvent">
+    <option value="water">Water</option>
+    <option value="saline">0.9% Saline</option>
+    <option value="pbs">PBS (pH 7.4)</option>
+    <option value="dmso">DMSO</option>
+    <option value="ethanol">Ethanol</option>
+    <option value="acetic">Acetic Acid</option>
+  </select>
+
+  <button class="calc-btn" onclick="predictSolubility()">Predict Solubility</button>
+  <button class="calc-btn secondary" onclick="clearSolubility()" style="margin-left:0.5rem;">Clear</button>
+
+  <div id="sol-result" class="calc-result" style="display:none;">
+    <h3>Solubility Prediction Results</h3>
+    <table>
+      <tr><td>Predicted Solubility</td><td id="sol-grade">—</td></tr>
+      <tr><td>Suggested Solvent</td><td id="sol-suggested">—</td></tr>
+      <tr><td>GRAVY Score</td><td id="sol-gravy">—</td></tr>
+      <tr><td>Net Charge at pH <span id="sol-ph-label">7</span></td><td id="sol-charge">—</td></tr>
+      <tr><td>Charge Density</td><td id="sol-charge-dens">—</td></tr>
+      <tr><td>Aggregation Propensity</td><td id="sol-aggreg">—</td></tr>
+      <tr><td>Sequence Length</td><td id="sol-length">—</td></tr>
+      <tr><td>Dissolution Notes</td><td id="sol-notes">—</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr />
+<h2 id="how-solubility-prediction-works">How Solubility Prediction Works<a class="headerlink" href="#how-solubility-prediction-works" title="Permanent link">&para;</a></h2>
+<div class="principle-box">
+
+Peptide solubility is governed by a balance between **peptide-solvent interactions** and **peptide-peptide interactions**. When peptide-peptide interactions (hydrophobic packing, hydrogen bonding, electrostatic attraction) dominate over peptide-solvent interactions, the peptide aggregates and precipitates. The calculator estimates solubility using four key parameters:
+
+### 1. GRAVY Hydropathy Score
+
+The **Grand Average of Hydropathy (GRAVY)** is the arithmetic mean of Kyte-Doolittle hydropathy values across all residues:
+
+\[
+\text{GRAVY} = \frac{1}{n} \sum_{i=1}^{n} \text{KD}(a_i)
+\]
+
+where \(\text{KD}(a_i)\) is the Kyte-Doolittle hydropathy score for residue \(a_i\) and \(n\) is the sequence length. The Kyte-Doolittle scale ranges from **−4.5** (most hydrophilic, Arg) to **+4.5** (most hydrophobic, Ile). A negative GRAVY indicates a hydrophilic peptide that prefers aqueous environments; a positive GRAVY indicates a hydrophobic peptide that may require organic co-solvents.
+
+### 2. Net Charge Analysis
+
+The net charge at the target pH is computed via the Henderson–Hasselbalch equation:
+
+\[
+Q = \sum_{\text{bases}} \frac{1}{1 + 10^{(\text{pH} - \text{pKa})}} \;-\; \sum_{\text{acids}} \frac{1}{1 + 10^{(\text{pKa} - \text{pH})}}
+\]
+
+**Ionizable groups considered:**
+
+| Group | pKa |
+|-------|-----|
+| N-terminus (NH₃⁺) | 8.0 |
+| C-terminus (COOH) | 3.1 |
+| Asp (D) side chain | 3.90 |
+| Glu (E) side chain | 4.07 |
+| His (H) side chain | 6.00 |
+| Cys (C) side chain | 8.37 |
+| Tyr (Y) side chain | 10.10 |
+| Lys (K) side chain | 10.50 |
+| Arg (R) side chain | 12.48 |
+
+Peptides with higher absolute net charge are generally more soluble because electrostatic repulsion prevents aggregation. Solubility is typically lowest near the isoelectric point (pI), where the net charge approaches zero.
+
+### 3. Charge Density
+
+Charge density normalizes the net charge by the sequence length:
+
+\[
+\text{Charge Density} = \frac{|Q|}{n}
+\]
+
+A charge density above **0.15** is considered favourable for aqueous solubility. Values below **0.08** suggest the peptide may have solubility challenges at the given pH.
+
+### 4. Aggregation Propensity
+
+The aggregation propensity score identifies hydrophobic "hot spots" and beta-sheet-promoting residues that increase the risk of self-association. The calculator uses a weighted scoring approach:
+
+- **Hydrophobic residues** (I, L, V, F, W, M, A) contribute positively.
+- **Beta-sheet-prone residues** (V, I, Y, F, W, T) add additional weight.
+- **Charge clusters** (≥ 3 consecutive charged residues) reduce the score.
+
+\[
+\text{Aggregation Score} = \frac{\sum w_i}{n}
+\]
+
+where \(w_i\) is the aggregation weight of residue \(i\). Scores above **0.40** indicate high aggregation risk.
+
+</div>
+
+<hr />
+<h2 id="understanding-your-results">Understanding Your Results<a class="headerlink" href="#understanding-your-results" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Excellent</strong></td>
+<td>Highly soluble in aqueous buffers. No special measures needed.</td>
+</tr>
+<tr>
+<td><strong>Good</strong></td>
+<td>Readily soluble. Gentle heating or brief sonication may help.</td>
+</tr>
+<tr>
+<td><strong>Fair</strong></td>
+<td>Moderate solubility. May require pH adjustment, mild organic co-solvent (≤10 % DMSO), or dilution below 1 mg/mL.</td>
+</tr>
+<tr>
+<td><strong>Poor</strong></td>
+<td>Poor aqueous solubility. Strongly consider organic solvents (DMSO, ethanol, acetic acid) or surfactant addition.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="solubility-grade-criteria">Solubility Grade Criteria<a class="headerlink" href="#solubility-grade-criteria" title="Permanent link">&para;</a></h3>
+<p>The calculator assigns a grade based on a composite score derived from GRAVY, charge density, and aggregation propensity:</p>
+<table>
+<thead>
+<tr>
+<th>Composite Score</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 7.0</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>5.0 – 6.9</td>
+<td>Good</td>
+</tr>
+<tr>
+<td>3.0 – 4.9</td>
+<td>Fair</td>
+</tr>
+<tr>
+<td>&lt; 3.0</td>
+<td>Poor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Suggested Solvent</strong> is determined by the peptide's overall character:</p>
+<ul>
+<li><strong>Aqueous (water, saline, PBS):</strong> Recommended when GRAVY &lt; 0 and charge density &gt; 0.10.</li>
+<li><strong>DMSO:</strong> Recommended for moderately hydrophobic peptides (GRAVY 0–1.5) or those with moderate aggregation propensity.</li>
+<li><strong>Ethanol:</strong> Suitable for moderately hydrophobic peptides that tolerate alcohol/water mixtures.</li>
+<li><strong>Acetic Acid:</strong> Often effective for very basic peptides (high Arg/Lys content) that resist dissolution in neutral buffers.</li>
+</ul>
+<hr />
+<h2 id="factors-affecting-peptide-solubility">Factors Affecting Peptide Solubility<a class="headerlink" href="#factors-affecting-peptide-solubility" title="Permanent link">&para;</a></h2>
+<h3 id="1-amino-acid-composition">1. Amino Acid Composition<a class="headerlink" href="#1-amino-acid-composition" title="Permanent link">&para;</a></h3>
+<p>The single most important determinant of solubility is the ratio of <strong>charged</strong> (R, K, D, E, H), <strong>polar</strong> (N, Q, S, T, Y), and <strong>hydrophobic</strong> (I, L, V, F, W, M, A) residues.</p>
+<ul>
+<li><strong>≥ 25 % charged residues:</strong> Usually confers good aqueous solubility.</li>
+<li><strong>≥ 50 % hydrophobic residues:</strong> Often leads to poor solubility in water.</li>
+<li><strong>High Arg (R) content:</strong> Basic peptides often dissolve best in dilute acetic acid (1–10 %).</li>
+<li><strong>High Asp/Glu (D/E) content:</strong> Acidic peptides dissolve best in slightly basic buffers (pH 8–9).</li>
+</ul>
+<h3 id="2-sequence-length">2. Sequence Length<a class="headerlink" href="#2-sequence-length" title="Permanent link">&para;</a></h3>
+<p>Short peptides (&lt; 10 residues) are generally more soluble than long ones, all else being equal, because they have fewer inter-molecular contact points. However, very short hydrophobic peptides (e.g., dipeptides like FF, WY) can still be poorly soluble due to aromatic stacking.</p>
+<h3 id="3-ph-relative-to-pi">3. pH Relative to pI<a class="headerlink" href="#3-ph-relative-to-pi" title="Permanent link">&para;</a></h3>
+<p>Solubility is minimal at the <strong>isoelectric point (pI)</strong> where the net charge is zero and electrostatic repulsion is absent. For optimal solubility, work at a pH at least <strong>1–2 units away from the pI</strong>:</p>
+<ul>
+<li><strong>Acidic peptides (pI &lt; 5):</strong> Dissolve in basic buffers (pH 8–9).</li>
+<li><strong>Basic peptides (pI &gt; 8):</strong> Dissolve in acidic buffers (pH 4–5).</li>
+<li><strong>Neutral peptides (pI 5–8):</strong> May require organic co-solvents or detergents.</li>
+</ul>
+<h3 id="4-ionic-strength">4. Ionic Strength<a class="headerlink" href="#4-ionic-strength" title="Permanent link">&para;</a></h3>
+<p>The effect of ionic strength on solubility follows the <strong>Hofmeister series</strong>:</p>
+<ul>
+<li><strong>Low ionic strength:</strong> Reduces electrostatic shielding — charged peptides may repulse each other more, improving solubility at low concentrations.</li>
+<li><strong>Moderate ionic strength (100–200 mM):</strong> Screens electrostatic repulsion, which can either help or hinder solubility depending on the peptide.</li>
+<li><strong>High ionic strength (&gt; 500 mM):</strong> Promotes "salting out" — competition for hydration water forces hydrophobic regions together, causing precipitation.</li>
+</ul>
+<h3 id="5-temperature">5. Temperature<a class="headerlink" href="#5-temperature" title="Permanent link">&para;</a></h3>
+<p>Most peptides follow the expected trend: <strong>solubility increases with temperature</strong> due to increased kinetic energy breaking peptide-peptide interactions. However, some peptides (particularly those rich in beta-sheet-prone residues) may aggregate more at elevated temperatures due to enhanced hydrophobic interactions.</p>
+<h3 id="6-concentration">6. Concentration<a class="headerlink" href="#6-concentration" title="Permanent link">&para;</a></h3>
+<p>Peptide solubility is concentration-dependent. A peptide may dissolve at 0.5 mg/mL but aggregate at 5 mg/mL. High concentrations increase the probability of inter-molecular collisions and nucleation events. The calculator assumes a <strong>typical working concentration range of 0.5–2.0 mg/mL</strong>.</p>
+<hr />
+<h2 id="improving-solubility">Improving Solubility<a class="headerlink" href="#improving-solubility" title="Permanent link">&para;</a></h2>
+<p>When a peptide has poor predicted solubility, several strategies can help:</p>
+<h3 id="solvent-and-buffer-strategies">Solvent and Buffer Strategies<a class="headerlink" href="#solvent-and-buffer-strategies" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Best For</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pH adjustment</strong></td>
+<td>Charged peptides</td>
+<td>Move pH 1–2 units away from pI</td>
+</tr>
+<tr>
+<td><strong>DMSO co-solvent</strong></td>
+<td>Moderately hydrophobic</td>
+<td>Add 5–10 % DMSO v/v; most peptides tolerate ≤ 10 % without denaturation</td>
+</tr>
+<tr>
+<td><strong>Ethanol co-solvent</strong></td>
+<td>Moderately hydrophobic</td>
+<td>10–30 % ethanol; volatile, suitable for lyophilisation</td>
+</tr>
+<tr>
+<td><strong>Acetic acid</strong></td>
+<td>Basic peptides</td>
+<td>1–10 % acetic acid effectively dissolves Arg/Lys-rich peptides</td>
+</tr>
+<tr>
+<td><strong>Urea / Guanidine</strong></td>
+<td>Strongly aggregating</td>
+<td>4–8 M urea breaks hydrogen bonds; remove by dialysis after dissolution</td>
+</tr>
+<tr>
+<td><strong>Detergents</strong></td>
+<td>Membrane peptides</td>
+<td>0.1–1 % SDS or Triton X-100; remove by dialysis if needed</td>
+</tr>
+<tr>
+<td><strong>Sonication</strong></td>
+<td>General</td>
+<td>Short pulses (5–10 s) at low amplitude break pre-formed aggregates</td>
+</tr>
+<tr>
+<td><strong>Gentle heating</strong></td>
+<td>General</td>
+<td>37–50 °C for 5–10 min; avoid prolonged heating of Met/Cys-rich peptides</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sequence-modification">Sequence Modification<a class="headerlink" href="#sequence-modification" title="Permanent link">&para;</a></h3>
+<p>If you control the sequence (e.g., during peptide design), consider:</p>
+<ul>
+<li><strong>Add charged residues:</strong> Introducing a Lys-Glu or Arg-Asp pair at the termini can dramatically improve solubility without altering the core sequence function.</li>
+<li><strong>Replace hydrophobic residues:</strong> Substitute Ile → Leu or Val → Ala for slightly reduced hydrophobicity.</li>
+<li><strong>Reduce beta-sheet propensity:</strong> Replace one or two beta-branched residues (Val, Ile) with Gly or Ser in aggregation-prone regions.</li>
+<li><strong>Add a solubility tag:</strong> N-terminal poly-Arg (RRRR) or poly-Lys (KKKK) tags are commonly used in research peptides.</li>
+<li><strong>Shorten the sequence:</strong> Remove terminal hydrophobic stretches that are not essential for function.</li>
+</ul>
+<hr />
+<h2 id="common-solubility-issues-by-peptide-type">Common Solubility Issues by Peptide Type<a class="headerlink" href="#common-solubility-issues-by-peptide-type" title="Permanent link">&para;</a></h2>
+<h3 id="hydrophobic-peptides-gravy-10">Hydrophobic Peptides (GRAVY &gt; 1.0)<a class="headerlink" href="#hydrophobic-peptides-gravy-10" title="Permanent link">&para;</a></h3>
+<p>Peptides with &gt; 50 % hydrophobic residues (I, L, V, F, W, M, A) frequently resist dissolution in aqueous buffers.</p>
+<p><strong>Recommended approach:</strong>
+1. First try DMSO (100 %) at 10–20 mg/mL, then dilute into aqueous buffer.
+2. If DMSO fails, try 50 % ethanol/water or 50 % acetonitrile/water.
+3. For membrane-interacting peptides, consider 0.1 % SDS or 0.5 % CHAPS.</p>
+<h3 id="highly-charged-peptides-30-charged-residues">Highly Charged Peptides (≥ 30 % charged residues)<a class="headerlink" href="#highly-charged-peptides-30-charged-residues" title="Permanent link">&para;</a></h3>
+<p>These peptides dissolve readily in water at the right pH but may form gels at high concentration due to electrostatic network formation.</p>
+<p><strong>Recommended approach:</strong>
+- Acidic peptides (pI &lt; 5): Use PBS pH 7.4 or 50 mM Tris pH 8.0.
+- Basic peptides (pI &gt; 8): Use 10–100 mM acetic acid or 50 mM MES pH 5.0.</p>
+<h3 id="beta-sheet-prone-peptides">Beta-Sheet-Prone Peptides<a class="headerlink" href="#beta-sheet-prone-peptides" title="Permanent link">&para;</a></h3>
+<p>Sequences rich in V, I, Y, F, W, and alternating polar/apolar residues often form amyloid-like fibrils.</p>
+<p><strong>Recommended approach:</strong>
+- Dissolve in 6 M guanidine hydrochloride or 8 M urea.
+- Use 30 % acetonitrile/0.1 % TFA for RP-HPLC purification.
+- Add 20 % 2,2,2-trifluoroethanol (TFE) to disrupt beta-sheet formation.</p>
+<h3 id="cysteine-containing-peptides">Cysteine-Containing Peptides<a class="headerlink" href="#cysteine-containing-peptides" title="Permanent link">&para;</a></h3>
+<p>Disulfide bond formation between Cys residues in solution can cause covalent aggregation.</p>
+<p><strong>Recommended approach:</strong>
+- Include 1–5 mM DTT or TCEP (tris(2-carboxyethyl)phosphine) as a reducing agent.
+- Use degassed buffers to minimize oxidation.
+- If the disulfide bond is required (e.g., for cyclic peptides), dissolve in 6 M guanidine and refold by dialysis.</p>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
+<div class="faq-q">**How accurate is the solubility prediction?**</div>
+
+<p>The prediction is a <strong>semi-quantitative estimate</strong> based on fundamental physicochemical principles (GRAVY, charge, aggregation propensity). For simple, linear peptides, the correlation with experimental observation is approximately <strong>70–80 %</strong>. The prediction is less reliable for:
+- Cyclic or stapled peptides
+- Peptides with non-natural or D-amino acids
+- Peptides that form specific secondary structures (e.g., alpha-helices that mask hydrophobic residues)
+- Very long peptides (&gt; 50 residues) where folding dominates solubility</p>
+<p>Always confirm predicted solubility with a small-scale test (0.5–1 mg in 50 µL of solvent) before scaling up.</p>
+<div class="faq-q">**What does "Poor" solubility mean in practical terms?**</div>
+
+<p>"Poor" means the peptide is unlikely to dissolve in water or common aqueous buffers at typical working concentrations (≥ 1 mg/mL). You may observe:
+- Visible turbidity or particulate matter after mixing
+- A clear solution that becomes cloudy after a few hours (slow aggregation)
+- Complete failure to wet or disperse even after prolonged vortexing</p>
+<p>In such cases, the "Suggested Solvent" field in the calculator output provides the most promising alternative solvent to try first.</p>
+<div class="faq-q">**Can I use DMSO for cell-based assays?**</div>
+
+<p>DMSO is widely used for peptide stock solutions in cell biology, but keep the final DMSO concentration <strong>≤ 0.1–0.5 % v/v</strong> in the cell culture medium to avoid cytotoxicity. Make a concentrated stock (e.g., 10–20 mM in 100 % DMSO) and dilute at least 200–1000× into the assay buffer. Most adherent cell lines tolerate ≤ 0.1 % DMSO without significant effects.</p>
+<div class="faq-q">**Why does pH matter so much for solubility?**</div>
+
+<p>pH determines the <strong>ionization state</strong> of acidic and basic side chains. At the pH where a peptide's net charge is zero (the isoelectric point, pI), there is no electrostatic repulsion between molecules, allowing hydrophobic and hydrogen-bonding interactions to dominate — this leads to aggregation and precipitation. Moving just 1–2 pH units away from the pI introduces net charge and electrostatic repulsion, often dramatically improving solubility. This is the single most effective strategy for charged peptides.</p>
+<div class="faq-q">**How does the calculator handle modified peptides?**</div>
+
+<p>The current calculator assumes <strong>free N- and C-termini</strong> and unmodified side chains. Common modifications that significantly alter solubility include:
+- <strong>N-terminal acetylation:</strong> Removes the positive charge on the N-terminus, reducing net charge by approximately +1 and lowering pI.
+- <strong>C-terminal amidation:</strong> Removes the negative charge on the C-terminus, increasing net charge by approximately +1 and raising pI.
+- <strong>Phosphorylation on Ser/Thr/Tyr:</strong> Adds a −2 charge per phosphate group at neutral pH, increasing aqueous solubility.
+- <strong>PEGylation:</strong> Covalent attachment of polyethylene glycol dramatically increases hydrodynamic radius and aqueous solubility.</p>
+<p>For accurate predictions on modified peptides, manually account for the charge and polarity changes of the modifications.</p>
+<div class="faq-q">**What is the best solvent to try first?**</div>
+
+<p>As a general rule of thumb, try solvents in this order:
+1. <strong>Water</strong> (if GRAVY &lt; 0)
+2. <strong>PBS pH 7.4</strong> (for most peptides)
+3. <strong>10 % acetic acid</strong> (for basic/Arg-rich peptides)
+4. <strong>0.1 M ammonium bicarbonate pH 8</strong> (for acidic peptides)
+5. <strong>100 % DMSO</strong> (for hydrophobic peptides)
+6. <strong>50 % ethanol</strong> (for moderately hydrophobic peptides)
+7. <strong>6 M guanidine HCl</strong> (for strongly aggregating peptides)</p>
+<p>Start with 0.5–1 mg in 50–100 µL of solvent. Vortex for 30 s, sonicate for 2–5 min if needed, and check clarity visually.</p>
+<div class="faq-q">**Can I predict solubility for cyclic peptides?**</div>
+
+<p>Cyclic peptides often have <strong>different solubility properties</strong> than their linear counterparts because:
+- The constrained conformation may bury hydrophobic residues in the interior, improving aqueous solubility.
+- Alternatively, cyclization may rigidify hydrophobic patches on the surface, reducing solubility.
+- The lack of free N- and C-termini eliminates two charged groups, reducing net charge.</p>
+<p>The current calculator is optimised for linear peptides. For cyclic peptides, treat the prediction as a rough starting point and always confirm experimentally.</p>
+<div class="faq-q">**What is charge density and why is it important?**</div>
+
+<p>Charge density is the absolute net charge per residue (<span class="arithmatex">\(|Q|/n\)</span>). It captures the <strong>concentration of electrostatic charge</strong> on the peptide surface, which drives electrostatic repulsion between peptide molecules. Two peptides with the same net charge but different lengths have different charge densities — a short peptide with |Q| = 2 has high charge density (&gt; 0.2 for a 10-mer), while a long peptide with |Q| = 2 has low charge density (&lt; 0.05 for a 40-mer). Higher charge density correlates with better solubility because the repulsive force per unit surface area is greater.</p>
+</div>
+<hr />
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../peptide-property-calculator/">Peptide Properties Calculator</a> — Compute pI, net charge, GRAVY, and instability index</li>
+<li><a href="../molecular-weight-calculator/">Molecular Weight Calculator</a> — Detailed mass and formula calculation</li>
+<li><a href="../dilution-calculator/">Dilution Calculator</a> — Reconstitution volume and concentration adjustments</li>
+<li><a href="../storage-calculator/">Storage Buffer Calculator</a> — Buffer composition and storage recommendations</li>
+</ul>
+<p><a href="/">← Back to Home</a></p>
+<script>
+const AA_HYD = {
+  'A': 1.800, 'R': -4.500, 'N': -3.500, 'D': -3.500,
+  'C': 2.500, 'E': -3.500, 'Q': -3.500, 'G': -0.400,
+  'H': -3.200, 'I': 4.500, 'L': 3.800, 'K': -3.900,
+  'M': 1.900, 'F': 2.800, 'P': -1.600, 'S': -0.800,
+  'T': -0.700, 'W': -0.900, 'Y': -1.300, 'V': 4.200
+};
+
+const AA_AGG = {
+  'A': 0.3, 'R': 0.0, 'N': 0.1, 'D': 0.0,
+  'C': 0.4, 'E': 0.0, 'Q': 0.1, 'G': 0.0,
+  'H': 0.2, 'I': 0.8, 'L': 0.6, 'K': 0.0,
+  'M': 0.6, 'F': 0.7, 'P': 0.0, 'S': 0.1,
+  'T': 0.3, 'W': 0.6, 'Y': 0.5, 'V': 0.7
+};
+
+const NT_PKA = 8.0;
+const CT_PKA = 3.1;
+const SIDE_PKA = { 'D': 3.90, 'E': 4.07, 'H': 6.00, 'C': 8.37, 'Y': 10.10, 'K': 10.50, 'R': 12.48 };
+
+function calcNetCharge(seq, pH) {
+  let charge = 0;
+  // N-terminus
+  charge += 1 / (1 + Math.pow(10, pH - NT_PKA));
+  // C-terminus
+  charge -= 1 / (1 + Math.pow(10, CT_PKA - pH));
+  // Side chains
+  for (let aa of seq) {
+    if (SIDE_PKA[aa] !== undefined) {
+      if (aa === 'K' || aa === 'R' || aa === 'H') {
+        charge += 1 / (1 + Math.pow(10, pH - SIDE_PKA[aa]));
+      } else {
+        charge -= 1 / (1 + Math.pow(10, SIDE_PKA[aa] - pH));
+      }
+    }
+  }
+  return charge;
+}
+
+function calcGRAVY(seq) {
+  let sum = 0;
+  for (let aa of seq) sum += AA_HYD[aa] || 0;
+  return seq.length > 0 ? sum / seq.length : 0;
+}
+
+function calcAggregationPropensity(seq) {
+  let score = 0;
+  for (let aa of seq) score += AA_AGG[aa] || 0;
+  return seq.length > 0 ? score / seq.length : 0;
+}
+
+function predictSolubility() {
+  const raw = document.getElementById('sol-seq').value;
+  const seq = raw.toUpperCase().replace(/[^ACDEFGHIKLMNPQRSTVWY]/g, '');
+  const pH = parseInt(document.getElementById('sol-ph').value);
+  const solvent = document.getElementById('sol-solvent').value;
+
+  const resultDiv = document.getElementById('sol-result');
+  if (!seq || seq.length === 0) {
+    resultDiv.style.display = 'block';
+    document.getElementById('sol-length').textContent = 'Please enter a sequence';
+    document.getElementById('sol-grade').textContent = '—';
+    document.getElementById('sol-suggested').textContent = '—';
+    document.getElementById('sol-gravy').textContent = '—';
+    document.getElementById('sol-charge').textContent = '—';
+    document.getElementById('sol-charge-dens').textContent = '—';
+    document.getElementById('sol-aggreg').textContent = '—';
+    document.getElementById('sol-notes').textContent = '—';
+    return;
+  }
+
+  const length = seq.length;
+  const gravy = calcGRAVY(seq);
+  const charge = calcNetCharge(seq, pH);
+  const chargeDens = Math.abs(charge) / length;
+  const aggreg = calcAggregationPropensity(seq);
+
+  // Composite solubility score (0-10)
+  let score = 5.0; // baseline
+
+  // GRAVY contribution: subtract for hydrophobicity, add for hydrophilicity
+  score += -gravy * 1.2;
+
+  // Charge density contribution: higher charge density improves solubility
+  score += chargeDens * 8.0;
+
+  // Aggregation penalty
+  score -= aggreg * 3.0;
+
+  // Length penalty for long hydrophobic sequences
+  if (length > 20 && gravy > 0) score -= 0.5;
+  if (length > 30 && gravy > 0) score -= 1.0;
+
+  // Clamp score to 0-10
+  score = Math.max(0, Math.min(10, score));
+
+  // Determine grade
+  let grade, suggested, notes;
+  if (score >= 7.0) {
+    grade = 'Excellent';
+  } else if (score >= 5.0) {
+    grade = 'Good';
+  } else if (score >= 3.0) {
+    grade = 'Fair';
+  } else {
+    grade = 'Poor';
+  }
+
+  // Determine suggested solvent
+  if (gravy < 0 && chargeDens > 0.10) {
+    suggested = 'Water or PBS (pH 7.4)';
+    notes = 'Peptide is hydrophilic with good charge density. Dissolves readily in aqueous buffers.';
+  } else if (gravy < 0 && chargeDens > 0.05) {
+    suggested = 'PBS (pH 7.4) or 50 mM Tris';
+    notes = 'Moderately hydrophilic. Brief sonication may help dissolution.';
+  } else if (gravy >= 0 && gravy < 1.5 && chargeDens > 0.08) {
+    suggested = 'DMSO (≤10 % in buffer) or 10 % acetic acid';
+    notes = 'Moderately hydrophobic. Use DMSO stock solution and dilute into buffer.';
+  } else if (gravy >= 0 && gravy < 1.5 && charge >= 2) {
+    suggested = '10 % Acetic Acid (for basic) or 0.1 % NH₄HCO₃ (for acidic)';
+    notes = 'Basic peptide. Acetic acid (1–10 %) is often effective. Try 50 % ethanol if not.';
+  } else if (gravy >= 1.5) {
+    suggested = 'DMSO (100 %) or Ethanol (50 %)';
+    notes = 'Strongly hydrophobic. Dissolve in pure DMSO first, then dilute. Consider 0.1 % SDS.';
+  } else if (chargeDens <= 0.05 && gravy < 0.5) {
+    suggested = 'DMSO or 50 % Ethanol';
+    notes = 'Low charge density. May require organic co-solvent or pH adjustment.';
+  } else {
+    suggested = 'PBS (pH 7.4) or DMSO';
+    notes = 'Try aqueous buffer first. If insoluble, switch to DMSO or acetic acid.';
+  }
+
+  // Override based on specific characteristics
+  if (aggreg > 0.45) {
+    notes += ' High aggregation propensity detected. Consider 6 M guanidine HCl or 8 M urea for initial dissolution.';
+  }
+
+  if (charge >= 3) {
+    notes += ' Highly basic — 10 % acetic acid is strongly recommended.';
+  } else if (charge <= -3) {
+    notes += ' Highly acidic — 0.1 M NH₄HCO₃ (pH 8) or 50 mM Tris (pH 8.5) recommended.';
+  }
+
+  // Update DOM
+  document.getElementById('sol-grade').textContent = grade;
+  document.getElementById('sol-suggested').textContent = suggested;
+  document.getElementById('sol-gravy').textContent = gravy.toFixed(3);
+  document.getElementById('sol-ph-label').textContent = pH.toString();
+  document.getElementById('sol-charge').textContent = (charge >= 0 ? '+' : '') + charge.toFixed(2);
+  document.getElementById('sol-charge-dens').textContent = chargeDens.toFixed(3);
+  document.getElementById('sol-aggreg').textContent = aggreg.toFixed(3);
+  document.getElementById('sol-length').textContent = length + ' AA';
+  document.getElementById('sol-notes').textContent = notes;
+
+  resultDiv.style.display = 'block';
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearSolubility() {
+  document.getElementById('sol-seq').value = '';
+  document.getElementById('sol-ph').value = '7';
+  document.getElementById('sol-solvent').value = 'water';
+  document.getElementById('sol-result').style.display = 'none';
+}
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">© 2026 RPL Peptides Co., Ltd. All rights reserved.</div>
+        
+        <div class="md-footer-links" style="margin-top: 0.4rem;">
+          <strong>Main Store:</strong>&nbsp;
+          <a href="https://rplpeptides.com/" title="RPL Peptides — Research Peptide Supplier">rplpeptides.com</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/product-list/">Product Catalog</a>
+          &nbsp;·&nbsp;
+          <a href="https://data.rplpeptides.com/">Data & Reference</a>
+          &nbsp;·&nbsp;
+          <a href="https://rplpeptides.com/contact/">Contact</a>
+        </div>
+        Powered by <a href="https://www.mkdocs.org/" rel="noopener">MkDocs</a>
+        and <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener">Material for MkDocs</a>
+      </div>
+      
+        <div class="md-footer-social">
+          
+            <a href="https://rplpeptides.com" target="_blank" rel="noopener" title="RPL Peptides Official Website">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.indexes", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

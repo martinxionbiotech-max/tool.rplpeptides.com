@@ -89,7 +89,7 @@ Estimate the expected stability of a peptide based on its form, storage conditio
 
 ## The Science of Peptide Stability
 
-<div class="principle-box" markdown="1">
+<div class="principle-box">
 
 Peptide degradation is governed by chemical and physical processes that accelerate under unfavorable conditions. Understanding these pathways helps you make informed storage decisions.
 
@@ -188,9 +188,9 @@ Not recommended. Degradation products can interfere with experimental results or
 
 Cross-check your storage strategy with our other peptide calculators:
 
-- [**Peptide Dilution Calculator**](../dilution-calculator/) — Calculate the exact volume needed to reach your target concentration
-- [**Molecular Weight Calculator**](../molecular-weight-calculator/) — Determine peptide molecular weight from sequence
-- [**Peptide Purity Calculator**](../purity-calculator/) — Assess purity and adjust concentrations accordingly
+- [**Peptide Dilution Calculator**](/tools/dilution-calculator/) — Calculate the exact volume needed to reach your target concentration
+- [**Molecular Weight Calculator**](/tools/molecular-weight-calculator/) — Determine peptide molecular weight from sequence
+- [**Peptide Purity Calculator**](/tools/purity-calculator/) — Assess purity and adjust concentrations accordingly
 
 ---
 

@@ -122,7 +122,7 @@ Estimated at 280 nm using the Edelhoch method:
 
 ---
 
-<div class="principle-box" markdown="1">
+<div class="principle-box">
 
 ### Principles of Peptide Mass Calculation
 
@@ -161,7 +161,7 @@ Monoisotopic mass is the default for most peptide mass spectrometry applications
 
 ## Core Formula
 
-<div class="formula-box" markdown="1">
+<div class="formula-box">
 
 **Complete Molecular Weight Formula:**
 
@@ -316,20 +316,20 @@ The Peptide Molecular Weight Calculator is essential for a wide range of researc
 - **Mass Spectrometry:** Predict monoisotopic and average masses for database searching, spectral interpretation, and fragment ion analysis in proteomics workflows.
 - **Drug Discovery:** Design therapeutic peptides with precise molecular weights. Calculate masses for modified peptides including acetylated, amidated, and cyclized variants.
 - **Biopharmaceutical Development:** Determine molar extinction coefficients for accurate quantification of peptide-based drug substances and drug products.
-- **Reconstitution and Dosing:** Use calculated molecular weights alongside the [Dilution Calculator](../dilution-calculator/) and [Molarity Calculator](../molarity-calculator/) to prepare precise stock solutions and dosing formulations.
+- **Reconstitution and Dosing:** Use calculated molecular weights alongside the [Dilution Calculator](dilution-calculator/) and [Molarity Calculator](molarity-calculator/) to prepare precise stock solutions and dosing formulations.
 - **Characterization of Natural Peptides:** Analyze bioactive peptides from venoms, hormones, growth factors, and antimicrobial peptides by comparing calculated masses against observed MS data.
 - **Education and Training:** Teach students the fundamental principles of peptide chemistry, including condensation reactions, water loss, and the impact of post-translational modifications on mass.
 
-For comprehensive physicochemical characterization including isoelectric point, hydrophobicity, and instability index, visit the [Peptide Properties Calculator](../peptide-property-calculator/).
+For comprehensive physicochemical characterization including isoelectric point, hydrophobicity, and instability index, visit the [Peptide Properties Calculator](peptide-property-calculator/).
 
 ---
 
 ## Related Tools
 
-- [Peptide Properties Calculator](../peptide-property-calculator/) — Full physicochemical characterization
-- [Dilution Calculator](../dilution-calculator/) — Calculate reconstitution volumes
-- [Molarity Calculator](../molarity-calculator/) — Convert between concentration units
-- [Peptide Comparison Tool](../peptide-comparison/) — Compare multiple peptides side-by-side
+- [Peptide Properties Calculator](peptide-property-calculator/) — Full physicochemical characterization
+- [Dilution Calculator](dilution-calculator/) — Calculate reconstitution volumes
+- [Molarity Calculator](molarity-calculator/) — Convert between concentration units
+- [Peptide Comparison Tool](peptide-comparison/) — Compare multiple peptides side-by-side
 
 ---
 

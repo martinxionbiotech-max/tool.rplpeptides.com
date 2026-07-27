@@ -61,6 +61,24 @@ description: Free online peptide research tools — molecular weight calculator,
 
     [:octicons-arrow-right-24: Launch Tool](amino-acid-converter/index.md)
 
+-   **:material-water-opacity: Peptide Solubility Predictor** <span class=\"tag-popular\">NEW</span>
+    ---
+    Predict peptide solubility in water vs. organic solvents based on amino acid sequence using GRAVY, charge density, and aggregation propensity analysis.
+
+    [:octicons-arrow-right-24: Launch Tool](solubility-predictor/index.md)
+
+-   **:material-flask-outline: Buffer Preparation Calculator** <span class="tag-popular">NEW</span>
+    ---
+    Calculate buffer components for PBS, Tris, HEPES, acetate, citrate, and phosphate buffers. Get exact masses for each component at your target pH and concentration.
+
+    [:octicons-arrow-right-24: Launch Calculator](buffer-calculator/index.md)
+
+-   **:material-syringe: Peptide Amount Conversion Calculator** <span class="tag-popular">NEW</span>
+    ---
+    Calculate administered volume based on subject weight, target amount per kg, peptide mass, purity, and reconstitution volume. For laboratory research use only.
+
+    [:octicons-arrow-right-24: Launch Calculator](amount-conversion-calculator/index.md)
+
 </div>
 
 ---
@@ -78,7 +96,10 @@ Each calculator on this site is designed to address a specific need in peptide r
 | **Purity Calculator** | Account for peptide purity in accurate dosing | QA/QC, formulation teams |
 | **Comparison Tool** | Evaluate alternatives before purchasing | Procurement, R&D managers |
 | **Storage Calculator** | Determine optimal storage conditions for peptide stability | Lab managers, logistics |
-| **Code Converter** | Translate amino acid notation in publications | Students, researchers |
+|| **Amino Acid Code Converter** | Translate amino acid notation in publications | Students, researchers |
+|| **Solubility Predictor** | Determine peptide solubility in experimental buffers and solvents | Formulation chemists, pharmacologists |
+|| **Buffer Calculator** | Prepare buffers at correct pH and concentration for assays | Lab technicians, assay developers |
+|| **Amount Conversion Calculator** | Convert between peptide mass, concentration, and administered volume for lab research | Pharmacologists, laboratory researchers |
 
 ---
 

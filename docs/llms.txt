@@ -1,72 +1,23 @@
-# RPL Peptide Research Tools (llms.txt)
-> AI reference for tool.rplpeptides.com — Free online calculators for peptide research.
+# tool.rplpeptides.com
+> Free online calculators and tools for peptide research — molecular weight, dilution, molarity, purity, properties, comparison, storage stability, and amino acid conversion.
+> Part of the RPL Peptides ecosystem: [rplpeptides.com](https://rplpeptides.com/) (store) | [data.rplpeptides.com](https://data.rplpeptides.com/) (reference)
 
-## Site Information
-- Home: https://tool.rplpeptides.com/
-- Main Store: https://rplpeptides.com/
-- Data & Reference: https://data.rplpeptides.com/
-- Product Catalog: https://rplpeptides.com/product-list/
+## Calculators & Tools
 
-## Available Tools
+- [Peptide Molecular Weight Calculator](https://tool.rplpeptides.com/molecular-weight-calculator/): Calculate monoisotopic and average molecular weight from amino acid sequence. Supports modifications (acetylation, amidation, disulfide bridges). Returns formula, net charge at pH 7, extinction coefficient, molar absorptivity.
+- [Peptide Properties Calculator](https://tool.rplpeptides.com/peptide-property-calculator/): Compute isoelectric point (pI), net charge at user-specified pH, GRAVY hydropathicity index, instability index, and aliphatic index from sequence.
+- [Peptide Dilution Calculator](https://tool.rplpeptides.com/dilution-calculator/): Calculate solvent volume needed to reconstitute peptide to target concentration (mg/mL, mM, or µM).
+- [Molarity Calculator](https://tool.rplpeptides.com/molarity-calculator/): Convert between mass, molarity, and volume. Calculate nmol amounts and concentration conversions.
+- [Peptide Purity Calculator](https://tool.rplpeptides.com/purity-calculator/): Compute active peptide mass from stated purity, impurity content, and correction factor.
+- [Peptide Comparison Tool](https://tool.rplpeptides.com/peptide-comparison/): Side-by-side comparison of popular research peptides (Tirzepatide, Semaglutide, Retatrutide, BPC-157, TB-500, GHK-Cu, Semax, Epitalon, MK-677, Ipamorelin) across sequence, MW, mechanism, and applications.
+- [Storage Stability Calculator](https://tool.rplpeptides.com/storage-calculator/): Estimate peptide shelf life under different storage conditions (lyophilized vs solution, temperature, freeze-thaw cycles).
+- [Amino Acid Code Converter](https://tool.rplpeptides.com/amino-acid-converter/): Convert between one-letter and three-letter amino acid codes with full reference table of all 20 standard amino acids.
+- [Peptide Solubility Predictor](https://tool.rplpeptides.com/solubility-predictor/): Predict peptide solubility in water and organic solvents using GRAVY hydropathy, charge density, and aggregation propensity analysis from sequence.
+- [Buffer Preparation Calculator](https://tool.rplpeptides.com/buffer-calculator/): Calculate buffer components for PBS, Tris-HCl, HEPES, acetate, citrate, and phosphate buffers at target pH and concentration using Henderson-Hasselbalch.
+- [Peptide Amount Conversion Calculator](https://tool.rplpeptides.com/amount-conversion-calculator/): Convert between peptide mass, concentration, and administered volume for laboratory research. Includes purity correction and unit conversion.
 
-### 1. Peptide Molecular Weight Calculator ⭐⭐⭐⭐⭐
-- **URL:** https://tool.rplpeptides.com/molecular-weight-calculator/
-- **Input:** One-letter amino acid sequence (e.g., YQVAD)
-- **Output:** Monoisotopic MW, average MW, molecular formula, net charge at pH 7, extinction coefficient at 280 nm, sequence length, molar absorptivity
-- **Modifications:** Acetylation (+42.01 Da), amidation (-0.98 Da), pyroglutamic acid (-17.03 Da), formylation (+28.01 Da), disulfide bridges
-- **Keywords:** peptide molecular weight calculator, peptide mass calculator, amino acid sequence calculator
-- **Formula:** MW = Σ(AA masses) - (n-1) × 18.01056 + modifications
+## Related Resources
 
-### 2. Peptide Properties Calculator
-- **URL:** https://tool.rplpeptides.com/peptide-property-calculator/
-- **Input:** One-letter sequence, pH, N-terminal modification
-- **Output:** Sequence length, monoisotopic MW, average MW, isoelectric point (pI), net charge at user pH, GRAVY hydropathicity, instability index, aliphatic index
-- **Keywords:** peptide properties calculator, pI calculator, GRAVY index peptide
-- **Method:** pI via bisection, charge via Henderson-Hasselbalch
-
-### 3. Peptide Dilution Calculator
-- **URL:** https://tool.rplpeptides.com/dilution-calculator/
-- **Input:** Peptide mass, desired concentration (mg/mL, mM, µM)
-- **Output:** Solvent volume needed
-- **Keywords:** peptide dilution calculator, peptide reconstitution calculator
-- **Formula:** V = m / C (for mg/mL); V = (m × 1000) / (MW × C) for mM
-
-### 4. Molarity Calculator
-- **URL:** https://tool.rplpeptides.com/molarity-calculator/
-- **Input:** Mass + MW + volume -> molarity; or target M + MW + volume -> mass
-- **Output:** Molarity in mM/µM, nmol, mg/mL
-- **Keywords:** peptide molarity calculator, concentration converter
-- **Formula:** C(M) = mass(g) / (MW × V(L))
-
-### 5. Peptide Purity Calculator
-- **URL:** https://tool.rplpeptides.com/purity-calculator/
-- **Input:** Stated purity (%), total amount
-- **Output:** Active peptide mass, impurity content, correction factor
-- **Keywords:** peptide purity calculator, active peptide mass
-- **Formula:** Active = Total × Purity / 100
-
-### 6. Peptide Comparison Tool
-- **URL:** https://tool.rplpeptides.com/peptide-comparison/
-- **Peptides:** Tirzepatide, Semaglutide, Retatrutide, BPC-157, TB-500, GHK-Cu, Semax, Epitalon, MK-677, Ipamorelin
-- **Parameters:** Class, category, sequence length, MW, mechanism, applications, purity
-- **Keywords:** peptide comparison, compare peptides
-
-### 7. Storage Stability Calculator
-- **URL:** https://tool.rplpeptides.com/storage-calculator/
-- **Input:** Form (lyophilized/solution), temperature, peptide type, environment
-- **Output:** Expected shelf life, freeze-thaw stability, storage recommendations
-- **Keywords:** peptide storage calculator, peptide stability
-
-### 8. Amino Acid Code Converter
-- **URL:** https://tool.rplpeptides.com/amino-acid-converter/
-- **Input:** One-letter or three-letter amino acid codes
-- **Output:** Converted codes
-- **Keywords:** amino acid converter, 1-letter to 3-letter converter
-- **Data:** All 20 standard amino acids with full reference table
-
-## Integrations
-- Data references link to https://data.rplpeptides.com/
-- Product links lead to https://rplpeptides.com/
-- All tools are free, client-side JavaScript
-- No data stored on servers
-- Calculations use IUPAC/ExPASy standard constants
+- [RPL Peptides Official Store](https://rplpeptides.com/): Research peptide product catalog and purchasing.
+- [RPL Peptides Product Catalog](https://rplpeptides.com/product-list/): Complete product listing with specifications.
+- [Data & Reference Portal](https://data.rplpeptides.com/): Technical documentation, protocols, and research references.
