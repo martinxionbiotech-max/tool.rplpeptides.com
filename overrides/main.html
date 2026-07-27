@@ -94,16 +94,57 @@
   <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
   <link rel="stylesheet" href="{{ base_url }}/assets/katex/katex.min.css">
   <script src="{{ base_url }}/assets/katex/katex.min.js"></script>
-  <script src="{{ base_url }}/assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: '\\[', right: '\\]', display: true},
-          {left: '\\(', right: '\\)', display: false}
-        ],
-        throwOnError: false
-      });
+      if (typeof katex === 'undefined') return;
+
+      // Render display math: find all \[ ... \] blocks and render them
+      function renderDisplayMath(root) {
+        var els = root.querySelectorAll('.formula-box, .principle-box, .example-box, .conversion-box, .faq-box, .calc-card');
+        els.forEach(function(el) {
+          if (el.querySelector('.katex')) return; // already rendered
+          var html = el.innerHTML;
+          var regex = /\\\[([\s\S]*?)\\\]/g;
+          if (regex.test(html)) {
+            html = html.replace(regex, function(match, formula) {
+              try {
+                return katex.renderToString(formula.trim(), { displayMode: true, throwOnError: false });
+              } catch(e) {
+                console.warn('KaTeX display error:', e.message);
+                return match;
+              }
+            });
+            el.innerHTML = html;
+          }
+        });
+      }
+
+      // Render inline math: find all \( ... \) and render them
+      function renderInlineMath(root) {
+        var els = root.querySelectorAll('p, td, li, div, span, h1, h2, h3, h4, h5, h6');
+        els.forEach(function(el) {
+          if (el.querySelector('.katex')) return; // already rendered
+          if (el.closest('.katex')) return; // inside already rendered math
+          var html = el.innerHTML;
+          // Only process if contains \(
+          if (html.indexOf('\\(') === -1) return;
+          var regex = /\\\(([\s\S]*?)\\\)/g;
+          if (regex.test(html)) {
+            html = html.replace(regex, function(match, formula) {
+              try {
+                return katex.renderToString(formula.trim(), { displayMode: false, throwOnError: false });
+              } catch(e) {
+                console.warn('KaTeX inline error:', e.message);
+                return match;
+              }
+            });
+            el.innerHTML = html;
+          }
+        });
+      }
+
+      renderDisplayMath(document.body);
+      renderInlineMath(document.body);
     });
   </script>
 
