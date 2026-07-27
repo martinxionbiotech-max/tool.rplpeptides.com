@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online amino acid code converter — convert between one-letter and three-letter amino acid codes instantly. Includes full amino acid reference table with properties.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   

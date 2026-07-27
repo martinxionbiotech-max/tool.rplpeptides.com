@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online peptide properties calculator — compute length, molecular weight, hydrophobicity, isoelectric point (pI), net charge, and stability index from amino acid sequence.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   
@@ -932,9 +936,9 @@
 </ul>
 <h3 id="net-charge-at-user-ph">Net Charge at User pH<a class="headerlink" href="#net-charge-at-user-ph" title="Permanent link">&para;</a></h3>
 <p>The net charge at a given pH is computed using the Henderson-Hasselbalch equation:</p>
-<div class="arithmatex">\[
+<p>\[
 \text{charge} = \sum_{\text{bases}} \frac{1}{1 + 10^{(\text{pH} - \text{pKa})}} \;-\; \sum_{\text{acids}} \frac{1}{1 + 10^{(\text{pKa} - \text{pH})}}
-\]</div>
+\]</p>
 <p>Bases (positive charges): N-terminus, Lys, Arg, His.<br />
 Acids (negative charges): C-terminus, Asp, Glu, Cys, Tyr.</p>
 <p>This value tells you the predominant charge state of the peptide at your experimental pH — critical for predicting electrophoretic behavior, ion-exchange binding, and solubility.</p>
@@ -953,9 +957,9 @@ Acids (negative charges): C-terminus, Asp, Glu, Cys, Tyr.</p>
 <p>The index is a statistical predictor — while useful as a guide, actual stability depends on many factors including temperature, pH, ionic strength, and the presence of proteases.</p>
 <h3 id="aliphatic-index">Aliphatic Index<a class="headerlink" href="#aliphatic-index" title="Permanent link">&para;</a></h3>
 <p>The aliphatic index is the relative volume occupied by aliphatic side chains (Ala, Val, Ile, Leu) expressed as a percentage. It reflects the thermostability of the peptide:</p>
-<div class="arithmatex">\[
+<p>\[
 \text{Aliphatic Index} = \frac{(1.0 \times f_{\text{Ala}}) + (2.9 \times f_{\text{Val}}) + (3.9 \times f_{\text{Ile+Leu}})}{\text{Length}} \times 100
-\]</div>
+\]</p>
 <ul>
 <li><strong>Higher values:</strong> Greater thermostability — the peptide is more resistant to heat denaturation.</li>
 <li><strong>Lower values:</strong> Less thermostable — the peptide may unfold or aggregate at elevated temperatures.</li>

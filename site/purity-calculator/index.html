@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online peptide purity calculator — calculate active peptide mass, impurity content, and corrected concentration from stated purity percentage. Essential for accurate peptide dosing.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   
@@ -853,15 +857,15 @@
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
 <p>The mathematics behind purity correction is straightforward:</p>
-<div class="arithmatex">\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]</div>
+<p>\[ m_{\text{active}} = m_{\text{total}} \times \frac{P}{100} \]</p>
 <p>Where:
 - <strong>m_active</strong> = Active peptide mass (what you can actually use)
 - <strong>m_total</strong> = Total mass weighed (what the vial says)
 - <strong>P%</strong> = Stated purity percentage</p>
 <p><strong>Correction Factor (CF):</strong></p>
-<div class="arithmatex">\[ \text{CF} = \frac{100}{P} \]</div>
+<p>\[ \text{CF} = \frac{100}{P} \]</p>
 <p>Use the correction factor to adjust any dose calculation:</p>
-<div class="arithmatex">\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]</div>
+<p>\[ \text{Adjusted Dose} = \text{Target Dose} \times \text{CF} \]</p>
 <p><strong>Example:</strong> For a peptide at 95% purity, CF = 100 ÷ 95 ≈ 1.0526. To get 5 mg of active peptide, weigh 5 × 1.0526 = <strong>5.26 mg total</strong>.</p>
 </div>
 <hr />

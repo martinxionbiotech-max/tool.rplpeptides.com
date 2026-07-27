@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online peptide storage stability calculator — estimate peptide stability based on form (lyophilized vs. solution), storage temperature, and peptide type. Storage guidelines for research peptides.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   
@@ -1030,9 +1034,9 @@
 </table>
 <h3 id="temperature-and-reaction-rates">Temperature and Reaction Rates<a class="headerlink" href="#temperature-and-reaction-rates" title="Permanent link">&para;</a></h3>
 <p>The <strong>Arrhenius equation</strong> describes how temperature governs degradation kinetics:</p>
-<div class="arithmatex">\[
+<p>\[
 k = A e^{-E_a / RT}
-\]</div>
+\]</p>
 <p>In practical terms, <strong>reaction rates approximately double for every 10 °C increase in temperature</strong>. A peptide stable for 5 years at –20 °C may degrade in months at 4 °C and in days at room temperature. Ultra-low temperatures (–80 °C) effectively arrest most chemical reactions, making them ideal for long-term archival storage.</p>
 <h3 id="why-lyophilized-peptides-are-more-stable">Why Lyophilized Peptides Are More Stable<a class="headerlink" href="#why-lyophilized-peptides-are-more-stable" title="Permanent link">&para;</a></h3>
 <p>Freeze-drying removes water — the essential medium for hydrolysis and a key facilitator of molecular mobility. Lyophilized peptides benefit from:</p>

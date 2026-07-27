@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online peptide molecular weight calculator — calculate monoisotopic and average mass, molecular formula, net charge, and extinction coefficient from amino acid sequence with modification support. Includes acetylation, amidation, disulfide bridges, pyroglutamic acid, and formylation modifications. Explains peptide bond formation, water loss, monoisotopic vs average mass, and step-by-step calculation principles with worked examples. Essential tool for peptide synthesis, mass spectrometry analysis, proteomics research, drug discovery, and biopharmaceutical development.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   
@@ -1111,11 +1115,11 @@
 <div class="principle-box">
 <h3 id="principles-of-peptide-mass-calculation">Principles of Peptide Mass Calculation<a class="headerlink" href="#principles-of-peptide-mass-calculation" title="Permanent link">&para;</a></h3>
 <p><strong>Peptide Bond Formation:</strong> Peptides are linear chains of amino acids linked by peptide bonds (amide bonds). Each peptide bond forms through a condensation reaction between the carboxyl group (—COOH) of one amino acid and the amino group (—NH₂) of the next, releasing a water molecule (H₂O).</p>
-<p><strong>Water Loss During Synthesis:</strong> For a peptide containing <span class="arithmatex">\(n\)</span> amino acid residues, exactly <span class="arithmatex">\(n-1\)</span> water molecules are lost during peptide bond formation. Each water molecule has a mass of <strong>18.01056 Da</strong> (monoisotopic) or <strong>18.0153 Da</strong> (average). This water loss is the single most important correction applied in peptide mass calculation.</p>
+<p><strong>Water Loss During Synthesis:</strong> For a peptide containing \(n\) amino acid residues, exactly \(n-1\) water molecules are lost during peptide bond formation. Each water molecule has a mass of <strong>18.01056 Da</strong> (monoisotopic) or <strong>18.0153 Da</strong> (average). This water loss is the single most important correction applied in peptide mass calculation.</p>
 <p><strong>General Relationship:</strong></p>
-<div class="arithmatex">\[
+<p>\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times \text{H}_2\text{O mass} + \sum \text{modifications}
-\]</div>
+\]</p>
 <p><strong>Monoisotopic vs. Average Mass:</strong></p>
 <table>
 <thead>
@@ -1185,9 +1189,9 @@
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
 <p><strong>Complete Molecular Weight Formula:</strong></p>
-<div class="arithmatex">\[
-\text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056 + \sum \text{modifications} - 2.01565 \times \text{disulfide\_count}
-\]</div>
+<p>\[
+\text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056 + \sum \text{modifications} - 2.01565 \times \text{disulfide_count}
+\]</p>
 <p><strong>Where:</strong></p>
 <table>
 <thead>
@@ -1198,39 +1202,39 @@
 </thead>
 <tbody>
 <tr>
-<td><span class="arithmatex">\(\sum_{i=1}^{n} \text{AA}_i\)</span></td>
-<td>Sum of monoisotopic (or average) masses of all <span class="arithmatex">\(n\)</span> amino acid residues in the sequence</td>
+<td>\(\sum_{i=1}^{n} \text{AA}_i\)</td>
+<td>Sum of monoisotopic (or average) masses of all \(n\) amino acid residues in the sequence</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\(n\)</span></td>
+<td>\(n\)</td>
 <td>Total number of amino acids in the peptide</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\(18.01056\)</span></td>
+<td>\(18.01056\)</td>
 <td>Mass of one water molecule (H₂O) in daltons — one H₂O is lost per peptide bond formed</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\((n-1) \times 18.01056\)</span></td>
+<td>\((n-1) \times 18.01056\)</td>
 <td>Total water loss from all peptide bond condensation reactions</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\(\sum \text{modifications}\)</span></td>
+<td>\(\sum \text{modifications}\)</td>
 <td>Sum of all modification mass changes (positive for additions like acetylation, negative for losses like amidation)</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\(2.01565\)</span></td>
+<td>\(2.01565\)</td>
 <td>Mass of two hydrogen atoms lost per disulfide bridge</td>
 </tr>
 <tr>
-<td><span class="arithmatex">\(\text{disulfide\_count}\)</span></td>
+<td>\(\text{disulfide_count}\)</td>
 <td>Number of disulfide bridges (each S–S bond replaces two Cys–SH groups, losing 2H)</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Simplified for unmodified linear peptides:</strong></p>
-<div class="arithmatex">\[
+<p>\[
 \text{MW} = \sum_{i=1}^{n} \text{AA}_i - (n-1) \times 18.01056
-\]</div>
+\]</p>
 </div>
 <h2 id="worked-example-ghk-gly-his-lys">Worked Example: GHK (Gly-His-Lys)<a class="headerlink" href="#worked-example-ghk-gly-his-lys" title="Permanent link">&para;</a></h2>
 <p>Let's calculate the molecular weight of the tripeptide <strong>GHK</strong> (Glycine-Histidine-Lysine), a copper-binding peptide found in human plasma.</p>
@@ -1267,14 +1271,14 @@
 </tbody>
 </table>
 <p><strong>Step 2: Account for water loss from peptide bonds</strong></p>
-<p>GHK has 3 amino acids, therefore <span class="arithmatex">\(n-1 = 2\)</span> peptide bonds. Each bond formation releases one H₂O.</p>
-<div class="arithmatex">\[
+<p>GHK has 3 amino acids, therefore \(n-1 = 2\) peptide bonds. Each bond formation releases one H₂O.</p>
+<p>\[
 \text{Water loss} = 2 \times 18.01056 = 36.02 \text{ Da}
-\]</div>
+\]</p>
 <p><strong>Step 3: Calculate unmodified molecular weight</strong></p>
-<div class="arithmatex">\[
+<p>\[
 \text{MW} = 322.17 - 36.02 = 286.15 \text{ Da}
-\]</div>
+\]</p>
 <p><strong>Step 4: Apply modifications (optional)</strong></p>
 <table>
 <thead>
@@ -1384,9 +1388,9 @@
 
 <p>A disulfide bridge (cystine bond) forms between the thiol groups (—SH) of two cysteine residues. During formation, each cysteine loses one hydrogen atom, and the two hydrogens combine and are released. This means each disulfide bridge reduces the molecular weight by <strong>2.01565 Da</strong> (the mass of two hydrogen atoms).</p>
 <p>The formula impact is straightforward:</p>
-<div class="arithmatex">\[
-\text{MW}_{\text{with disulfide}} = \text{MW}_{\text{linear}} - (2.01565 \times \text{disulfide\_count})
-\]</div>
+<p>\[
+\text{MW}<em _text_linear="\text{linear">{\text{with disulfide}} = \text{MW}</em>} - (2.01565 \times \text{disulfide_count})
+\]</p>
 <p>Disulfide bridges also:
 - Introduce structural constraints that affect peptide folding and bioactivity
 - Contribute to UV absorbance at 280 nm (125 M⁻¹cm⁻¹ per bond)

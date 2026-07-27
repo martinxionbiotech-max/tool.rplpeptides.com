@@ -226,10 +226,10 @@
   <meta name="twitter:description" content="Free online peptide dilution calculator — calculate solvent volume needed to achieve target concentration from peptide mass. Essential for peptide reconstitution and research protocols.">
   <meta name="twitter:image" content="https://tool.rplpeptides.com//assets/images/og-image.svg">
 
-  <!-- KaTeX for formula rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <!-- KaTeX for formula rendering — loaded locally (no CDN dependency) -->
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script src="../assets/katex/katex.min.js"></script>
+  <script src="../assets/katex/auto-render.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       renderMathInElement(document.body, {
@@ -241,6 +241,10 @@
       });
     });
   </script>
+
+  <!-- WebMCP — expose calculator tools to AI agents via MCP -->
+  <script src="../assets/webmcp/webmcp.js"></script>
+  <script src="../assets/webmcp/webmcp-tools.js"></script>
 
   </head>
   
@@ -863,11 +867,11 @@
 <h2 id="how-the-calculation-works">How the Calculation Works<a class="headerlink" href="#how-the-calculation-works" title="Permanent link">&para;</a></h2>
 <div class="principle-box">
 <p>Peptide reconstitution calculations are based on the fundamental relationship between <strong>concentration (C)</strong>, <strong>mass (m)</strong>, and <strong>volume (V)</strong>:</p>
-<div class="arithmatex">\[ C = \frac{m}{V} \]</div>
+<p>\[ C = \frac{m}{V} \]</p>
 <ul>
 <li><strong>For mg/mL (mass concentration):</strong> This is the simplest case. If you have 5 mg of peptide and want a 2 mg/mL solution, you need 2.5 mL of solvent. The calculation is a direct proportion — no molecular weight needed.</li>
 <li><strong>For mM/µM (molar concentration):</strong> To calculate molar concentration, you need the peptide's <strong>molecular weight (MW)</strong>. The formula becomes:
-  [ C_{\text{mM}} = \frac{m}{\text{MW} \times V} \times 1000 ]
+  \[ C_{\text{mM}} = \frac{m}{\text{MW} \times V} \times 1000 \]
   where m is in mg, MW is in Da (g/mol), and V is in mL.</li>
 <li><strong>Why proper reconstitution matters:</strong> Accurate reconstitution is critical for experimental reproducibility. Errors in solvent volume directly change peptide concentration, leading to inconsistent dosing, failed binding assays, or misleading bioactivity results. Always use calibrated pipettes and account for peptide purity.</li>
 </ul>
@@ -875,9 +879,9 @@
 <h2 id="core-formula">Core Formula<a class="headerlink" href="#core-formula" title="Permanent link">&para;</a></h2>
 <div class="formula-box">
 <h4 id="mass-concentration-mgml">Mass Concentration (mg/mL)<a class="headerlink" href="#mass-concentration-mgml" title="Permanent link">&para;</a></h4>
-<div class="arithmatex">\[ V(\text{mL}) = \frac{m(\text{mg})}{C(\text{mg/mL})} \]</div>
+<p>\[ V(\text{mL}) = \frac{m(\text{mg})}{C(\text{mg/mL})} \]</p>
 <h4 id="molar-concentration-mm">Molar Concentration (mM)<a class="headerlink" href="#molar-concentration-mm" title="Permanent link">&para;</a></h4>
-<div class="arithmatex">\[ V(\text{mL}) = \frac{m(\text{mg})}{\text{MW} \times C(\text{mM})} \times 1000 \]</div>
+<p>\[ V(\text{mL}) = \frac{m(\text{mg})}{\text{MW} \times C(\text{mM})} \times 1000 \]</p>
 <h4 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -914,11 +918,11 @@
 <h2 id="worked-example">Worked Example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h2>
 <p><strong>Example 1: Mass concentration (mg/mL)</strong>
 You have 5 mg of lyophilized peptide and need a 2 mg/mL solution.</p>
-<div class="arithmatex">\[ V = \frac{5}{2} = 2.5 \text{ mL} \]</div>
+<p>\[ V = \frac{5}{2} = 2.5 \text{ mL} \]</p>
 <p>Add <strong>2.5 mL</strong> of suitable solvent to your 5 mg peptide vial.</p>
 <p><strong>Example 2: Molar concentration (mM)</strong>
 You have 10 mg of a peptide with molecular weight 1000 Da and need a 5 mM solution.</p>
-<div class="arithmatex">\[ V = \left[\frac{10}{1000 \times 5}\right] \times 1000 = 2 \text{ mL} \]</div>
+<p>\[ V = \left[\frac{10}{1000 \times 5}\right] \times 1000 = 2 \text{ mL} \]</p>
 <p>Add <strong>2 mL</strong> of suitable solvent to your 10 mg peptide vial.</p>
 <h2 id="common-mistakes">Common Mistakes<a class="headerlink" href="#common-mistakes" title="Permanent link">&para;</a></h2>
 <div class="mistake">
