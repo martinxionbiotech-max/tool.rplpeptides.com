@@ -1,6 +1,6 @@
 ---
 title: Peptide Comparison Tool
-description: Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptides.
+description: Free online peptide comparison tool — compare peptides side-by-side by class, length, molecular weight, structure, and research applications. Integrated with product data from RPL Peptide.
 ---
 
 # Peptide Comparison Tool

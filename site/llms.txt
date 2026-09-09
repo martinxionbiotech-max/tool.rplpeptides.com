@@ -1,6 +1,6 @@
 # tool.rplpeptides.com
 > Free online calculators and tools for peptide research — molecular weight, dilution, molarity, purity, properties, comparison, storage stability, and amino acid conversion.
-> Part of the RPL Peptides ecosystem: [rplpeptides.com](https://rplpeptides.com/) (store) | [data.rplpeptides.com](https://data.rplpeptides.com/) (reference)
+> Part of the RPL Peptide ecosystem: [rplpeptides.com](https://rplpeptides.com/) (store) | [data.rplpeptides.com](https://data.rplpeptides.com/) (reference)
 
 ## Calculators & Tools
 
@@ -18,6 +18,6 @@
 
 ## Related Resources
 
-- [RPL Peptides Official Store](https://rplpeptides.com/): Research peptide product catalog and purchasing.
-- [RPL Peptides Product Catalog](https://rplpeptides.com/product-list/): Complete product listing with specifications.
+- [RPL Peptide Official Store](https://rplpeptides.com/): Research peptide product catalog and purchasing.
+- [RPL Peptide Product Catalog](https://rplpeptides.com/product-list/): Complete product listing with specifications.
 - [Data & Reference Portal](https://data.rplpeptides.com/): Technical documentation, protocols, and research references.

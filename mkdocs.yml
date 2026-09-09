@@ -1,8 +1,8 @@
 site_name: Peptide Research Tools & Calculators
 site_description: Free online peptide research tools — molecular weight calculator, dilution calculator, molarity converter, amino acid converter, peptide comparison tool, and more for research professionals.
 site_url: https://tool.rplpeptides.com
-site_author: RPL Peptides
-copyright: © 2026 RPL Peptides Co., Ltd. All rights reserved.
+site_author: RPL Peptide
+copyright: © 2026 RPL Peptide Co., Ltd. All rights reserved.
 
 theme:
   name: material
@@ -52,7 +52,7 @@ extra:
   social:
     - icon: fontawesome/solid/globe
       link: https://rplpeptides.com
-      name: RPL Peptides Official Website
+      name: RPL Peptide Official Website
 
 nav:
   - Home: index.md

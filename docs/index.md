@@ -5,7 +5,7 @@ description: Free online peptide research tools — molecular weight calculator,
 
 # Peptide Research Tools & Calculators
 
-**Free, browser-based calculators for peptide research — no downloads, no registration, no data stored on servers. Built for researchers by RPL Peptides.**
+**Free, browser-based calculators for peptide research — no downloads, no registration, no data stored on servers. Built for researchers by RPL Peptide.**
 
 ---
 
@@ -103,7 +103,7 @@ Each calculator on this site is designed to address a specific need in peptide r
 
 ---
 
-## Integration with RPL Peptides Ecosystem
+## Integration with RPL Peptide Ecosystem
 
 These tools are part of a connected research platform:
 
@@ -134,7 +134,7 @@ rplpeptides.com               ← Product catalog, ordering, COA requests
 ---
 
 <div style="text-align: center; margin-top: 2rem;">
-  <a href="https://rplpeptides.com" class="md-button md-button--primary">Visit RPL Peptides Store →</a>
+  <a href="https://rplpeptides.com" class="md-button md-button--primary">Visit RPL Peptide Store →</a>
   <a href="https://data.rplpeptides.com" class="md-button">Browse Data & Reference →</a>
 </div>
 
@@ -151,8 +151,8 @@ Calculations use standard IUPAC-IUBMB biochemical constants and ExPASy/ProtParam
 <div class="faq-q">Can I use these tools for non-peptide compounds?</div>
 Some tools work for any compound — the Dilution and Molarity calculators only require molecular weight. The Molecular Weight Calculator is peptide-specific. The Amino Acid Converter is amino acid-specific.
 
-<div class="faq-q">How are these tools related to RPL Peptides?</div>
-These tools are provided by RPL Peptides as a free resource for the research community. They complement the [product catalog](https://rplpeptides.com/product-list/) and the [technical data database](https://data.rplpeptides.com/).
+<div class="faq-q">How are these tools related to RPL Peptide?</div>
+These tools are provided by RPL Peptide as a free resource for the research community. They complement the [product catalog](https://rplpeptides.com/product-list/) and the [technical data database](https://data.rplpeptides.com/).
 
 <div class="faq-q">Do you store my sequences or calculation data?</div>
 No. All calculations happen entirely in your browser. No data is sent to any server. Your peptide sequences remain private.
