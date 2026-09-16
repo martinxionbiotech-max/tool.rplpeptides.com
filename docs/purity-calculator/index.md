@@ -51,6 +51,14 @@ Calculate the active (peptide-only) mass and impurity content based on stated pu
 
 ---
 
+## What This Calculator Does
+
+Given a stated purity — typically the HPLC figure on a certificate of analysis — and the amount of material on hand, this calculator separates the label value from the working value: active peptide mass, impurity mass, and the correction factor that converts a target amount of active peptide into a mass to weigh. Supply a molecular weight and it also returns purity-corrected molar values for solution work.
+
+In numbers: 100 mg at 95% purity holds 95 mg of peptide and 5 mg of everything else. Keeping both figures visible means your notes and calculations can quote whichever the method calls for — and nothing quietly inherits an unstated assumption.
+
+---
+
 ## How Purity Affects Dosing
 
 <div class="principle-box" markdown="1">
@@ -202,6 +210,64 @@ Peptide purity directly affects experimental results. A common scenario:
 
 **Always dose based on active peptide mass, not total vial mass.**
 
+## Assumptions and Rounding
+
+- **Stated purity is taken at face value.** The calculation applies the percentage you enter; it cannot verify how that number was obtained.
+- **Impurity fraction assumed inert.** Only the active fraction counts toward peptide mass; no assumption is made about what the remainder contains.
+- **Correction factor convention.** CF = 100 ÷ P. Multiply any target amount of active peptide by CF to get the total mass to weigh.
+- **Molar section.** Active nmol comes from the active mass and the molecular weight; the corrected molarity figure reports what 1 mg/mL of this lot delivers in molar terms, reduced in proportion to the stated purity.
+- **Rounding.** Masses display at 2 decimals, the correction factor at 3, and molar values at 4; internal arithmetic is full precision.
+
+---
+
+## Input Definitions
+
+| Input | Meaning | Units | Allowed values |
+|---|---|---|---|
+| Stated purity | Purity figure as reported (e.g., by HPLC) | % | 0–100 |
+| Total amount | Amount of material on hand | mg, g, µg | Positive number |
+| Molecular weight | Optional — enables the molar output section | Da (g/mol) | Positive number; leave at 0 to skip |
+
+---
+
+## Output Interpretation
+
+- **Active peptide mass** — the portion of the total that is the target peptide, from Total × (Purity ÷ 100).
+- **Impurity content** — the remainder: truncated sequences, salts, water, and other non-target material taken together.
+- **Active peptide percentage** — an echo of the purity entered, kept visible for the record.
+- **Effective concentration adjustment** — the factor (100 ÷ P) to apply when a target refers to active peptide; it is slightly above 1 for any lot below 100%.
+- **Molar values (with MW)** — active nmol and the purity-corrected mM delivered by a 1 mg/mL solution.
+- Two lots with the same label purity can still differ in practice; if in doubt, verify with your own analysis (see Limitations).
+
+---
+
+## Limitations
+
+- **Purity ≠ content.** HPLC purity is an area-percentage by UV; it does not capture counterions, water, or residual solvents, which is why peptide content is often lower than the stated figure.
+- **One number, one method.** Different analysts, gradients, and wavelengths can shift a purity figure; the calculator preserves whatever you enter, not the method behind it.
+- **Lot homogeneity assumed.** A single purity value is applied to the whole amount on hand.
+- **No stability dimension.** Purity measured at release says nothing about how the material holds up in storage or solution.
+- **Scope.** A laboratory research and educational aid — for critical work, pair the correction with certificate-of-analysis documentation and your own analytical checks.
+
+---
+
+## The Author's Take
+
+**Position — in my view, HPLC purity is the most over-credited number on a peptide certificate of analysis.**
+
+**Reasoning.** Area-percentage purity answers "how much of the UV-absorbing signal is my peak" — an important question, but not the same as "how much usable peptide is in this vial". Counterions and water sit outside the measurement; identity and behavior are separate questions answered by mass spectrometry and assay data. Purity is one line of evidence — read it next to the other lines, and apply the correction factor in your calculations so the ambiguity at least flows through your records instead of disappearing into them.
+
+**Disclosure.** This is the author's opinion based on common laboratory practice, not a verified fact — for any given lot, the certificate of analysis is the authoritative document.
+
+---
+
+## Related Research & Peptide Data
+
+- **Research:** [Purity Testing Methods](https://research.rplpeptides.com/research/analytical-science/purity-testing-methods/) — how purity is actually measured, and what each method can and cannot see.
+- **Research:** [How Laboratories Calculate HPLC Purity](https://research.rplpeptides.com/coa-guide/16-how-laboratories-calculate-hplc-purity/) — a worked look inside the area-percentage calculation.
+- **Data:** [COA Interpretation Guide](https://data.rplpeptides.com/guides/peptide-coa-interpretation-guide/) — reading a certificate of analysis line by line.
+- **Data:** [Understanding Peptide Purity](https://data.rplpeptides.com/white-papers/understanding-peptide-purity/) — a longer discussion of purity versus content.
+
 ---
 
 ## Related Tools
@@ -261,5 +327,26 @@ function clearPur() {
   document.getElementById('pur-amount').value = '';
   document.getElementById('pur-mw').value = '0';
   document.getElementById('pur-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Purity Calculator",
+  "url": "https://tool.rplpeptides.com/purity-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

@@ -45,6 +45,14 @@ Calculate comprehensive physicochemical properties of a peptide from its amino a
 
 ---
 
+## What This Calculator Does
+
+This calculator folds a set of standard sequence-level estimators into one pass: chain length, monoisotopic and average mass, isoelectric point (pI), net charge at a pH you choose, GRAVY hydropathicity, instability index, and aliphatic index. It accepts the 20 standard one-letter codes plus an optional N-terminal acetylation setting.
+
+The outputs are planning quantities. They help bracket buffer and purification pH ranges, anticipate solubility behavior, and flag sequences that may need gentler handling — all from composition alone, with no experimental input. Use them as estimates to design experiments around, not as replacements for characterization.
+
+---
+
 ## Reference Data for Known Peptides
 
 | Peptide | Sequence | Length | MW (Mono) | pI | Charge pH 7 |
@@ -190,6 +198,90 @@ Charge and solubility are closely related. In general:
 This relationship is the basis for **pH-dependent solubility** and is exploited in purification strategies such as isoelectric precipitation and ion-exchange chromatography.
 
 
+## Assumptions and Rounding
+
+- **pKa set.** Fixed standard pKa values (tabulated above) are used for the N- and C-termini and the ionizable side chains; no correction is made for neighboring residues, ionic strength, or temperature.
+- **Charge and pI.** Net charge follows the Henderson–Hasselbalch form for each group; pI is found by bisection at the pH where net charge reaches zero.
+- **GRAVY.** Kyte–Doolittle hydropathy values, averaged over the chain — a composition measure that ignores structure.
+- **Instability index.** A simplified weighted-sum approach based on residue-level dipeptide weights; read the value as a screen, not a kinetic prediction.
+- **Modification coverage.** Only the options in the selector are offered; C-terminal amidation, phosphorylation, glycosylation, cyclization, and D-amino-acid substitution are not implemented. For modified constructs, cross-check expected masses against an independent mass calculator.
+- **Rounding.** Masses to 2 decimals; pI to 2; net charge to 2 with a sign; GRAVY to 3; instability and aliphatic indices to 1. Internally, full precision is used.
+
+---
+
+## Worked Example: Net Charge and pI of GHK (Gly-His-Lys)
+
+A short basic peptide shows how the charge model assembles its answer. GHK has four ionizable groups — the N-terminus, the C-terminus, histidine (pKₐ 6.00), and lysine (pKₐ 10.50).
+
+**Step 1 — per-group contribution at pH 7.0.** Bases contribute 1 / (1 + 10^(pH − pKₐ)); acids contribute −1 / (1 + 10^(pKₐ − pH)):
+
+| Group | Expression | Contribution |
+|---|---|---|
+| N-terminus (8.0) | 1 / (1 + 10^(7 − 8)) | +0.91 |
+| His (6.00) | 1 / (1 + 10^(7 − 6)) | +0.09 |
+| Lys (10.50) | 1 / (1 + 10^(7 − 10.5)) | +1.00 |
+| C-terminus (3.1) | −1 / (1 + 10^(3.1 − 7)) | −1.00 |
+
+**Step 2 — net charge.** Summing the four contributions gives **+1.00**, the value shown in the results table for pH 7.0.
+
+**Step 3 — pI.** Bisection walks the pH scale until the net charge crosses zero; for GHK that lands at **pI 9.25** — sensible for a peptide with two strong positive contributors and no acidic side chains.
+
+The same run reports length 3; GRAVY = (−0.4 − 3.2 − 3.9) / 3 = **−2.500** (clearly hydrophilic); an instability index of **0.0**, since the simplified model finds no destabilizing weighting at the positions it scores; and an aliphatic index of **0.0**, because none of Ala, Val, Ile, or Leu appears in the sequence.
+
+---
+
+## Input Definitions
+
+| Input | Meaning | Units | Allowed values |
+|---|---|---|---|
+| Amino acid sequence | One-letter code chain; characters outside the standard set are ignored | — | ACDEFGHIKLMNPQRSTVWY |
+| pH for charge calculation | pH at which the net charge is evaluated | pH units | 0–14 (default 7.0) |
+| N-terminal modification | Selector for the N-terminal chemistry recorded with the calculation | — | None; acetylated |
+
+---
+
+## Output Interpretation
+
+The results table reports one row per property; here is what each line is telling you and how much to lean on it:
+
+- **Sequence length** — count of residues found; if it differs from your expectation, check for typos or characters that were stripped.
+- **Molecular weight, monoisotopic / average** — the two mass models for the chain, following the residue-mass conventions described in the assumptions above.
+- **Isoelectric point (pI)** — the pH of zero net charge under the fixed pKa set; a planning value for buffer choices and ion-exchange windows.
+- **Net charge at your pH** — the same model evaluated at the pH you entered; sign and magnitude indicate how strongly the peptide will interact with charged surfaces.
+- **GRAVY** — average hydropathy; positive leans hydrophobic, negative hydrophilic.
+- **Instability index** — above 40 flags a sequence the model predicts may be less stable in solution; below 40 reads "stable".
+- **Aliphatic index** — relative volume of aliphatic side chains; higher values track with greater thermostability in the model.
+
+---
+
+## Limitations
+
+- **Estimates, not measurements.** Every value is computed from sequence composition; none of them replaces an experimental determination.
+- **pI uncertainty.** For short peptides, pI estimates typically carry a few tenths of a pH unit of uncertainty (often quoted as roughly ±0.3–0.5); pKa sets vary between implementations, so the second decimal carries little meaning.
+- **Charge model.** Fixed pKa values, no neighbor effects, no ionic-strength corrections.
+- **Instability index provenance.** Developed for proteins and based on dipeptide occurrence statistics; for peptides it is a rough screen at best.
+- **Composition-only hydropathy.** GRAVY cannot see secondary structure, terminal capping, or co-solvent effects.
+- **Scope.** A laboratory research and educational aid — use the numbers to guide experiments, then confirm what matters.
+
+---
+
+## The Author's Take
+
+**Position — in my view, sequence-level property estimates are screening tools, not answers; their job is to narrow the search space before the bench does.**
+
+**Reasoning.** Composition-only models cannot see structure, buffers, or neighbors, and their pKa sets differ from implementation to implementation — so two "authoritative" pI values for the same peptide can disagree by several tenths of a unit and both be defensible. That does not make them useless: a predicted pI of 9.3 tells you immediately that a pH 6 buffer is the wrong place to look for solubility, and an instability screen flags sequences worth handling more gently. Use them to bracket, compare, and prioritize; then confirm whatever matters.
+
+**Disclosure.** This is the author's opinion, not a verified fact — experimental characterization remains the reference point.
+
+---
+
+## Related Research & Peptide Data
+
+- **Research:** [Analytical Characterization of Peptides](https://research.rplpeptides.com/research/peptide-chemistry/analytical-characterization/) — how the properties calculated here are measured in practice.
+- **Research:** [Peptide Purification Methods](https://research.rplpeptides.com/research/peptide-chemistry/peptide-purification-methods/) — where pI and charge estimates feed into separation strategy.
+- **Data:** [Peptide Glossary](https://data.rplpeptides.com/glossary/peptide-glossary/) — definitions for pI, hydropathy, and the other terms used above.
+- **Data:** [Peptide Solubility Guide](https://data.rplpeptides.com/guides/peptide-solubility-guide/) — turning GRAVY and charge into practical solvent decisions.
+
 ---
 
 ## Related Tools
@@ -324,5 +416,26 @@ function clearProps() {
   document.getElementById('prop-ph').value = '7.0';
   document.getElementById('prop-mod').value = 'none';
   document.getElementById('prop-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Properties Calculator",
+  "url": "https://tool.rplpeptides.com/peptide-property-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

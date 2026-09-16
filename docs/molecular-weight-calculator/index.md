@@ -66,6 +66,14 @@ Calculate the molecular weight, molecular formula, net charge, and extinction co
 
 ---
 
+## What This Calculator Does
+
+Enter a peptide sequence in one-letter code and the calculator returns the numbers you need for downstream work: monoisotopic and average molecular weight, molecular formula, net charge at pH 7, extinction coefficient at 280 nm, molar absorptivity, and the parsed sequence length. N-terminal acetylation, pyroglutamate formation, formylation, C-terminal amidation, and up to three disulfide bridges can be applied before calculating, so the reported values can track an actual construct rather than the bare sequence.
+
+Everything runs in the browser — nothing is uploaded or stored. The sections below set out the mass conventions, modification values, and rounding rules behind each output, so you can judge whether a calculated value fits your application.
+
+---
+
 ## How the Calculation Works
 
 ### Amino Acid Monoisotopic Masses
@@ -322,6 +330,78 @@ The Peptide Molecular Weight Calculator is essential for a wide range of researc
 
 For comprehensive physicochemical characterization including isoelectric point, hydrophobicity, and instability index, visit the [Peptide Properties Calculator](peptide-property-calculator/).
 
+## Assumptions and Rounding
+
+A few conventions sit behind every result, and the same ones apply to both mass models:
+
+- **Residue mass basis.** Monoisotopic values are computed from the exact masses of the most abundant isotopes (¹²C, ¹H, ¹⁴N, ¹⁶O, ³²S); average values from natural-abundance atomic weights. The two are reported separately and never mixed.
+- **Chain model.** A linear chain of the 20 proteinogenic L-amino acids is assumed, with free termini unless a modification is selected. Cyclic, branched, and D-amino-acid constructs are out of scope.
+- **Modification set.** Only the dropdown modifications are modeled (acetylation, pyroglutamate, formylation, amidation, disulfide bridges), each applied as a fixed mass delta to the full-length chain.
+- **Charge model.** Net charge at pH 7 counts Arg and Lys as +1, Asp and Glu as −1, and His as +0.1; termini follow their modification state. It is a fixed-pH estimate, not a titration.
+- **Extinction model.** Edelhoch-style estimate (Trp 5,500, Tyr 1,490 M⁻¹cm⁻¹) with 125 M⁻¹cm⁻¹ added per disulfide bridge.
+- **Rounding.** Displayed values are rounded for readability — mass to 2 decimals, charge to 1 decimal, formula as whole-number atoms, extinction to the nearest integer. The sums behind them keep full precision.
+
+---
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Amino acid sequence | One-letter code for the peptide chain; any character outside the 20 standard codes is stripped before calculation | — | Standard one-letter codes (ACDEFGHIKLMNPQRSTVWY) |
+| N-terminal modification | Chemistry applied to the free N-terminus | — | None; acetylation (+42.01 Da); pyroglutamate (−17.03 Da); formylation (+28.01 Da) |
+| C-terminal modification | Chemistry applied to the free C-terminus | — | None; amidation (−0.98 Da) |
+| Disulfide bridges | Number of S–S bonds assumed to be formed | bridges | 0, 1, 2, or 3 |
+| Mass type | Isotopic model used for the reported mass | — | Monoisotopic; average |
+
+---
+
+## Output Interpretation
+
+Each result row answers a different question about the same chain:
+
+| Output | How to read it |
+|---|---|
+| Molecular weight | The chain mass in daltons for the selected model — monoisotopic (lowest-mass isotope peak) or average (center of the isotopic envelope); the label after the number tells you which |
+| Molecular formula | Whole-number atom counts for the modified chain; a quick sanity check against a vendor's stated formula |
+| Net charge (pH 7) | Estimated charge at near-neutral pH; the sign tells you whether the peptide behaves cation- or anion-like in a neutral buffer |
+| Extinction coefficient (280 nm) | Estimated molar absorptivity; reports 0 when no Trp, Tyr, or disulfide is present |
+| Sequence length | Number of residues parsed from the input |
+| Molar absorptivity | Extinction coefficient expressed per gram of peptide (L·g⁻¹·cm⁻¹), for when you weigh out material rather than count moles |
+| A260/A280 ratio | A rough aromatic-content estimate; read it as an indicator, not a measurement |
+
+---
+
+## Limitations
+
+- **Standard residues only.** D-amino acids, norleucine, selenomethionine, and other non-standard residues are not recognized — letters outside the 20 standard codes are silently ignored.
+- **Fixed modification inventory.** Phosphorylation, oxidation, methylation, glycosylation, and other post-translational or synthetic marks are not modeled; add their mass deltas by hand when needed.
+- **Charge is an estimate.** The pH 7 figure uses fixed side-chain contributions rather than a full Henderson–Hasselbalch charge curve; read it as a coarse guide to ion-exchange and solubility behavior.
+- **Extinction assumes simple composition.** The Edelhoch estimate reflects aromatic content and disulfide count only.
+- **No counterions or salt forms.** TFA/acetate counterion mass, metal complexes, and bound water are not included; a measured mass for a salt form will differ.
+- **Linear chains only.** Cross-linked, branched, or conjugated constructs fall outside the model.
+- **Check before relying on it.** This tool is provided for laboratory research and educational use; for critical applications, confirm masses against your own mass spectrometry data.
+
+---
+
+## The Author's Take
+
+**Position — in my view, the mass model should be picked by the task before the first calculation, not after the discrepancy shows up.**
+
+**Reasoning.** Monoisotopic mass is the number that pairs with a high-resolution mass spectrum, because that is what the instrument resolves as the lowest-mass peak. Average mass is the number that pairs with the balance: gravimetric conversions between mass and moles use the bulk isotopic distribution. Most mismatches trace back to comparing numbers computed under different conventions, or to a salt form that was never subtracted. Decide the convention at the start, write it next to the value, and the ambiguity disappears.
+
+**Disclosure.** This is the author's working opinion from laboratory practice, not a verified fact — follow your instrument's and protocol's conventions.
+
+---
+
+## Related Research & Peptide Data
+
+Mass values only mean something in context. These references go deeper on measurement and interpretation:
+
+- **Research:** [Mass Spectrometry in Peptide Research](https://research.rplpeptides.com/research/analytical-science/mass-spectrometry-peptide-research/) — how peptide masses are measured, from ionization to fragmentation.
+- **Research:** [Analytical Characterization of Peptides](https://research.rplpeptides.com/research/peptide-chemistry/analytical-characterization/) — the wider toolkit that confirms identity, purity, and sequence.
+- **Data:** [Peptide MS Interpretation Guide](https://data.rplpeptides.com/guides/peptide-ms-interpretation-guide/) — reference guidance for reading mass spectra against calculated values.
+- **Data:** [Peptide Glossary](https://data.rplpeptides.com/glossary/peptide-glossary/) — terminology for sequence, mass, and modification concepts used across this site.
+
 ---
 
 ## Related Tools
@@ -489,5 +569,26 @@ function clearMW() {
   document.getElementById('disulfide').value = '0';
   document.getElementById('mass-type').value = 'monoisotopic';
   document.getElementById('mw-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Molecular Weight Calculator",
+  "url": "https://tool.rplpeptides.com/molecular-weight-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

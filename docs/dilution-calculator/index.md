@@ -53,6 +53,14 @@ Calculate the solvent volume required to reconstitute a peptide to a target conc
   </div>
 </div>
 
+## What This Calculator Does
+
+This calculator answers one practical question in two forms: how much solvent to add to a known amount of peptide to reach a target concentration. Mass-based targets (mg/mL, µg/mL) use a direct proportion; molar targets (mM, µM) additionally use the peptide's molecular weight, which you supply. The result includes the reconstitution volume, a restatement of the final concentration, and the mass used — so the preparation can be recorded as carried out.
+
+The model assumes the peptide dissolves completely and that the powder itself contributes negligibly to volume. That is a fair assumption at typical vial scales, but it is an assumption — see the Limitations section for where it breaks down.
+
+---
+
 ## How the Calculation Works
 
 <div class="principle-box" markdown="1">
@@ -155,6 +163,63 @@ A: Yes — preparing a concentrated stock (e.g., 10× the final working concentr
 | 5 mg | 5.0 mL | 2.5 mL | 1.0 mL |
 | 10 mg | 10.0 mL | 5.0 mL | 2.0 mL |
 
+## Assumptions and Rounding
+
+- **Direct proportion for mass targets.** mg/mL and µg/mL are mass-per-volume figures; no molecular weight is involved in those paths.
+- **Molecular weight required for molar targets.** The mM and µM results depend entirely on the MW you enter (Da ≡ g/mol).
+- **Dissolution assumptions.** Complete dissolution is assumed, and the solvent volume is taken as the final solution volume.
+- **No purity correction.** The full weighed mass is counted as peptide; correct for purity or salt content first if that matters for your work.
+- **Rounding.** Volumes are reported in the most readable unit — µL, mL, or L — at 1–2 decimals; masses at 2 decimals. The ratios behind them are computed at full precision.
+
+---
+
+## Input Definitions
+
+| Input | Meaning | Units | Allowed values |
+|---|---|---|---|
+| Peptide amount | Mass of peptide to be dissolved | mg, µg, g | Positive number |
+| Desired concentration | Target concentration of the final solution | mg/mL, µg/mL, mM, µM | Positive number |
+| Molecular weight | Molar mass of the peptide | Da (g/mol) | Positive number; required for mM/µM targets |
+
+---
+
+## Output Interpretation
+
+- **Solvent volume required** — how much liquid to add to the vial to reach the target concentration; shown in µL, mL, or L, whichever reads most naturally at that scale.
+- **Final concentration** — an echo of the target, recorded with the result so the preparation note is self-contained.
+- **Peptide amount** — the mass the calculation ran on (normalized to mg), useful when the original entry was in µg or g.
+- If the computed volume is smaller than expected, check the units on both the concentration and the mass before re-weighing anything — unit mix-ups, not arithmetic, cause most surprises here.
+
+---
+
+## Limitations
+
+- **Solubility ceiling.** The calculation returns the volume needed for a target concentration; it cannot tell you whether the peptide will actually dissolve in it. If a sequence resists, lower the target, warm gently, or switch solvent — see the references below.
+- **Solvent added vs. final volume.** The result is the volume to add to the powder. The true final volume includes the dissolved peptide's contribution, which is small but nonzero.
+- **Purity not included.** A 90%-pure lot needs roughly 11% more mass for the same active concentration; apply the correction before reconstituting.
+- **Hydrophobic sequences.** Some peptides need co-solvents (DMSO, acetic acid) or stepwise dilution to reach the target; the volume math does not change, the solvent choice does.
+- **Handling practice.** Aliquoting before freezing avoids repeated freeze–thaw cycles, which alter the concentration you set.
+- **Scope.** A laboratory research and educational aid — confirm unusual solvents or concentrations against established protocols.
+
+---
+
+## The Author's Take
+
+**Position — in my view, the volume this calculator returns matters less than the solvent decision that precedes it: reconstitutions fail on solubility far more often than on arithmetic.**
+
+**Reasoning.** The relation C = m/V is exact; solubility is not. A correct volume of the wrong solvent produces a stubborn slurry, while a slightly different solvent system dissolves the same powder cleanly at the same concentration. A minute spent checking the solubility notes for your peptide — and screening a co-solvent if needed — is worth more than a second decimal place in the volume. Use the calculator to plan, and let the bench confirm.
+
+**Disclosure.** This is the author's opinion, not a verified fact — solvent suitability should always be checked against the supplier's documentation or your own testing.
+
+---
+
+## Related Research & Peptide Data
+
+- **Research:** [Peptide Storage and Handling Science](https://research.rplpeptides.com/faq/peptide-storage-handling-science-faq/) — the physical chemistry behind reconstitution, freeze–thaw behavior, and container effects.
+- **Research:** [Lyophilization of Peptides](https://research.rplpeptides.com/methods/lyophilization-peptides/) — why the powder behaves the way it does when solvent meets it.
+- **Data:** [Reconstitution FAQ](https://data.rplpeptides.com/FAQ/reconstitution-faq/) — operational answers to common reconstitution questions.
+- **Data:** [Peptide Solubility Guide](https://data.rplpeptides.com/guides/peptide-solubility-guide/) — choosing solvent systems by sequence character.
+
 ---
 
 ## Related Tools
@@ -244,5 +309,26 @@ function clearDil() {
   document.getElementById('dil-conc').value = '';
   document.getElementById('dil-mw').value = '1000';
   document.getElementById('dil-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Dilution Calculator",
+  "url": "https://tool.rplpeptides.com/dilution-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

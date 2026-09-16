@@ -89,6 +89,16 @@ Convert between concentration units for peptide solutions. Calculate molarity fr
   </div>
 </div>
 
+---
+
+## What This Calculator Does
+
+The calculator runs in both directions. **Mode 1** takes a peptide mass, its molecular weight, and the solution volume, and returns the concentration as molarity — plus the same concentration as mg/mL and µM, and the total amount in nmol. **Mode 2** reverses the question: give it a target concentration (µM, mM, or M), a molecular weight, and the volume you want to prepare, and it returns the mass to weigh out.
+
+Both modes take the molecular weight you enter at face value. That entry is also the input most likely to drift from reality — salts, counterions, and residual water shift the effective figure — so a purity check before calculating is often the difference between a nominal and an accurate stock.
+
+---
+
 <div class="principle-box" markdown="1">
   <h3>How Molarity Calculations Work</h3>
   <p><strong>Molarity</strong> (M) is the number of <strong>moles of solute per liter of solution</strong>. It is the standard concentration unit in chemistry and molecular biology because it directly describes the number of molecules — not just the mass — present in solution.</p>
@@ -281,6 +291,68 @@ To convert to common units:
 - **µM** = M × 1,000,000
 - **nmol** = molarity (M) × volume (L) × 10⁹
 
+## Assumptions and Rounding
+
+- **Units convention.** Molecular weight is Da, numerically equal to g/mol; the volume is the volume of the final solution.
+- **Complete dissolution.** The solute is assumed to dissolve fully and to contribute no volume of its own — the solvent volume equals the solution volume. For dilute peptide solutions this is a very good approximation; for concentrated stocks it is a small, usually acceptable one.
+- **Purity and form.** Results reflect exactly what you enter. No automatic correction is applied for purity, counterion content, or hydration state — adjust the mass or the molecular weight first if those matter for your work.
+- **Temperature.** Molarity is defined per liter of solution, so it drifts slightly with thermal expansion or contraction; values are nominal at preparation temperature.
+- **Rounding.** Results display at 2–3 decimals depending on the unit (mM and mg/mL to 3; µM and nmol to 2). All arithmetic runs at full precision internally.
+
+---
+
+## Input Definitions
+
+| Mode | Input | Meaning | Units | Allowed values |
+|---|---|---|---|---|
+| 1 | Mass | Amount of peptide weighed out | mg, µg, g | Positive number |
+| 1 | Molecular weight | Molar mass of the material being weighed | Da (g/mol) | Positive number |
+| 1 | Volume | Volume of the prepared solution | mL, L, µL | Positive number |
+| 2 | Target concentration | Desired final concentration | µM, mM, M | Positive number |
+| 2 | Molecular weight | Molar mass of the material | Da (g/mol) | Positive number |
+| 2 | Desired volume | Volume of solution to prepare | mL, L, µL | Positive number |
+
+---
+
+## Output Interpretation
+
+- **Molarity** — the headline result, shown in mM with a µM equivalent: how many molecules per liter the solution contains.
+- **Amount (nmol)** — the total quantity of peptide in the prepared volume (concentration × volume), convenient for aliquoting.
+- **Concentration (mg/mL)** — the same solution described by mass rather than molecule count; independent of molecular weight.
+- **Required mass (Mode 2)** — the mass to weigh, shown in mg and µg, for the target concentration and volume.
+- Sanity check: if one line looks off, verify the molecular weight entry first — it is the only input that describes the substance itself.
+
+---
+
+## Limitations
+
+- **No purity or salt-form correction.** Weigh-outs assume the molecular weight describes the material as it sits on the balance; a 95%-pure or TFA-salted peptide needs those adjustments applied first.
+- **Ideal-volume assumption.** Volume contraction on mixing and the volume of dissolved solute are ignored; for typical research stock solutions the error is small, but it grows with concentration.
+- **Temperature sensitivity.** Because molarity is per-liter-of-solution, a stock's molarity shifts marginally between storage and bench temperature.
+- **Pipetting reality.** Below roughly 10 µL, volumetric error dominates; prepare a larger volume and subdivide where precision matters.
+- **Scope.** A research and educational aid for laboratory solution preparation — confirm critical concentrations against an independent method (for example, UV absorbance against a known extinction coefficient).
+
+---
+
+## The Author's Take
+
+**Position — in my view, when a peptide concentration looks wrong, the molecular weight field deserves the first look: everything downstream of it is deterministic arithmetic.**
+
+**Reasoning.** The mass and the volume are things you measure directly; the molecular weight is a stand-in for the actual material, and stand-ins drift. A batch supplied as a TFA salt, a hydrated form, or simply a different construct than the sequence you pictured produces a systematic offset that looks like a mysterious measurement error. Entering a molecular weight that matches the vial in front of you — and correcting for purity before, not after — removes the most common source of disagreement between nominal and measured concentrations.
+
+**Disclosure.** This is the author's working opinion, not a verified fact — the calculator will faithfully compute whatever input it is given.
+
+---
+
+## Related Research & Peptide Data
+
+Concentration work sits between measurement and preparation. For background:
+
+- **Research:** [Spectrophotometric Quantification of Peptides](https://research.rplpeptides.com/laboratory-techniques/spectrophotometric-peptide-quantification/) — the standard bench method for checking what molarity you actually made.
+- **Research:** [HPLC Analysis of Peptides](https://research.rplpeptides.com/research/analytical-science/hplc-analysis-peptides/) — separation-based quantification and its assumptions.
+- **Data:** [Peptide Reconstitution Guide](https://data.rplpeptides.com/guides/peptide-reconstitution-guide/) — practical preparation guidance for making up stock solutions.
+- **Data:** [Solubility FAQ](https://data.rplpeptides.com/FAQ/solubility-faq/) — what limits the concentration you can actually reach.
+
 ---
 
 ## Related Tools
@@ -360,5 +432,26 @@ function calcMassFromMolarity() {
   document.getElementById('mol-tgt-mass').textContent = massMg.toFixed(3) + ' mg (' + (massG*1e6).toFixed(1) + ' µg)';
   document.getElementById('mol-tgt-nmol').textContent = nmol.toFixed(2) + ' nmol';
   document.getElementById('mol-tgt-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Molarity Calculator",
+  "url": "https://tool.rplpeptides.com/molarity-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

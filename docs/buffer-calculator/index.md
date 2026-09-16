@@ -59,6 +59,14 @@ Easily calculate the exact masses and volumes of components needed to prepare co
   </div>
 </div>
 
+## What This Calculator Does
+
+Choose one of six buffer systems — PBS, Tris-HCl, HEPES, acetate, citrate, or phosphate — then set a target concentration, volume, and pH. The calculator returns a component-by-component recipe: the mass of each salt to weigh, estimated acid or base volumes for the pH step, and short preparation instructions. PBS takes an additional NaCl setting; every system derives its acid/base split from the Henderson–Hasselbalch ratio at your target pH.
+
+Read the output as a planning sheet rather than a bench protocol: weigh-out values come from exact molar amounts, while the acid/base additions are estimates to be confirmed dropwise with a calibrated pH meter. The notes below cover conventions, rounding, and where each number comes from.
+
+---
+
 ## How Buffer Calculations Work
 
 A buffer is a solution that resists changes in pH when small amounts of acid or base are added. Buffers consist of a weak acid (HA) and its conjugate base (A⁻). The ability of a buffer to maintain pH is governed by the **Henderson–Hasselbalch equation**:
@@ -329,6 +337,67 @@ Tris buffers are particularly sensitive to temperature. A Tris buffer prepared a
 | Acetate | CH₃COOH (acetic acid) | CH₃COO⁻ (acetate) | 4.76 | 10–200 mM |
 | Citrate (pK₂) | H₂Cit⁻ | HCit²⁻ | 4.76 | 10–100 mM |
 | Citrate (pK₃) | HCit²⁻ | Cit³⁻ | 6.40 | 10–100 mM |
+
+## Assumptions and Rounding
+
+- **Ideal-solution model.** Concentrations are related through the Henderson–Hasselbalch equation without activity corrections; at typical buffer concentrations the deviations are small but real.
+- **pKa values at 25 °C.** The pKa shown in the buffer table is used as-is; buffer pH is temperature-sensitive (see below).
+- **Component masses.** Computed from exact molar quantities and the molecular weight of the form listed for each salt; alternate rows give the mass for other hydration forms at the same molar amount.
+- **Acid/base volumes are estimates.** HCl and NaOH amounts assume the stated stock concentration (e.g., 6 M HCl, 5 M NaOH) and are shown in mL at 2 decimals — add dropwise and follow the pH meter.
+- **Rounding.** Masses display as g at 4 decimals, mg at 2, or µg; volumes at 2 decimals. The mole calculations themselves keep full precision.
+- **Water and reagents.** Recipes assume reagent-grade salts and pure water (≥18.2 MΩ·cm as noted in the preparation section above).
+
+---
+
+## Input Definitions
+
+| Input | Meaning | Units | Allowed values |
+|---|---|---|---|
+| Buffer type | System to prepare | — | PBS, Tris-HCl, HEPES, acetate, citrate, phosphate |
+| Target concentration | Total buffer concentration of the working solution | mM | 1–1000 (interface limit) |
+| Target volume | Final volume to prepare | mL | 1–10,000 (interface limit) |
+| Target pH | pH to set at preparation temperature | pH units | PBS 6.5–8.0; Tris-HCl 7.0–9.0; HEPES 6.8–8.2; acetate 3.5–5.5; citrate 3.0–6.5; phosphate 5.5–8.0 |
+| NaCl concentration | Salt level, for PBS only | mM | 0 or positive (default 137) |
+
+---
+
+## Output Interpretation
+
+- **Component table** — one row per reagent: component, its molecular weight, amount needed, and unit (g, mg, or µg, chosen automatically at the right scale).
+- **Estimated acid/base rows** — volumes of the stated stock solution to add for pH adjustment; these appear for Tris (HCl), HEPES (NaOH), and acetate (glacial acetic acid) recipes.
+- **Alternate-form rows (indented, italic)** — the same molar amount expressed for another hydration form of the same salt; use whichever matches your reagent bottle.
+- **Preparation instructions** — a short bench note: dissolve order, pH step, final volume, filtration, and storage hints.
+- **Summary line** — restates system, concentration, volume, and pH so the recipe can be pasted into a notebook.
+
+---
+
+## Limitations
+
+- **Estimated pH-step volumes.** Acid/base additions are computed, not titrated; always finish against a calibrated pH meter. If you overshoot the target, restarting is generally cleaner than back-titrating — added ions accumulate either way.
+- **Temperature.** pH drifts with temperature — most dramatically for Tris (about −0.028 pH per °C; a buffer made at 25 °C reads noticeably higher at 4 °C). Prepare or verify at the temperature of use.
+- **Hydration forms.** The recipe's molecular weights assume the stated forms; weigh the form you actually have (the alternates are listed for this reason).
+- **Ideal-solution approximation.** High concentrations and high ionic strengths widen the gap between computed and observed behavior.
+- **Not a sterilization or quality protocol.** Filtration, storage, and shelf-life practices are summarized above but remain subject to your own laboratory's procedures.
+- **Scope.** A laboratory research and educational aid — confirm critical buffer parameters (pH, conductivity, sterility) before use in sensitive work.
+
+---
+
+## The Author's Take
+
+**Position — in my view, buffers fail at the bench for temperature long before they fail for arithmetic: get the pH right at the temperature of use and most "bad buffer" mysteries disappear.**
+
+**Reasoning.** The Henderson–Hasselbalch math here is standard and the recipes are sound; what actually bites is thermodynamics. Tris shifts roughly −0.028 pH per °C, which turns a carefully set pH 8.0 at room temperature into something noticeably different in a cold cabinet or a warm water bath. Phosphate and acetate barely move; Tris moves a lot. So matching preparation temperature to use temperature — and recording which temperature the number refers to — is worth more than any refinement of the calculation itself.
+
+**Disclosure.** This is the author's opinion, not a verified fact — verify pH at use temperature and follow your own standards for buffer acceptance.
+
+---
+
+## Related Research & Peptide Data
+
+- **Research:** [Buffer Selection for Peptide Work](https://research.rplpeptides.com/formulation-science/ph-buffer-selection-peptides/) — how pH and buffer systems interact with peptide stability and solubility.
+- **Research:** [Principles of Peptide Chromatography](https://research.rplpeptides.com/laboratory-techniques/principles-peptide-chromatography/) — where buffer choice meets separation performance.
+- **Data:** [Solubility FAQ](https://data.rplpeptides.com/FAQ/solubility-faq/) — pH effects on dissolution and precipitation.
+- **Data:** [Peptide Handling Guide](https://data.rplpeptides.com/guides/peptide-handling-guide/) — practical notes around preparing and storing solutions.
 
 ---
 
@@ -664,4 +733,25 @@ function clearBuffer() {
 document.addEventListener('DOMContentLoaded', function() {
   updateBufferOptions();
 });
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Buffer Preparation Calculator",
+  "url": "https://tool.rplpeptides.com/buffer-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
+}
 </script>
