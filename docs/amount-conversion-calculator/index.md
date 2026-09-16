@@ -93,6 +93,14 @@ Convert between peptide mass, solution concentration, and injection volume for l
 
 ---
 
+## What This Calculator Does
+
+This calculator connects four quantities that are constantly juggled at the bench: the amount a research protocol specifies per kilogram of subject weight, the mass of peptide in the vial, the concentration that results after reconstitution, and the volume that delivers the target. Enter a consistent set and it returns the whole chain — total amount required, purity-adjusted peptide mass, vial concentration, and calculated volume — plus an optional fixed-volume check that reports what a chosen volume actually delivers.
+
+Two details separate this from a plain ratio calculation. First, the mass that drives the math is the effective peptide mass: labelled mass multiplied by the purity fraction, so a "5 mg" vial at 98% is treated as 4.90 mg of peptide. Second, unit handling is explicit — grams or kilograms for weight, µg/kg or mg/kg for the amount, mg or µg for the vial — so no incidental factor-of-1,000 slips into the result. Everything runs in the browser; nothing is uploaded or stored.
+
+---
+
 ## How the Conversion Works
 
 <div class="principle-box" markdown="1">
@@ -265,6 +273,68 @@ A: Amount per kg values should be determined by your specific research protocol,
 
 ---
 
+## Assumptions and Rounding
+
+- **Purity is a mass fraction.** Effective peptide = labelled mass × (reported purity ÷ 100). HPLC purity is used as the correction; peptide content (counterions, residual water) is a separate figure — see Limitations.
+- **Complete dissolution.** The model assumes the peptide dissolves fully and that the dissolved powder adds negligible volume to the solution.
+- **Ideal handling.** No allowance for syringe dead volume, viscosity, temperature, or pipetting error; the calculated volume is a target value, not a delivered quantity.
+- **Unit conversions.** 1 g = 1,000 mg; 1 kg = 1,000 g; 1 mL = 1,000 µL. Weight is converted to kilograms, amounts to mg/kg, and masses to milligrams before the arithmetic runs.
+- **Display rounding.** The total amount shows 4 decimals in mg (2 in µg); effective mass and concentration show 3 decimals; volume shows 1 decimal in µL across the usual range, 3 decimals below 1 µL, and 2 decimals in mL above 1,000 µL. Full precision is kept through the calculation — only the display is rounded.
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Subject weight | Weight used to scale the total required amount | g or kg | > 0 |
+| Amount per kg | Research-protocol amount per kilogram of subject weight | µg/kg or mg/kg | > 0 |
+| Peptide mass in vial | Labelled mass of the vial contents, as printed on the label | mg or µg | > 0 |
+| Reported purity | Purity as stated on the COA or vial label | % | > 0; up to 100 |
+| Reconstitution volume | Solvent volume used to reconstitute the vial | mL | > 0 |
+| Fixed injection volume (optional) | A volume you plan to measure out, checked against the calculated one | µL | ≥ 0; 0 disables the alternative panel |
+
+The defaults (25 g, 100 µg/kg, 5 mg, 98%, 2 mL) let you run a calculation immediately; the Clear button restores them and hides the results panel.
+
+## Output Interpretation
+
+| Output | How to read it |
+|---|---|
+| Subject weight | Echo of the input, with a kg conversion alongside when entered in grams |
+| Target amount per kg | Restatement of the amount per kg in your chosen unit |
+| Total amount required | Weight × amount per kg, shown in mg and µg — the quantity the study calls for in total |
+| Effective peptide in vial | Labelled mass × purity fraction; this is the mass that should drive the volume calculation |
+| Vial concentration | Effective mass ÷ reconstitution volume, in mg/mL |
+| Calculated volume | Total amount ÷ vial concentration, reported in µL (mL above 1,000 µL) — the headline result |
+| Alternative calculation (fixed volume) | Appears when a fixed volume is entered: the volume, the amount it delivers (mg/µg), and the equivalent amount per kg |
+
+The alternative panel is often the more practical direction: measuring a convenient volume and reporting what it delivers can be more reliable than aiming at a calculated volume that is hard to pipette.
+
+## Limitations
+
+- **Purity ≠ peptide content.** The correction uses reported HPLC purity as a proxy for peptide content. Counterions and residual water can put true content 5–15% below the label; use an amino-acid-analysis content figure when one is available.
+- **No stability or solubility model.** The solution is assumed homogeneous at its stated concentration. Aggregation, adsorption to plastic, and degradation are outside the model.
+- **Ideal measurement assumed.** Dead volume, viscosity, and technique are not accounted for; very small volumes amplify all three.
+- **No reference values supplied.** The calculator performs unit math only. Appropriate amounts per kg come from your protocol and institutional guidance, not from this page.
+- **Planning tool.** Outputs are intended for laboratory research and educational use; confirm against your protocol before relying on them.
+
+## The Author's Take
+
+**Position — in my view, the purity correction deserves more attention than the volume it feeds: a 98% label read as 100% quietly moves every downstream number, and it is usually the softest input in the chain.**
+
+**Reasoning.** The arithmetic here is exact — the uncertainty lives entirely in the inputs. Purity is reported by the supplier rather than measured in your lab, and peptide content can sit well below HPLC purity once counterions are counted. Reconstitution volume is limited by how well the solution can actually be pipetted. Both numbers belong in the notebook as executed, and both deserve a sanity check before they feed a data set. When I see unexpected scatter in a study, the first thing I re-derive is the concentration chain, starting with purity.
+
+**Disclosure.** This is the author's opinion from laboratory practice, not a verified fact; confirm preparation values against your own records.
+
+## Related Research & Peptide Data
+
+Amounts are only as reliable as the assumptions behind the concentration — these references go deeper:
+
+- **Research:** [Peptide Purity and Quality — An Analytical Chemistry FAQ](https://research.rplpeptides.com/faq/peptide-purity-quality-faq/) — what HPLC purity measures, and where it diverges from peptide content.
+- **Research:** [Spectrophotometric Quantification of Peptides](https://research.rplpeptides.com/laboratory-techniques/spectrophotometric-peptide-quantification/) — the bench method for verifying the concentration you actually prepared.
+- **Data:** [Counter-Ion Guide](https://data.rplpeptides.com/white-papers/counter-ion-guide/) — why TFA and acetate counterions add mass that is not peptide.
+- **Data:** [Peptide Reconstitution Guide](https://data.rplpeptides.com/guides/peptide-reconstitution-guide/) — practical preparation guidance for making up stock solutions.
+
+---
+
 ## Related Tools
 
 - [Dilution Calculator](../dilution-calculator/) — Calculate reconstitution solvent volume for target concentration
@@ -397,5 +467,26 @@ function clearAmt() {
   document.getElementById('amt-injection').value = '0';
   document.getElementById('amt-result').style.display = 'none';
   document.getElementById('amt-alt-section').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Amount Conversion Calculator",
+  "url": "https://tool.rplpeptides.com/amount-conversion-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

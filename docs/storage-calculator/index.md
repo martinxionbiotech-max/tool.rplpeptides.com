@@ -58,6 +58,25 @@ Estimate the expected stability of a peptide based on its form, storage conditio
 
 ---
 
+## What This Calculator Does
+
+Pick the peptide's form (lyophilized powder or solution), a storage temperature, a broad peptide type, and a storage environment, and the tool returns a shelf-life expectation, a freeze–thaw tolerance, a recommended-storage statement, and combined handling notes. It is a structured way to apply published storage guidance to a specific set of conditions — the same logic as the guideline tables on this page, resolved for the combination actually in front of you.
+
+Read the result as a planning range, not a measurement: the estimates describe how a typical peptide of that class behaves under those conditions, and individual sequences, salt forms, and formulations move the numbers in both directions. Nothing is uploaded or stored.
+
+## How the Estimate Is Derived
+
+The estimator is a rule-based lookup, and it is worth being explicit about that: no part of the output is computed from the peptide's sequence.
+
+1. **Shelf life** comes from the baseline grid of peptide form × storage temperature — the guideline tables further down this page — reflecting general stability literature for each condition.
+2. **Freeze–thaw guidance** comes from the peptide type: small and capped peptides tolerate more cycles than large or disulfide-containing ones.
+3. **Recommended storage** restates the temperature-specific advice for the selected form.
+4. **Storage notes** combine the type note (stability character and handling) with the environment note (moisture and light exposure) into a single line.
+
+Because the inputs are broad categories, the outputs stay broad: where the guidance gives ranges (such as "2–5 years"), the tool reports ranges. That is deliberate — collapsing a broad category to one number would overstate the precision.
+
+---
+
 ## General Peptide Storage Guidelines
 
 ### Lyophilized (Freeze-Dried) Peptides
@@ -146,6 +165,22 @@ Peptide length, sequence complexity, and chemical modifications all influence st
 
 ---
 
+## Worked Example
+
+Take the most common configuration in a peptide lab: a standard peptide (5–30 residues), lyophilized, stored at −20 °C in a desiccated, light-protected environment. It is the tool's default state, so the example reproduces in one click.
+
+**Step 1 — Form: Lyophilized; Temperature: −20 °C.** The baseline grid returns an expected shelf life of **2–5 years** and the recommendation "Optimal storage temperature. Most peptides stable for years."
+
+**Step 2 — Type: Standard.** The type layer adds a freeze–thaw line — "2–3 freeze-thaw cycles" — and the note "Standard stability. Store desiccated."
+
+**Step 3 — Environment: Desiccated, protected from light.** The environment layer appends "Optimal storage environment. Moisture and light exposure minimized."
+
+**Result:** expected shelf life 2–5 years; freeze–thaw tolerance 2–3 cycles; notes read together as — keep the vial sealed and desiccated at −20 °C, minimize light exposure, and limit freeze–thaw cycles.
+
+**Scale check:** switch the form to "In Solution" with everything else unchanged, and the same shelf life collapses to **3–12 months** with an aliquot recommendation. Powder versus solution is the largest single swing in the model — exactly the decision the tool is built to inform.
+
+---
+
 ## Frequently Asked Questions
 
 <div class="faq-q">**Can I store reconstituted peptide at room temperature?**</div>
@@ -181,6 +216,63 @@ If the appearance has changed, assess peptide integrity by analytical methods (H
 <div class="faq-q">**Is it safe to use peptide past its recommended storage date?**</div>
 
 Not recommended. Degradation products can interfere with experimental results or, in cell-based or in vivo work, cause toxic effects. Oxidized peptides may produce off-target signaling, aggregated peptides can trigger immunogenic responses, and microbial contamination is a safety hazard. When in doubt, analyze purity by HPLC or mass spectrometry. Discard the peptide if purity has dropped below acceptable thresholds (typically &lt; 90%).
+
+---
+
+## Assumptions and Rounding
+
+- **Guideline-based ranges.** Shelf lives are expectation bands drawn from published storage guidance for each form/temperature combination — not measured stability data for any specific peptide. This is guidance, not experimental data.
+- **Broad categories.** Peptide type gates the freeze–thaw guidance and handling notes; it does not adjust the shelf-life range, which is driven by form, temperature, and environment.
+- **Environment as a qualitative modifier.** The environment selection appends handling guidance and does not numerically shorten or extend the shelf-life range.
+- **No sequence input.** The model does not read composition; oxidation-prone (Met, Cys, Trp) and aggregation-prone sequences are not flagged individually.
+- **Ranges, not point values.** Where guidance differs across sources, the tool reports the span (e.g., "2–5 years") rather than a center value.
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Peptide form | Physical state of the material | — | Lyophilized (freeze-dried); In solution |
+| Storage temperature | Temperature of the storage location | °C | −80; −20; 2–8; 20–25 |
+| Peptide type | Broad class used for handling guidance | — | Standard (5–30 AA); Modified/capped; Small (< 5 AA); Large (> 30 AA); Complex (disulfide, cyclic) |
+| Storage environment | How the container is protected | — | Desiccated + light-protected; Sealed (non-desiccated); Exposed to ambient conditions |
+
+The Clear button returns every selector to its default (lyophilized, −20 °C, standard, desiccated) and hides the results panel.
+
+## Output Interpretation
+
+| Output | How to read it |
+|---|---|
+| Expected shelf life | Planning range for the selected form and temperature — the headline output |
+| Freeze–thaw stability | Cycles tolerated by the selected peptide type; aliquot advice appears where relevant |
+| Recommended storage | One-line statement of best practice for the selected conditions |
+| Storage notes | Type note + environment note combined; carries the handling actions (desiccant, light protection) |
+
+All four rows are guidance text, not measurements — read them together as a storage plan. Where a supplier's datasheet gives different figures for a specific peptide, the datasheet takes precedence.
+
+## Limitations
+
+- **Guidance, not measurement.** Every figure is a published expectation band, not experimental data from this site or for your peptide; actual stability should be established by your own testing (for example, purity checks by HPLC before and after storage).
+- **Categories hide specifics.** A "standard peptide" category spans sequences with very different degradation risks; sulfur-containing and aggregation-prone sequences deserve stricter storage than the category implies.
+- **Environment effects are qualitative.** Moisture uptake and light exposure are real risks, but the model flags them rather than quantifying them — water activity and photodegradation rates depend on packaging details.
+- **Solution storage is formulation-dependent.** pH, buffer, concentration, and container all affect solution stability; the ranges assume good practice in a typical buffer with sterile handling.
+- **No expiry-date logic.** The tool does not know any manufacturer's assigned expiry date; treat its output as a reality check on those dates, not a replacement.
+
+## The Author's Take
+
+**Position — in my view, the most underrated storage decision is not the freezer temperature; it is whether to reconstitute at all before the experiment needs it — every vial converted to solution starts a clock that powder never runs.**
+
+**Reasoning.** Lyophilized peptide is the most stable state the material will ever be in: dry, immobile, and forgiving of a slow experimental schedule. Solution concentrates every risk — hydrolysis, oxidation, microbial growth — into a sealed vial with a countdown attached. Keep the powder dry until the protocol calls for liquid, then convert completely: reconstitute into single-use aliquots where possible, freeze them quickly, and record the cycles. The ranges in this tool exist because those choices move stability by an order of magnitude. Read them as a prompt for those decisions, not as a guarantee for the vial.
+
+**Disclosure.** This is the author's opinion from laboratory practice, not a verified fact; follow the supplier's storage instructions and your institution's policies.
+
+## Related Research & Peptide Data
+
+Storage ranges only make sense against the degradation chemistry behind them:
+
+- **Research:** [Peptide Storage and Stability](https://research.rplpeptides.com/methods/peptide-storage-stability/) — the principles and degradation pathways behind these ranges.
+- **Research:** [Peptide Storage and Handling — A Physical Chemistry FAQ](https://research.rplpeptides.com/faq/peptide-storage-handling-science-faq/) — water uptake, glass transition, and freeze–thaw damage at the molecular level.
+- **Data:** [Peptide Storage Guide](https://data.rplpeptides.com/guides/peptide-storage-guide/) — practical conditions and handling for lyophilized and reconstituted material.
+- **Data:** [Storage FAQ](https://data.rplpeptides.com/FAQ/storage-faq/) — bench-level answers on freezing, aliquoting, and expiry.
 
 ---
 
@@ -256,5 +348,26 @@ function clearStorage() {
   document.getElementById('st-type').value = 'standard';
   document.getElementById('st-environment').value = 'desiccated';
   document.getElementById('st-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Storage Stability Calculator",
+  "url": "https://tool.rplpeptides.com/storage-calculator/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

@@ -33,6 +33,52 @@ Convert between one-letter and three-letter amino acid codes. Includes a complet
 
 ---
 
+## What This Calculator Does
+
+Paste amino acid codes in either notation and convert between the one-letter and three-letter forms used across peptide work. A three-letter list such as `Ala Gly Lys` collapses to the one-letter string `AGK`; a one-letter string such as `AGK` expands to the hyphen-separated three-letter form `Ala-Gly-Lys`. The converter covers the 20 standard proteinogenic amino acids and maps exact code matches only — there is no guessing and no chemical interpretation.
+
+Both directions run entirely in the browser; nothing is uploaded, stored, or logged. The sections below set out the matching rules, walk through a conversion, and note where the simple lookup model stops being enough.
+
+## How the Conversion Works
+
+The converter is a lookup table, not an algorithm: each residue symbol has exactly one counterpart in the other notation, and the change happens one residue at a time.
+
+**Three-letter → one-letter.** The input is split on spaces, tabs, newlines, and commas. Each token is lowercased and matched against the standard three-letter codes (Ala, Arg, Asn … Val). Matched tokens are replaced by their one-letter symbols, which are concatenated in order with no separators:
+
+\\[
+\text{Ala Gly Lys} \;\longrightarrow\; \text{A} + \text{G} + \text{K} = \text{AGK}
+\\]
+
+**One-letter → three-letter.** The input is scanned for the 20 standard one-letter symbols; any other character — spaces, digits, punctuation, non-standard letters — is ignored. Each symbol is replaced by its three-letter code, and consecutive residues are joined with hyphens:
+
+\\[
+\text{A} + \text{G} + \text{K} \;\longrightarrow\; \text{Ala-Gly-Lys}
+\\]
+
+Matching is case-insensitive in both directions, so `ALA`, `ala`, and `Ala` all resolve to the same residue. Tokens that do not match a standard three-letter code are returned unchanged (uppercased) rather than dropped — helpful for spotting a typo, but it means invalid input produces invalid-looking output rather than an error.
+
+## Worked Example
+
+Convert the tripeptide Gly-His-Lys (GHK, the copper-binding peptide) between notations.
+
+**Step 1 — Start from the three-letter form:** `Gly His Lys`.
+
+**Step 2 — Look up each token:**
+
+| Token | Residue | One-letter |
+|-------|---------|------------|
+| Gly | Glycine | G |
+| His | Histidine | H |
+| Lys | Lysine | K |
+
+**Step 3 — Concatenate in sequence order:** G + H + K = `GHK`.
+
+**Step 4 — Convert back.** The reverse conversion expands each one-letter symbol to its three-letter code and joins with hyphens: `Gly-His-Lys`.
+
+**Result:** the same tripeptide in both notations — `GHK` and `Gly-His-Lys`. The round trip is lossless: a notation change, not a chemical one.
+
+---
+
 ## Amino Acid Reference Table
 
 | One-Letter | Three-Letter | Name | Side Chain Class | MW (Da) | pKa (R group) | Hydropathy |
@@ -106,6 +152,60 @@ The letter U stands for **selenocysteine** (Sec), the 21st proteinogenic amino a
 
 ---
 
+## Assumptions and Rounding
+
+- **Standard residue set only.** Only the 20 proteinogenic amino acids are mapped; selenocysteine (U), pyrrolysine (O), hydroxyproline, D-amino acids, and other non-standard residues have no entry — see Limitations.
+- **Exact matches only.** Three-letter matching requires the complete code, case-insensitively. Abbreviations, truncated spellings, and full residue names are not recognized.
+- **Separator handling.** Three-letter input may be separated by spaces, tabs, newlines, or commas; one-letter input may be written continuously or spaced, since non-standard characters are stripped before mapping.
+- **Output formatting.** One-letter output is concatenated without separators; three-letter output is hyphen-joined to match conventional sequence notation.
+- **No rounding.** The conversion is a one-to-one symbol substitution — nothing is calculated, averaged, or rounded, and output order always follows input order.
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Conversion Direction | Selects which of the two conversion paths runs | — | "Three-Letter → One-Letter"; "One-Letter → Three-Letter" |
+| Amino Acid Codes | Residue codes to convert; mixed case accepted | — | The 20 standard codes in either notation — e.g. `Ala Gly Lys`, `Ala,Gly,Lys`, or `AGK` |
+
+The result panel updates when the Convert button is pressed, and the Clear button empties the input and hides the panel. No inputs are stored between visits.
+
+## Output Interpretation
+
+There is one output — a converted string — so interpretation is mostly about confirming you received the format you expected:
+
+| Output | How to read it |
+|---|---|
+| Conversion Result | The input rewritten in the other notation. One-letter results are continuous (`AGK`); three-letter results are hyphen-joined (`Ala-Gly-Lys`). Token order is preserved. |
+| Text that looks unchanged | Unmatched tokens pass through uppercased — if something did not convert, cross-check the spelling against the reference table above. |
+| "No valid amino acid codes found" | No standard residue symbols were detected in the input; check for stray characters. |
+
+## Limitations
+
+- **Standard 20 only.** Non-standard residues and modified forms — D-amino acids, selenocysteine (U), pyrrolysine (O), hydroxyproline, norleucine — pass through untranslated.
+- **No validation.** The converter does not check that a sequence exists, is chemically plausible, or matches any reference molecule. It is a notation translator, not a sequence validator.
+- **Text-box input only.** There is no file upload, batch conversion, or export.
+- **No chemical output.** Nothing beyond the notation is produced — no mass, charge, or property values. Those live in the site's Molecular Weight Calculator and Peptide Properties Calculator.
+- **Verify before use.** For publication, database submission, or order forms, confirm converted sequences against your source records; a typo in the input is reproduced faithfully in the output.
+
+## The Author's Take
+
+**Position — in my view, the two notation systems are best treated as different jobs: one-letter codes for the machine, three-letter codes for the reader, and labs that standardize that split make fewer sequence mix-ups.**
+
+**Reasoning.** One-letter strings are compact and easy to diff, which makes them ideal for databases, alignment tools, and order systems. Three-letter codes are self-checking to the human eye — a reader cannot misread "Glu" for "Gln" the way two similar single characters can blur, and copy errors are easier to catch in review. In my experience the errors that reach the bench are hand-copying errors, not lookup errors. Store in one-letter, review in three-letter, and let a checked table do the conversion rather than memory.
+
+**Disclosure.** This is the author's working opinion from laboratory practice, not a verified fact; follow your institution's documentation conventions for sequences.
+
+## Related Research & Peptide Data
+
+The notation is only the entry point — these references pick up where the conversion ends:
+
+- **Research:** [Peptide Structure and Function](https://research.rplpeptides.com/research/peptide-biology/peptide-structure-function/) — how residue order and side-chain chemistry translate into structure and behavior.
+- **Research:** [Peptide Classification](https://research.rplpeptides.com/research/peptide-biology/peptide-classification/) — the taxonomies that build on the residue vocabulary used here.
+- **Data:** [Amino Acid Glossary](https://data.rplpeptides.com/glossary/peptide-chemistry/amino-acid/) — definitions and property notes for the 20 standard residues.
+- **Data:** [Peptide Sequence Glossary](https://data.rplpeptides.com/glossary/peptide-chemistry/peptide-sequence/) — how sequences are written, stored, and read across formats.
+
+---
+
 ## Related Tools
 
 - [Molecular Weight Calculator](molecular-weight-calculator/) — Calculate peptide mass from sequence
@@ -162,5 +262,26 @@ function convertAA() {
 function clearAA() {
   document.getElementById('aa-input').value = '';
   document.getElementById('aa-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Amino Acid Code Converter",
+  "url": "https://tool.rplpeptides.com/amino-acid-converter/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>

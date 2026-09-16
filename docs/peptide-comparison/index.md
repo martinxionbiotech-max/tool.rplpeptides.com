@@ -44,6 +44,43 @@ Compare multiple peptides side-by-side across key parameters — class, sequence
 
 ---
 
+## What This Calculator Does
+
+Select two to four peptides and the tool assembles a side-by-side comparison matrix across the parameters that matter before a research decision: class, category, sequence length, molecular weight, mechanism of action, research applications, and standard purity specification. The matrix is generated from a built-in reference set of ten compounds, so results are consistent and reproducible run to run. The results panel also carries request links for Certificates of Analysis and product specification sheets.
+
+Nothing is uploaded or stored — the comparison runs entirely in the browser from the built-in records. The sections below describe how the matrix is assembled, walk through a comparison, and note what the reference values do and do not tell you.
+
+## How the Comparison Matrix Is Built
+
+The matrix is an assembly job rather than a computation: each selected peptide maps to a fixed record, and the table places those records in columns so the rows line up. A few consequences are worth knowing up front:
+
+- **Values are reference figures.** Lengths are residue counts in amino acids, molecular weights are reported in daltons to one decimal, and purity is the specification standard for the compound — not a measurement of any particular lot.
+- **No ranking or scoring.** The tool does not weight parameters or declare a winner; every row is presented at equal strength so you can apply your own criteria.
+- **Fixed vocabulary.** Categories (GLP-1, Tissue Repair, Cosmetic, Neuro, Sleep/Pineal, Growth Factors) group compounds by research area, which keeps cross-category comparisons readable.
+- **One small-molecule guest.** MK-677 (Ibutamoren) is included as a growth-hormone secretagogue reference; it is not a peptide, so its length row reads "N/A (small mol.)".
+
+## Worked Example
+
+Compare the three metabolic peptides in the reference set — tirzepatide, semaglutide, and retatrutide — the way a literature-planning step would.
+
+**Step 1 — Select the compounds.** Tick the tirzepatide, semaglutide, and retatrutide checkboxes (the three are pre-selected on load) and run the comparison.
+
+**Step 2 — Read down the mechanism row.** The receptor profile separates them immediately:
+
+| Compound | Mechanism of action |
+|----------|--------------------|
+| Tirzepatide | GIP + GLP-1 receptor agonist |
+| Semaglutide | Selective GLP-1 receptor agonist |
+| Retatrutide | GIP + GLP-1 + glucagon receptor agonist |
+
+**Step 3 — Check the structural rows.** Length and mass agree with the mechanism row: tirzepatide and retatrutide are both 39-residue constructs with reported molecular weights of 4,813.5 Da and 4,840.6 Da, while semaglutide is the smaller 31-residue GLP-1 analogue at 4,113.6 Da. Two near-identical lengths with different receptor pharmacology is exactly the kind of gap a side-by-side table exposes quickly.
+
+**Step 4 — Note the shared specification.** All three carry a ≥ 98% purity specification in the matrix, so purity does not discriminate between them — receptor breadth does.
+
+**Result:** the walkthrough answers the planning question in one view — mechanism separates these compounds; size and purity specification do not — and the request buttons on the results panel carry the short list forward to COA requests.
+
+---
+
 ## How to Use This Comparison for Research Decisions
 
 When selecting a peptide for research, the comparison matrix above provides a structured way to evaluate candidates across multiple dimensions. Here's how to use it effectively:
@@ -174,6 +211,67 @@ The comparison tool helps you:
 2. **Inform purchasing decisions** — Side-by-side parameter comparison for procurement
 3. **Cross-reference with data.rplpeptides.com** — Detailed technical profiles for each compound
 4. **Request documentation** — Direct CTA to COA requests and product specifications
+
+---
+
+## Assumptions and Rounding
+
+- **Fixed reference set.** The matrix draws on ten built-in records; compounds outside the list cannot be compared, and the values are not editable.
+- **Representative values.** Molecular weights are rounded to one decimal place in daltons; purity figures are specification standards ("≥ 98%"), not analytical results for a specific batch.
+- **No weighting model.** Every row carries equal weight; the tool computes no score, rank, or recommendation.
+- **Selection bounds.** A comparison requires 2–4 compounds; fewer or more selections produce a prompt instead of a matrix.
+- **Link behavior.** The "Request COA" button passes the first compared compound to the request form as a query parameter; the remaining compounds are added on the form itself.
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Peptide checkboxes | The compounds that enter the matrix | — | Ten reference compounds: Tirzepatide, Semaglutide, Retatrutide, GHK-Cu, BPC-157, TB-500, Semax, Epitalon, MK-677, Ipamorelin |
+| Selection count | How many compounds a single comparison accepts | compounds | 2–4 |
+
+The matrix is rebuilt on each press of the Compare button; changing the checkboxes alone does not update the current results until the button is pressed again.
+
+## Output Interpretation
+
+The matrix has one row per parameter and one column per compound:
+
+| Row | How to read it |
+|---|---|
+| Peptide | Compound name from the reference set |
+| Class | Functional class (e.g., "GLP-1/GIP Dual Agonist") |
+| Category | Research grouping used across this site |
+| Length | Residue count; "N/A (small mol.)" for the non-peptide entry |
+| Molecular Weight | Reported mass in daltons, one decimal |
+| Mechanism | Receptor or pathway description — usually the deciding row |
+| Research Applications | Typical research contexts for the compound |
+| Standard Purity | Purity specification standard, not a lot measurement |
+
+Below the matrix, the request panel links to COA requests and the product catalogue. The matrix itself produces no calculated or scored output — the interpretation is entirely the comparison you make across columns.
+
+## Limitations
+
+- **Ten compounds only.** The reference set covers the most-requested compounds on this site; it is not a database, and other peptides need their own documentation.
+- **Reference values, not lot data.** Molecular weight, length, and purity entries are standard figures; always confirm against the COA or technical sheet for the actual batch.
+- **No sequence-level comparison.** The matrix compares summary parameters; it does not align sequences or compute similarity.
+- **Condensed mechanism summaries.** Mechanism lines are one-sentence pointers to the literature, not full pharmacology.
+- **No scoring or recommendation.** Nothing tells you which compound is "better" — that judgment depends on the research question.
+
+## The Author's Take
+
+**Position — in my view, a comparison table is a tool for eliminating candidates, not for selecting them; the column you end up circling is usually the mechanism row, not the numbers.**
+
+**Reasoning.** Gross parameters — length, mass, purity specification — rarely separate compounds competing for the same study; two 39-residue analogues can differ in receptor breadth more than in any figure the table prints. The faster path is to let the table cut the list to two or three mechanistically distinct options, then go read the primary literature for the survivors. I would also resist reading a shared "≥ 98%" row as a quality equivalence: that is a specification, and specifications are promises, not measurements. The certificate for the actual lot is where quality gets settled.
+
+**Disclosure.** This is the author's opinion from working with peptide documentation, not a verified fact; weighting of criteria should follow your own study design.
+
+## Related Research & Peptide Data
+
+The matrix condenses what longer comparisons explore in full:
+
+- **Research:** [Semaglutide vs Tirzepatide](https://research.rplpeptides.com/comparisons/semaglutide-vs-tirzepatide/) — a full head-to-head of two compounds this tool places side by side.
+- **Research:** [Single vs Multi-Receptor Agonists](https://research.rplpeptides.com/comparisons/single-vs-multi-receptor-agonists/) — why receptor breadth is the row that decides metabolic comparisons.
+- **Data:** [Semaglutide Technical Manual](https://data.rplpeptides.com/semaglutide/semaglutide-complete-documentation/) — an example of the full documentation a single matrix row condenses.
+- **Data:** [Peptide Glossary](https://data.rplpeptides.com/glossary/peptide-glossary/) — terminology for the class, mechanism, and purity fields above.
 
 ---
 
@@ -337,6 +435,27 @@ function comparePeptides() {
   const p = PEPTIDE_DATA[firstId];
   if (p) {
     document.getElementById('comp-coa-link').href = 'https://rplpeptides.com/coa-request/?product=' + encodeURIComponent(p.name);
+  }
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Comparison Tool",
+  "url": "https://tool.rplpeptides.com/peptide-comparison/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
   }
 }
 </script>

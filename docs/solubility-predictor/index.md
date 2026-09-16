@@ -61,6 +61,14 @@ Predict peptide solubility in various solvents directly from the amino acid sequ
 
 ---
 
+## What This Calculator Does
+
+Enter a peptide sequence and the tool estimates how comfortably it will dissolve, using three sequence-derived signals: hydropathy (GRAVY), net charge at your chosen pH, and an aggregation-propensity score built from the same residue table. The output is a qualitative grade from Poor to Excellent, a first-choice solvent suggestion, the underlying metric values, and plain-language notes that flag special character — strongly basic or acidic composition, or aggregation-prone stretches.
+
+Read the estimate as a ranking of difficulty rather than a number: it tells you which peptides are likely to need a co-solvent or a pH adjustment and which should dissolve on their own. The bench still decides — a small-scale test settles in minutes what no score can. Everything runs in the browser; sequences are not uploaded or stored.
+
+---
+
 ## How Solubility Prediction Works
 
 <div class="principle-box" markdown="1">
@@ -126,6 +134,36 @@ The aggregation propensity score identifies hydrophobic "hot spots" and beta-she
 where \\(w_i\\) is the aggregation weight of residue \\(i\\). Scores above **0.40** indicate high aggregation risk.
 
 </div>
+
+---
+
+## Worked Example
+
+The default sequence, YGGFMERRRRRR (Tyr-Gly-Gly-Phe-Met-Glu-Arg₆), at pH 7 exercises every stage of the estimate. Running it returns grade **Excellent**, suggested solvent "Water or PBS (pH 7.4)", GRAVY **−2.325**, net charge **+4.91**, charge density **0.409**, and aggregation propensity **0.150**.
+
+**Step 1 — Hydropathy (GRAVY).** Sum the Kyte–Doolittle values and divide by the residue count:
+
+\\[
+\frac{(-1.3) + (-0.4) + (-0.4) + (+2.8) + (+1.9) + (-3.5) + 6 \times (-4.5)}{12} = \frac{-27.9}{12} = -2.325
+\\]
+
+The six arginines dominate the sum — a strongly hydrophilic sequence.
+
+**Step 2 — Net charge at pH 7.** Apply the Henderson–Hasselbalch term to each ionizable group: N-terminus +0.91, C-terminus −1.00, Glu −1.00, and six arginines at ≈ +1.00 each. Total: **+4.91**.
+
+**Step 3 — Charge density.** Dividing the absolute charge by length: 4.91 ÷ 12 = **0.409**, comfortably above the 0.15 threshold that favors aqueous solubility.
+
+**Step 4 — Aggregation propensity.** The weighted residue scores sum to 1.8 across 12 residues: **0.150**, below the 0.40 risk threshold.
+
+**Step 5 — Composite score.** The weighted model is
+
+\\[
+\text{score} = 5.0 - 1.2 \times \text{GRAVY} + 8.0 \times \text{charge density} - 3.0 \times \text{aggregation}
+\\]
+
+with no length penalty applying here (12 residues is under the 20-residue threshold). Substituting the values: 5.0 + 2.79 + 3.27 − 0.45 = **10.61**, clamped to the 0–10 scale at **10.0** → grade **Excellent**.
+
+**Reading the result:** water or PBS is the sensible first solvent; the output's dissolution note adds "Highly basic — 10 % acetic acid is strongly recommended" as a fallback if the aqueous route disappoints.
 
 ---
 
@@ -335,6 +373,64 @@ Charge density is the absolute net charge per residue (\\(|Q|/n\\)). It captures
 
 ---
 
+## Assumptions and Rounding
+
+- **Model basis.** The estimate is semi-quantitative: GRAVY from the Kyte–Doolittle scale, net charge from Henderson–Hasselbalch with the pKa set listed above, and a fixed per-residue aggregation weight (0.0–0.8). It ranks dissolution difficulty; it does not predict a mg/mL value.
+- **Composite formula.** score = 5.0 − 1.2 × GRAVY + 8.0 × charge density − 3.0 × aggregation, with a −0.5 penalty added for sequences over 20 residues and a further −1.0 over 30 residues when GRAVY is positive; scores are clamped to 0–10. Grade bands: ≥ 7.0 Excellent, 5.0–6.9 Good, 3.0–4.9 Fair, < 3.0 Poor.
+- **What is held constant.** Linear peptides of the 20 standard L-amino acids, free N- and C-termini, and a typical working concentration of 0.5–2.0 mg/mL.
+- **Rounding.** Net charge shows 2 decimals; GRAVY, charge density, and aggregation show 3 decimals; length is a whole number.
+
+## Input Definitions
+
+| Input | What it means | Units | Allowed values |
+|---|---|---|---|
+| Amino acid sequence | One-letter sequence to assess; only the 20 standard letter codes are processed | — | ACDEFGHIKLMNPQRSTVWY; other characters are ignored |
+| Target pH | pH used for the net-charge calculation | pH units | 2–12 in integer steps |
+| Solvent type | The solvent system being considered for dissolution | — | Water; 0.9% Saline; PBS (pH 7.4); DMSO; Ethanol; Acetic acid |
+
+The Clear button empties the sequence, resets pH to 7 and solvent to Water, and hides the results panel.
+
+## Output Interpretation
+
+| Output | How to read it |
+|---|---|
+| Predicted solubility | Grade from the composite score: Excellent / Good / Fair / Poor |
+| Suggested solvent | First solvent family to try, derived from GRAVY, charge density, and net charge |
+| GRAVY score | Mean hydropathy; more negative = more hydrophilic |
+| Net charge at the selected pH | Estimated charge, with sign — magnitude of ±3 or more triggers a strong basic/acidic flag in the notes |
+| Charge density | Absolute charge ÷ length; above 0.15 favorable, below 0.08 challenging |
+| Aggregation propensity | Mean weighted score; above 0.40 flags high aggregation risk, and above 0.45 adds a chaotrope suggestion |
+| Sequence length | Residues counted after non-standard characters are stripped |
+| Dissolution notes | Plain-language flags built from the metrics — e.g., strong net charge adds acid- or base-side solvent advice |
+
+## Limitations
+
+- **Empirical estimate.** Grades come from a weighted scoring model, not thermodynamic solubility data. Treat them as a ranking of dissolution difficulty; correlation with experiment is good for straightforward linear peptides and weaker for everything else.
+- **Standard residues, linear chains.** Cyclic, stapled, PEGylated, and D-amino-acid constructs fall outside the model; terminal modifications such as acetylation or amidation shift charge and are not applied automatically.
+- **Composition, not structure.** The model sees sequence composition only — helical or self-assembling sequences can behave unlike any composition-only prediction.
+- **Solvent effects are not simulated.** Solvent-specific interactions and ionic-strength effects are outside the model; the suggestion marks where to start, and a small-scale test decides.
+- **Assumed concentration band.** Estimates assume typical working concentrations (0.5–2.0 mg/mL); a peptide that dissolves at 0.5 mg/mL may still aggregate at 5 mg/mL.
+- **Confirm experimentally.** This tool is for laboratory research and educational use; a 0.5–1 mg trial in 50–100 µL of solvent is the fastest validation.
+
+## The Author's Take
+
+**Position — in my view, solubility is the question to get right before any other number matters: concentration, volume, and activity all silently assume the powder dissolved in the first place.**
+
+**Reasoning.** A fine white powder that will not wet looks like a purity problem and is usually a solvent problem. The mistake I see most often is starting in the wrong solvent family and then fighting the consequences — sonicating harder, warming longer, adding co-solvent drop by drop until the preparation is neither reproducible nor documented. This estimator is coarse by design, but it moves the first attempt into the right solvent family most of the time, and that is most of the battle. Run the small trial before committing the vial: it costs a milligram and settles what no score can.
+
+**Disclosure.** This is the author's opinion from laboratory practice, not a verified fact; always confirm dissolution behavior experimentally.
+
+## Related Research & Peptide Data
+
+The grade is a starting point — these references cover the underlying chemistry:
+
+- **Research:** [pH and Buffer Selection for Peptide Formulations](https://research.rplpeptides.com/formulation-science/ph-buffer-selection-peptides/) — why pH is the master variable for dissolving and keeping peptides in solution.
+- **Research:** [Peptide Aggregation Prevention](https://research.rplpeptides.com/formulation-science/peptide-aggregation-prevention/) — the mechanisms behind the aggregation score, and the strategies that counter them.
+- **Data:** [Peptide Solubility Guide](https://data.rplpeptides.com/guides/peptide-solubility-guide/) — solvent selection by sequence character, with practical starting points.
+- **Data:** [Solubility FAQ](https://data.rplpeptides.com/FAQ/solubility-faq/) — practical questions on dissolving stubborn peptides.
+
+---
+
 ## Related Tools
 
 - [Peptide Properties Calculator](../peptide-property-calculator/) — Compute pI, net charge, GRAVY, and instability index
@@ -508,5 +604,26 @@ function clearSolubility() {
   document.getElementById('sol-ph').value = '7';
   document.getElementById('sol-solvent').value = 'water';
   document.getElementById('sol-result').style.display = 'none';
+}
+</script>
+
+<!-- JSON-LD: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peptide Solubility Predictor",
+  "url": "https://tool.rplpeptides.com/solubility-predictor/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "isAccessibleForFree": true,
+  "dateModified": "2026-09-16",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "publisher": {
+    "@id": "https://rplpeptides.com/#organization"
+  }
 }
 </script>
